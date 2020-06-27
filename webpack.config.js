@@ -51,7 +51,7 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.scss']
+        extensions: ['.js', '.ts', '.tsx', '.scss', '.jpg']
     },
     // TODO To be applied only on development mode
     devServer: {
