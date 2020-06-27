@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+.main-image {
+    height: 50%;
+    background-image: url('./bg.jpg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    background-size: 100%;
+
+    @media (min-width: $small) {
+        height: 75%;
+        background-size: 75%;
+    }
+
+    @media (min-width: $large) {
+        background-size: 60%;
+    }
+}
