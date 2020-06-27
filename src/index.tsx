@@ -8,13 +8,11 @@ import './style/main.scss';
 const App = () => (
     <BrowserRouter>
         <div>
-            <div className="container custom-container">
-                <Switch>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
         </div>
     </BrowserRouter>
 );

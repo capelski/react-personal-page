@@ -1,0 +1,75 @@
+@import './variables.scss';
+
+$extraSmallImageHeight: 50%;
+$mediumImageHeight: 60%;
+
+.home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .home-header,
+    .home-image {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-header {
+        padding: 24px 32px;
+
+        h1 {
+            max-width: 700px;
+            margin: 0;
+            opacity: 0;
+            animation: slide-down 1s forwards;
+            font-size: 24px;
+
+            @media (min-width: $medium) {
+                font-size: 32px;
+            }
+        }
+    }
+
+    .home-image {
+        box-sizing: content-box;
+        padding: 24px 0;
+
+        img {
+            width: 100%;
+            opacity: 0;
+            animation: slide-up 1s forwards;
+            animation-delay: 400ms;
+
+            @media (min-width: $medium) {
+                width: unset;
+                height: 350px;
+            }
+        }
+    }
+}
+
+@keyframes slide-up {
+    #{0%} {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    #{100%} {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-down {
+    #{0%} {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    #{100%} {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,11 +1,18 @@
 import React from 'react';
+import homeImage from './home-image.jpg';
 
 export const Home = () => (
     <React.Fragment>
-        <h1>
-            Yeap, this is Carles. I develop web apps and write a blog so this page contains web
-            projects and blog posts
-        </h1>
-        <div className="main-image"></div>
+        <div className="home">
+            <div className="home-header">
+                <h1>
+                    Hi there! This is Carles Capellas. I enjoy developing web apps and writing blog
+                    posts so in this page you can and explore my web apps and read my blog posts
+                </h1>
+            </div>
+            <div className="home-image">
+                <img src={homeImage} />
+            </div>
+        </div>
     </React.Fragment>
 );
