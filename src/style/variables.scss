@@ -3,5 +3,5 @@ $medium: 768px;
 $large: 992px;
 $extra-large: 1200px;
 
-$homeAnimationsDuration: 800ms;
-$homeAnimationsDelay: 300ms;
+// Keep in sync with index.tsx CSSTransition.timeout
+$transitionsDuration: 1000ms;

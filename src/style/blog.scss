@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+.blog {
+    background-color: lightcoral;
+    height: 100%;
+
+    &.page-enter-active {
+        display: none;
+    }
+    &.page-enter-done {
+        animation: slide-in-left $transitionsDuration forwards;
+    }
+
+    &.page-exit-active {
+        animation: slide-out-left $transitionsDuration forwards;
+    }
+    &.page-exit-done {
+        display: none;
+    }
+}

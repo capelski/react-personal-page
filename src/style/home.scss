@@ -26,9 +26,6 @@ $homeLinksHeight: 75px;
             h1 {
                 max-width: 700px;
                 margin: 0;
-                opacity: 0;
-                animation: slide-left $homeAnimationsDuration forwards;
-                animation-delay: $homeAnimationsDelay;
                 font-size: 24px;
 
                 @media (min-width: $medium) {
@@ -43,9 +40,6 @@ $homeLinksHeight: 75px;
 
             img {
                 width: 100%;
-                opacity: 0;
-                animation: slide-right $homeAnimationsDuration forwards;
-                animation-delay: $homeAnimationsDelay * 2;
 
                 @media (min-width: $medium) {
                     width: unset;
@@ -61,14 +55,69 @@ $homeLinksHeight: 75px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        opacity: 0;
-        animation: slide-down $homeAnimationsDuration forwards;
-        animation-delay: $homeAnimationsDelay * 3;
 
         .home-link {
+            text-decoration: none;
+            color: black;
             font-size: 24px;
             padding: 16px;
             cursor: pointer;
         }
+    }
+
+    /* Animations */
+
+    &.page-enter-active {
+        display: none;
+    }
+    &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
+    &.page-enter-done {
+        // Total enter animations time CAN exceed $transitionsDuration
+        $enterAnimations: $transitionsDuration / 2;
+
+        .home-content {
+            .home-header {
+                opacity: 0;
+                animation: slide-in-left $enterAnimations forwards;
+                animation-delay: $enterAnimations;
+            }
+
+            .home-image {
+                opacity: 0;
+                animation: slide-in-right $enterAnimations forwards;
+                animation-delay: $enterAnimations * 1.5;
+            }
+        }
+
+        .home-links {
+            opacity: 0;
+            animation: slide-in-down $enterAnimations forwards;
+            animation-delay: $enterAnimations * 2;
+        }
+    }
+
+    &.page-exit-active {
+        // Total exit animations time CANNOT exceed $transitionsDuration
+        $exitAnimations: $transitionsDuration / 3;
+
+        .home-content {
+            .home-header {
+                animation: slide-out-right $exitAnimations forwards;
+                animation-delay: $exitAnimations;
+            }
+
+            .home-image {
+                animation: slide-out-left $exitAnimations forwards;
+                animation-delay: $exitAnimations * 1.5;
+            }
+        }
+
+        .home-links {
+            animation: slide-out-up $exitAnimations forwards;
+            animation-delay: $exitAnimations * 2;
+        }
+    }
+    &.page-exit-done {
+        display: none;
     }
 }

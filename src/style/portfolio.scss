@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+.portfolio {
+    background-color: lightskyblue;
+    height: 100%;
+
+    &.page-enter-active {
+        display: none;
+    }
+    &.page-enter-done {
+        animation: slide-in-right $transitionsDuration forwards;
+    }
+
+    &.page-exit-active {
+        animation: slide-out-right $transitionsDuration forwards;
+    }
+    &.page-exit-done {
+        display: none;
+    }
+}

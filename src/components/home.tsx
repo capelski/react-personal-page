@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import homeImage from './home-image.jpg';
 
 export const Home = () => (
@@ -17,8 +18,12 @@ export const Home = () => (
                 </div>
             </div>
             <div className="home-links">
-                <div className="home-link">⬅️ Blog</div>
-                <div className="home-link">Portfolio ➡️</div>
+                <NavLink to="/blog" className="home-link">
+                    ⬅️ Blog
+                </NavLink>
+                <NavLink to="/portfolio" className="home-link">
+                    Portfolio ➡️
+                </NavLink>
             </div>
         </div>
     </React.Fragment>
