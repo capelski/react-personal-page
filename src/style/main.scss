@@ -1,15 +1,10 @@
 @import './animations.scss';
 @import './home.scss';
-@import './navigation.scss';
-@import './variables.scss';
 
 html,
-body {
+body,
+#app-placeholder {
     min-height: 100%;
     margin: 0;
     font-family: 'Gill Sans', sans-serif;
-}
-
-.content {
-    height: calc(100% - #{$navigationHeight});
 }

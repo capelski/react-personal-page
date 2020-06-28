@@ -2,52 +2,73 @@
 
 $extraSmallImageHeight: 50%;
 $mediumImageHeight: 60%;
+$homeLinksHeight: 75px;
 
 .home {
-    display: flex;
-    flex-direction: column;
     height: 100%;
 
-    .home-header,
-    .home-image {
-        flex-grow: 1;
+    .home-content {
         display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        flex-direction: column;
+        height: calc(100% - #{$homeLinksHeight});
 
-    .home-header {
-        padding: 24px 32px;
+        .home-header,
+        .home-image {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        h1 {
-            max-width: 700px;
-            margin: 0;
-            opacity: 0;
-            animation: slide-left $homeAnimationsDuration forwards;
-            animation-delay: $homeAnimationsDelay;
-            font-size: 24px;
+        .home-header {
+            padding: 24px 32px;
 
-            @media (min-width: $medium) {
-                font-size: 32px;
+            h1 {
+                max-width: 700px;
+                margin: 0;
+                opacity: 0;
+                animation: slide-left $homeAnimationsDuration forwards;
+                animation-delay: $homeAnimationsDelay;
+                font-size: 24px;
+
+                @media (min-width: $medium) {
+                    font-size: 32px;
+                }
+            }
+        }
+
+        .home-image {
+            box-sizing: content-box;
+            padding: 24px 0;
+
+            img {
+                width: 100%;
+                opacity: 0;
+                animation: slide-right $homeAnimationsDuration forwards;
+                animation-delay: $homeAnimationsDelay * 2;
+
+                @media (min-width: $medium) {
+                    width: unset;
+                    max-width: 100%;
+                    height: 350px;
+                }
             }
         }
     }
 
-    .home-image {
-        box-sizing: content-box;
-        padding: 24px 0;
+    .home-links {
+        height: $homeLinksHeight;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        animation: slide-down $homeAnimationsDuration forwards;
+        animation-delay: $homeAnimationsDelay * 3;
 
-        img {
-            width: 100%;
-            opacity: 0;
-            animation: slide-right $homeAnimationsDuration forwards;
-            animation-delay: $homeAnimationsDelay * 2;
-
-            @media (min-width: $medium) {
-                width: unset;
-                max-width: 100%;
-                height: 350px;
-            }
+        .home-link {
+            font-size: 24px;
+            padding: 16px;
+            cursor: pointer;
         }
     }
 }
