@@ -2,7 +2,6 @@
 
 $extraSmallImageHeight: 50%;
 $mediumImageHeight: 60%;
-$homeLinksHeight: 75px;
 
 .home {
     height: 100%;
@@ -10,7 +9,6 @@ $homeLinksHeight: 75px;
     .home-content {
         display: flex;
         flex-direction: column;
-        height: calc(100% - #{$homeLinksHeight});
 
         .home-header,
         .home-image {
@@ -51,18 +49,7 @@ $homeLinksHeight: 75px;
     }
 
     .home-links {
-        height: $homeLinksHeight;
-        display: flex;
         justify-content: space-between;
-        align-items: center;
-
-        .home-link {
-            text-decoration: none;
-            color: black;
-            font-size: 24px;
-            padding: 16px;
-            cursor: pointer;
-        }
     }
 
     /* Animations */

@@ -5,7 +5,7 @@ import homeImage from './home-image.jpg';
 export const Home = () => (
     <React.Fragment>
         <div className="home">
-            <div className="home-content">
+            <div className="section-content home-content">
                 <div className="home-header">
                     <h1>
                         Hi there! This is Carles Capellas. I enjoy developing web apps and writing
@@ -17,11 +17,11 @@ export const Home = () => (
                     <img src={homeImage} />
                 </div>
             </div>
-            <div className="home-links">
-                <NavLink to="/blog" className="home-link">
+            <div className="section-links home-links">
+                <NavLink to="/blog" className="link">
                     ⬅️ Blog
                 </NavLink>
-                <NavLink to="/portfolio" className="home-link">
+                <NavLink to="/portfolio" className="link">
                     Portfolio ➡️
                 </NavLink>
             </div>

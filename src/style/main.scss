@@ -2,6 +2,7 @@
 @import './blog.scss';
 @import './home.scss';
 @import './portfolio.scss';
+@import './variables.scss';
 
 html,
 body,
@@ -9,5 +10,23 @@ body,
     min-height: 100%;
     margin: 0;
     font-family: 'Gill Sans', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.section-content {
+    height: calc(100% - #{$linksHeight});
+}
+
+.section-links {
+    height: $linksHeight;
+    display: flex;
+    align-items: center;
+
+    .link {
+        text-decoration: none;
+        color: black;
+        font-size: 24px;
+        padding: 16px;
+        cursor: pointer;
+    }
 }

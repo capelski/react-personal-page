@@ -3,7 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 export const Blog = () => (
     <div className="blog">
-        <h1>Blog</h1>
-        <NavLink to="/">➡️</NavLink>
+        <div className="section-content blog-content">
+            <h1>Blog</h1>
+            <div className="blog-entry">Blog entry</div>
+        </div>
+        <div className="section-links blog-links">
+            <NavLink to="/" className="link">
+                ➡️ Back
+            </NavLink>
+        </div>
     </div>
 );

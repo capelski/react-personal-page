@@ -1,8 +1,17 @@
 @import './variables.scss';
 
 .blog {
-    background-color: lightcoral;
-    height: 100%;
+    .blog-content {
+        padding: 32px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    .blog-links {
+        justify-content: flex-end;
+    }
+
+    // Animations
 
     &.page-enter-active {
         display: none;

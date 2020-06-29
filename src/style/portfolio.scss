@@ -1,8 +1,19 @@
 @import './variables.scss';
 
 .portfolio {
-    background-color: lightskyblue;
-    height: 100%;
+    .portfolio-content {
+        padding: 32px;
+        box-sizing: border-box;
+        overflow-y: auto;
+
+        .project {
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+
+    // Animations
 
     &.page-enter-active {
         display: none;
