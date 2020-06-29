@@ -85,14 +85,14 @@ $homeLinksHeight: 75px;
             .home-image {
                 opacity: 0;
                 animation: slide-in-right $enterAnimations forwards;
-                animation-delay: $enterAnimations * 1.5;
+                animation-delay: $enterAnimations * 2;
             }
         }
 
         .home-links {
             opacity: 0;
             animation: slide-in-down $enterAnimations forwards;
-            animation-delay: $enterAnimations * 2;
+            animation-delay: $enterAnimations * 3;
         }
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Blog } from './components/blog';
 import { Home } from './components/home';
@@ -34,6 +34,9 @@ const App = () => (
                 )}
             />
         ))}
+        <Route path="/react-personal-page">
+            <Redirect to="/" />
+        </Route>
     </BrowserRouter>
 );
 
