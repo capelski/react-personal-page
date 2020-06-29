@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Portfolio = () => (
     <div className="portfolio">
         <div className="section-content portfolio-content">
-            <h1>Portfolio</h1>
+            <h1 className="portfolio-title">Portfolio</h1>
             <div className="project">Project</div>
         </div>
         <div className="section-links portfolio-links">

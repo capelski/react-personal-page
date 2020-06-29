@@ -66,26 +66,24 @@ $mediumImageHeight: 60%;
             .home-header {
                 opacity: 0;
                 animation: slide-in-left $enterAnimations forwards;
-                animation-delay: $enterAnimations;
             }
 
             .home-image {
                 opacity: 0;
                 animation: slide-in-right $enterAnimations forwards;
-                animation-delay: $enterAnimations * 2;
             }
         }
 
         .home-links {
             opacity: 0;
             animation: slide-in-down $enterAnimations forwards;
-            animation-delay: $enterAnimations * 3;
+            animation-delay: $enterAnimations;
         }
     }
 
     &.page-exit-active {
         // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 3;
+        $exitAnimations: $transitionsDuration / 2;
 
         .home-content {
             .home-header {
@@ -95,13 +93,12 @@ $mediumImageHeight: 60%;
 
             .home-image {
                 animation: slide-out-left $exitAnimations forwards;
-                animation-delay: $exitAnimations * 1.5;
+                animation-delay: $exitAnimations;
             }
         }
 
         .home-links {
             animation: slide-out-up $exitAnimations forwards;
-            animation-delay: $exitAnimations * 2;
         }
     }
     &.page-exit-done {

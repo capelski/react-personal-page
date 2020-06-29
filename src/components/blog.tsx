@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Blog = () => (
     <div className="blog">
         <div className="section-content blog-content">
-            <h1>Blog</h1>
+            <h1 className="blog-title">Blog</h1>
             <div className="blog-entry">Blog entry</div>
         </div>
         <div className="section-links blog-links">

@@ -19,11 +19,33 @@
         display: none;
     }
     &.page-enter-done {
-        animation: slide-in-right $transitionsDuration forwards;
+        // Total enter animations time CAN exceed $transitionsDuration
+        $enterAnimations: $transitionsDuration / 2;
+
+        .portfolio-title {
+            opacity: 0;
+            animation: slide-in-right $enterAnimations forwards;
+        }
+
+        .portfolio-links {
+            opacity: 0;
+            animation: slide-in-right $enterAnimations forwards;
+            animation-delay: $enterAnimations;
+        }
     }
 
     &.page-exit-active {
-        animation: slide-out-right $transitionsDuration forwards;
+        // Total exit animations time CANNOT exceed $transitionsDuration
+        $exitAnimations: $transitionsDuration / 2;
+
+        .portfolio-title {
+            animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations;
+        }
+
+        .portfolio-links {
+            animation: slide-out-right $exitAnimations forwards;
+        }
     }
     &.page-exit-done {
         display: none;

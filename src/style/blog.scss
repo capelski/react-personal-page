@@ -17,11 +17,33 @@
         display: none;
     }
     &.page-enter-done {
-        animation: slide-in-left $transitionsDuration forwards;
+        // Total enter animations time CAN exceed $transitionsDuration
+        $enterAnimations: $transitionsDuration / 2;
+
+        .blog-title {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
+        }
+
+        .blog-links {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
+            animation-delay: $enterAnimations;
+        }
     }
 
     &.page-exit-active {
-        animation: slide-out-left $transitionsDuration forwards;
+        // Total exit animations time CANNOT exceed $transitionsDuration
+        $exitAnimations: $transitionsDuration / 2;
+
+        .blog-title {
+            animation: slide-out-left $exitAnimations forwards;
+            animation-delay: $exitAnimations;
+        }
+
+        .blog-links {
+            animation: slide-out-left $exitAnimations forwards;
+        }
     }
     &.page-exit-done {
         display: none;
