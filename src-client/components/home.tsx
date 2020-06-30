@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import homeImage from './home-image.jpg';
 
-export const Home = () => (
+export const Home: React.FC = () => (
     <React.Fragment>
         <div className="home">
             <div className="section-content home-content">
@@ -14,7 +13,7 @@ export const Home = () => (
                     </h1>
                 </div>
                 <div className="home-image">
-                    <img src={homeImage} />
+                    <img src="/images/home-image.jpg?$modena=react-personal-page" />
                 </div>
             </div>
             <div className="section-links home-links">

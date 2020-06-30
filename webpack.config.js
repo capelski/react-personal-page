@@ -1,26 +1,16 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src-client/index.tsx',
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader',
                 query: {
-                    configFileName: './tsconfig.json'
+                    configFileName: './tsconfig-client.json'
                 }
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[contenthash].[ext]?$modena=react-personal-page'
-                        }
-                    }
-                ]
             },
             {
                 test: /\.scss$/,
@@ -44,17 +34,24 @@ module.exports = {
         ]
     },
     output: {
-        filename: 'main.js?$modena=react-personal-page',
+        filename: 'client-bundle.js?$modena=react-personal-page',
         publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: './index.html',
-            template: './src/index.html'
+            template: './index.html'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'assets'
+                }
+            ]
         })
     ],
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.scss', '.jpg']
+        extensions: ['.js', '.ts', '.tsx', '.scss']
     },
     // TODO To be applied only on development mode
     devServer: {

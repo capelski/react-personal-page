@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "lib": ["es2017"],
+        "outDir": "dist",
+        "target": "es6"
+    },
+    "extends": "./tsconfig.json",
+    "include": ["./src-server"]
+}

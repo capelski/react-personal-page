@@ -1,21 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { Blog } from './components/blog';
-import { Home } from './components/home';
-import { Portfolio } from './components/portfolio';
-
-import './style/main.scss';
+import { Blog } from './blog';
+import { Home } from './home';
+import { Portfolio } from './portfolio';
 
 const routes = [
+    { path: '/', name: 'Home', component: Home },
     { path: '/blog', name: 'Blog', component: Blog },
-    { path: '/portfolio', name: 'Portfolio', component: Portfolio },
-    { path: '/', name: 'Home', component: Home }
+    { path: '/portfolio', name: 'Portfolio', component: Portfolio }
 ];
 
-const App = () => (
-    <BrowserRouter>
+export const App: React.FC = () => (
+    <React.Fragment>
         {routes.map((route) => (
             <Route
                 key={route.path}
@@ -37,8 +34,5 @@ const App = () => (
         <Route path="/react-personal-page">
             <Redirect to="/" />
         </Route>
-    </BrowserRouter>
+    </React.Fragment>
 );
-
-const appPlaceholder = document.getElementById('app-placeholder');
-ReactDOM.render(<App />, appPlaceholder);

@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "lib": ["dom", "es2017"],
+        "target": "es5"
+    },
+    "extends": "./tsconfig.json",
+    "include": ["./src-client"]
+}

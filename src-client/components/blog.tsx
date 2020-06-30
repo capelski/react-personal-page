@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Blog = () => (
+export const Blog: React.FC = () => (
     <div className="blog">
         <div className="section-content blog-content">
             <h1 className="blog-title">Blog</h1>
