@@ -19,7 +19,7 @@ export const App: React.FC = () => (
                     <CSSTransition
                         in={childrenProps.match != null}
                         // Keep in sync with variables.scss $transitionsDuration
-                        timeout={1000}
+                        timeout={1200}
                         classNames="page"
                         unmountOnExit={true}
                     >
@@ -30,7 +30,7 @@ export const App: React.FC = () => (
         ))}
         <Route path="/react-personal-page/*">
             {(props) => {
-                return props.match ? <Redirect to={`/${props.match!.params[0]}`} /> : undefined;
+                return props.match ? <Redirect to={`/${props.match!.params[0]}`} /> : null;
             }}
         </Route>
     </React.Fragment>

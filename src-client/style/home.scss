@@ -60,7 +60,7 @@ $mediumImageHeight: 60%;
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
         // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 2;
+        $enterAnimations: $transitionsDuration / 3;
 
         .home-content {
             .home-header {
@@ -71,24 +71,25 @@ $mediumImageHeight: 60%;
             .home-image {
                 opacity: 0;
                 animation: slide-in-right $enterAnimations forwards;
+                animation-delay: $enterAnimations;
             }
         }
 
         .home-links {
             opacity: 0;
             animation: slide-in-down $enterAnimations forwards;
-            animation-delay: $enterAnimations;
+            animation-delay: $enterAnimations * 2;
         }
     }
 
     &.page-exit-active {
         // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 2;
+        $exitAnimations: $transitionsDuration / 3;
 
         .home-content {
             .home-header {
                 animation: slide-out-right $exitAnimations forwards;
-                animation-delay: $exitAnimations;
+                animation-delay: $exitAnimations * 2;
             }
 
             .home-image {

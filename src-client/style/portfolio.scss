@@ -18,6 +18,7 @@
     &.page-enter-active {
         display: none;
     }
+    &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
         // Total enter animations time CAN exceed $transitionsDuration
         $enterAnimations: $transitionsDuration / 2;
