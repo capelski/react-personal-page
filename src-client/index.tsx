@@ -6,7 +6,7 @@ import { App } from './components/app';
 import './style/main.scss';
 
 const ClientApp: React.FC = () => (
-    <BrowserRouter>
+    <BrowserRouter basename="/react-personal-page">
         <App />
     </BrowserRouter>
 );

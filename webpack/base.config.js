@@ -32,7 +32,9 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'main.css?$modena=react-personal-page'
+        }),
         new HtmlWebpackPlugin({
             filename: './index.html',
             template: './index.html'

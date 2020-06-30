@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Blog } from './blog';
 import { Home } from './home';
@@ -28,10 +28,5 @@ export const App: React.FC = () => (
                 )}
             </Route>
         ))}
-        <Route path="/react-personal-page/*">
-            {(props) => {
-                return props.match ? <Redirect to={`/${props.match!.params[0]}`} /> : null;
-            }}
-        </Route>
     </React.Fragment>
 );
