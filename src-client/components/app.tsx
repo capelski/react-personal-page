@@ -14,11 +14,8 @@ const routes = [
 export const App: React.FC = () => (
     <React.Fragment>
         {routes.map((route) => (
-            <Route
-                key={route.path}
-                exact={true}
-                path={route.path}
-                children={(childrenProps) => (
+            <Route key={route.path} exact={true} path={route.path}>
+                {(childrenProps) => (
                     <CSSTransition
                         in={childrenProps.match != null}
                         // Keep in sync with variables.scss $transitionsDuration
@@ -29,10 +26,12 @@ export const App: React.FC = () => (
                         <route.component />
                     </CSSTransition>
                 )}
-            />
+            </Route>
         ))}
-        <Route path="/react-personal-page">
-            <Redirect to="/" />
+        <Route path="/react-personal-page/*">
+            {(props) => {
+                return props.match ? <Redirect to={`/${props.match!.params[0]}`} /> : undefined;
+            }}
         </Route>
     </React.Fragment>
 );
