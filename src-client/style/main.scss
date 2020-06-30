@@ -15,6 +15,7 @@ body,
 
 .section-content {
     height: calc(100% - #{$linksHeight});
+    overflow-x: hidden;
 }
 
 .section-links {
