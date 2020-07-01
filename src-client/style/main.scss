@@ -6,16 +6,25 @@
 
 html,
 body,
-#app-placeholder {
+#app-placeholder,
+.app-container {
     min-height: 100%;
+}
+
+body {
     margin: 0;
     font-family: 'Gill Sans', sans-serif;
+}
+
+.app-container {
     overflow-x: hidden;
+    &.server-rendered {
+        opacity: 0;
+    }
 }
 
 .section-content {
     height: calc(100% - #{$linksHeight});
-    overflow-x: hidden;
 }
 
 .section-links {

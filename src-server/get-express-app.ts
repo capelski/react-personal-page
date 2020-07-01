@@ -12,7 +12,7 @@ const indexPath = join(staticPath, 'index.html');
 export default () => {
     const app = express();
 
-    app.get([/^\/$/, '/blog', '/portfolio'], (req, res) => {
+    app.get([/^\/$/, '/blog', '/portfolio', '/react-personal-page/*'], (req, res) => {
         readFile(indexPath, 'utf8', (fileError, fileContents) => {
             if (fileError) {
                 console.error(fileError);
@@ -23,7 +23,7 @@ export default () => {
                 const serverApp = React.createElement(
                     StaticRouter,
                     { location: req.url },
-                    React.createElement(App)
+                    React.createElement(App, { isServerRendered: true })
                 );
                 const serializedApp = ReactDOMServer.renderToString(serverApp);
                 const serverRenderedApp = fileContents.replace(

@@ -7,7 +7,7 @@ import './style/main.scss';
 
 const ClientApp: React.FC = () => (
     <BrowserRouter basename="/react-personal-page">
-        <App />
+        <App isServerRendered={false} />
     </BrowserRouter>
 );
 

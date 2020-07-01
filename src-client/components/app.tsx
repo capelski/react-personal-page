@@ -11,8 +11,12 @@ const routes = [
     { path: '/portfolio', name: 'Portfolio', component: Portfolio }
 ];
 
-export const App: React.FC = () => (
-    <React.Fragment>
+interface AppProps {
+    isServerRendered: boolean;
+}
+
+export const App: React.FC<AppProps> = (props) => (
+    <div className={`app-container${props.isServerRendered ? ' server-rendered' : ''}`}>
         {routes.map((route) => (
             <Route key={route.path} exact={true} path={route.path}>
                 {(childrenProps) => (
@@ -28,5 +32,5 @@ export const App: React.FC = () => (
                 )}
             </Route>
         ))}
-    </React.Fragment>
+    </div>
 );
