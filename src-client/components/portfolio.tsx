@@ -5,8 +5,9 @@ export const Portfolio: React.FC = () => (
     <div className="portfolio">
         <div className="section-content portfolio-content">
             <h1 className="portfolio-title">Portfolio</h1>
-            <div className="project-group">
+            <div className="projects">
                 {/* TODO Include projects year, live link and github link */}
+                {/* TODO Include vue-ssr youtube video */}
                 <div className="project">
                     <h4 className="project-title">Webjack</h4>
                     <p>
@@ -65,8 +66,6 @@ export const Portfolio: React.FC = () => (
                         progress.
                     </p>
                 </div>
-            </div>
-            <div className="project-group">
                 <div className="project">
                     <h4 className="project-title">Skills matrix: Graphql Api</h4>
                     <p>
@@ -126,8 +125,6 @@ export const Portfolio: React.FC = () => (
                         of the SVG pig image.
                     </p>
                 </div>
-            </div>
-            <div className="project-group">
                 <div className="project">
                     <h4 className="project-title">Poliester pelegrina</h4>
                     <p>
@@ -158,7 +155,21 @@ export const Portfolio: React.FC = () => (
                         contacted us and ordered a new one. Money bears interests!
                     </p>
                 </div>
-                {/* TODO Personal page evolution */}
+            </div>
+            <h3>Personal page evolution</h3>
+            <div className="projects">
+                <div className="project">
+                    <h4 className="project-title">vue</h4>
+                    <img src="/images/portfolio/vue-personal-page.png?$modena=react-personal-page" />
+                </div>
+                <div className="project">
+                    <h4 className="project-title">angular.js</h4>
+                    <img src="/images/portfolio/angularjs-personal-page.png?$modena=react-personal-page" />
+                </div>
+                <div className="project">
+                    <h4 className="project-title">php</h4>
+                    <img src="/images/portfolio/php-personal-page.png?$modena=react-personal-page" />
+                </div>
             </div>
         </div>
         <div className="section-links portfolio-links">
