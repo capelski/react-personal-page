@@ -7,9 +7,24 @@
         overflow-y: auto;
         overflow-x: hidden;
 
-        .project {
-            img {
-                max-width: 100%;
+        .project-group {
+            display: grid;
+            grid-template-columns: 100%;
+
+            @media (min-width: $medium) {
+                grid-template-columns: 50% 50%;
+            }
+
+            .project {
+                padding: 16px 0;
+
+                @media (min-width: $medium) {
+                    padding: 16px 8px;
+                }
+
+                img {
+                    max-width: 100%;
+                }
             }
         }
     }
@@ -22,7 +37,7 @@
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
         // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 2;
+        $enterAnimations: $transitionsDuration / 4;
 
         .portfolio-title {
             opacity: 0;
@@ -34,19 +49,63 @@
             animation: slide-in-right $enterAnimations forwards;
             animation-delay: $enterAnimations;
         }
+
+        .project-group {
+            $projectEnterTime: $enterAnimations * 2 / 4;
+            .project {
+                opacity: 0;
+                animation: slide-in-right $projectEnterTime forwards;
+
+                &:nth-child(1) {
+                    animation-delay: $enterAnimations * 2;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: $enterAnimations * 2 + $projectEnterTime;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: $enterAnimations * 2 + $projectEnterTime * 2;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: $enterAnimations * 2 + $projectEnterTime * 3;
+                }
+            }
+        }
     }
 
     &.page-exit-active {
         // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 2;
+        $exitAnimations: $transitionsDuration / 4;
 
         .portfolio-title {
             animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations;
+            animation-delay: $exitAnimations * 3;
         }
 
         .portfolio-links {
             animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations * 2;
+        }
+
+        .project-group {
+            $projectExitTime: $exitAnimations * 2 / 4;
+            .project {
+                animation: slide-out-right $projectExitTime forwards;
+
+                &:nth-child(1) {
+                    animation-delay: $projectExitTime * 3;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: $projectExitTime * 2;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: $projectExitTime;
+                }
+            }
         }
     }
     &.page-exit-done {
