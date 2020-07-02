@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Project } from './project';
 
 export const Portfolio: React.FC = () => (
     <div className="portfolio">
         <div className="section-content portfolio-content">
             <h1 className="portfolio-title">Portfolio</h1>
             <div className="projects">
-                {/* TODO Include projects year, live link and github link */}
                 {/* TODO Include vue-ssr youtube video */}
-                <div className="project">
-                    <h4 className="project-title">Webjack</h4>
+                {/* TODO Include one skills matrix client */}
+
+                <Project title="webjack">
                     <p>
                         Cashless online multiplayer black jack game. Play online with strangers,
                         practice offline against the dealer or learn the black jack basic strategy.
@@ -20,9 +21,9 @@ export const Portfolio: React.FC = () => (
                         and failed to finish a Java command line utility in 2014, I decided to built
                         it as a web application and close the black jack chapter in my life.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Jokify</h4>
+                </Project>
+
+                <Project title="jokify">
                     <p>
                         Instead of deleting all those twitter jokes I get over the phone, I decided
                         I had to make them available to the world. Here you will find them (in
@@ -34,9 +35,9 @@ export const Portfolio: React.FC = () => (
                         capabilities. In the first version, 2017, to animate the emojis explosion.
                         After meeting <b>Iker Fernandez</b> in 2020, the rest of the redesigned UX.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Desdecasa</h4>
+                </Project>
+
+                <Project title="desdecasa">
                     <p>
                         First attempt to build an online business! Along with <b>Eudald Bover</b> we
                         developed this restaurant discounts (up to 50%!) web app and managed to sell
@@ -49,9 +50,10 @@ export const Portfolio: React.FC = () => (
                         enough restaurants. Originally built in PHP, I migrated it to Node.js after
                         we closed the website.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Sudoku generator</h4>
+                </Project>
+
+                <Project title="sudoku generator">
+                    {' '}
                     <p>
                         Web application that generates random sudoku puzzles and offers hints on how
                         to solve them. It can also be used to solve existing puzzles (e.g. one from
@@ -65,9 +67,9 @@ export const Portfolio: React.FC = () => (
                         the puzzle, so you can refresh page or close the browse without losing the
                         progress.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Skills matrix: Graphql Api</h4>
+                </Project>
+
+                <Project title="skills matrix">
                     <p>
                         I was developing a front end application at work and we interacted with a{' '}
                         <b>GraphQL Api</b>. I loved the standard, but I felt I wasn't learning
@@ -80,9 +82,9 @@ export const Portfolio: React.FC = () => (
                         (filtering, pagination, referenced entities, ordering, etc.), accessible
                         through a GraphiQL interface.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Fractal generator</h4>
+                </Project>
+
+                <Project title="fractal generator">
                     <p>
                         Web app that generates fractal pictures by replicating the pattern in a
                         grid. You can try to configure it or just pick a color and hit the reset
@@ -95,9 +97,9 @@ export const Portfolio: React.FC = () => (
                         miserable command line output; some years later I turned the same algorithm
                         into a visually pleasant web app.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">michael.page</h4>
+                </Project>
+
+                <Project title="michael.page">
                     <p>
                         Tribute page to all the Michaels of the world. Who doesn't have a Michael in
                         their life? Joking aside this web was the cover website of a plan to earn a
@@ -110,9 +112,9 @@ export const Portfolio: React.FC = () => (
                         <b>https://michael.page</b> and resell it to the british recruitment
                         business. We invested 700€ that, of course, we never got back.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Càrniques Ausà</h4>
+                </Project>
+
+                <Project title="càrniques ausà">
                     <p>
                         "It must have an interactive pig!". That was the sentence that convinced me
                         to build the <b>Càrniques Ausà</b> pork company website.
@@ -124,9 +126,9 @@ export const Portfolio: React.FC = () => (
                         without page reloads and filtering the product catalog by the selected part
                         of the SVG pig image.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">Poliester pelegrina</h4>
+                </Project>
+
+                <Project title="poliester pelegrina">
                     <p>
                         This was the <b>Poliester Pelegrina</b> polyester company official website.
                         My brother was dating the owner's daughter back in the day so I was the most
@@ -139,9 +141,9 @@ export const Portfolio: React.FC = () => (
                         animations was the most effective approach. Originally built in PHP and
                         migrated to Node.js later on.
                     </p>
-                </div>
-                <div className="project">
-                    <h4 className="project-title">D.O. Vic</h4>
+                </Project>
+
+                <Project title="d.o. vic">
                     <p>
                         This was the <b>D.O. Vic</b> restaurant official website for two years,
                         until they went out of business in 2015. It provided the restaurant menus,
@@ -154,22 +156,23 @@ export const Portfolio: React.FC = () => (
                         restaurant platform. Later on he had issues with his previous website so he
                         contacted us and ordered a new one. Money bears interests!
                     </p>
-                </div>
+                </Project>
             </div>
+
             <h3>Personal page evolution</h3>
+
             <div className="projects">
-                <div className="project">
-                    <h4 className="project-title">vue</h4>
+                <Project title="vue">
                     <img src="/images/portfolio/vue-personal-page.png?$modena=react-personal-page" />
-                </div>
-                <div className="project">
-                    <h4 className="project-title">angular.js</h4>
+                </Project>
+
+                <Project title="angular.js">
                     <img src="/images/portfolio/angularjs-personal-page.png?$modena=react-personal-page" />
-                </div>
-                <div className="project">
-                    <h4 className="project-title">php</h4>
+                </Project>
+
+                <Project title="php">
                     <img src="/images/portfolio/php-personal-page.png?$modena=react-personal-page" />
-                </div>
+                </Project>
             </div>
         </div>
         <div className="section-links portfolio-links">
