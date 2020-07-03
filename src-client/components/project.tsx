@@ -1,14 +1,34 @@
 import React from 'react';
 
 interface ProjectProps {
+    date?: string;
+    repository?: string;
     title: string;
+    url?: string;
 }
-
-/* TODO Include projects year, live link and github link */
 
 export const Project: React.FC<ProjectProps> = (props) => (
     <div className="project">
-        <h4 className="project-title">{props.title}</h4>
+        <div className="project-info">
+            <h3 className="project-title">{props.title}</h3>
+            <div className="project-details">
+                {props.date ? <span className="project-date">📅 {props.date}</span> : null}
+                {props.url ? (
+                    <span className="project-demo">
+                        <a target="_blank" href={props.url}>
+                            🌐
+                        </a>
+                    </span>
+                ) : null}
+                {props.repository ? (
+                    <span className="project-source">
+                        <a target="_blank" href={`https://github.com/capelski/${props.repository}`}>
+                            🖥️
+                        </a>
+                    </span>
+                ) : null}
+            </div>
+        </div>
         {props.children ? props.children : null}
     </div>
 );

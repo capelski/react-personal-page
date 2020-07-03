@@ -7,6 +7,11 @@
         overflow-y: auto;
         overflow-x: hidden;
 
+        .portfolio-title {
+            margin-top: 0;
+            margin-bottom: 32px;
+        }
+
         .projects {
             display: grid;
             grid-template-columns: 100%;
@@ -15,11 +20,38 @@
                 grid-template-columns: 50% 50%;
             }
 
+            @media (min-width: $extra-large) {
+                grid-template-columns: 33% 33% 33%;
+            }
+
             .project {
-                padding: 16px 0;
+                padding-bottom: 40px;
 
                 @media (min-width: $medium) {
-                    padding: 16px 8px;
+                    padding-right: 16px;
+                }
+
+                .project-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .project-title {
+                        margin: 0;
+                    }
+
+                    .project-details {
+                        margin: 8px 0;
+
+                        span {
+                            padding-right: 8px;
+
+                            a {
+                                text-decoration: none;
+                                color: black;
+                            }
+                        }
+                    }
                 }
 
                 img {
