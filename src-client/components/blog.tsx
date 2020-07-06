@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { articles } from './articles';
 import { Language } from './articles/language';
 import { Article } from './article';
@@ -9,7 +9,7 @@ for (let language in Language) {
     allLanguages.push(language);
 }
 
-export const Blog: React.FC = () => {
+export const Blog: React.FC<RouteChildrenProps> = () => {
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
     const activeArticles = articles.filter(
         (article) => article.metadata.languages.indexOf(selectedLanguage) > -1
@@ -23,6 +23,7 @@ export const Blog: React.FC = () => {
                     <div className="blog-languages">
                         {allLanguages.map((language) => (
                             <span
+                                key={language}
                                 className={`language${
                                     selectedLanguage === language ? ' selected-language' : ''
                                 }`}
@@ -36,7 +37,12 @@ export const Blog: React.FC = () => {
                 </div>
                 <div className="articles">
                     {activeArticles.map((article) => (
-                        <Article {...article} preview={true} selectedLanguage={selectedLanguage} />
+                        <Article
+                            key={article.metadata.id}
+                            {...article}
+                            preview={true}
+                            selectedLanguage={selectedLanguage}
+                        />
                     ))}
                 </div>
             </div>

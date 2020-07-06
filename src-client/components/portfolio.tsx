@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { Project } from './project';
 
-export const Portfolio: React.FC = () => (
+export const Portfolio: React.FC<RouteChildrenProps> = () => (
     <div className="portfolio">
         <div className="section-content portfolio-content">
             <h1 className="portfolio-title">Portfolio</h1>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteChildrenProps } from 'react-router-dom';
 
-export const Home: React.FC = () => (
+export const Home: React.FC<RouteChildrenProps> = () => (
     <React.Fragment>
         <div className="home">
             <div className="section-content home-content">

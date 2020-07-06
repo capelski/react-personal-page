@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO Include the image in this component
 interface ProjectProps {
     date?: string;
     repository?: string;
