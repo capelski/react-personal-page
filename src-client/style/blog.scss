@@ -6,6 +6,26 @@
         box-sizing: border-box;
         overflow-y: auto;
 
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .blog-languages {
+                .language {
+                    margin-right: 8px;
+                    padding: 8px;
+                    cursor: pointer;
+                    text-decoration: underline;
+
+                    &.selected-language {
+                        font-weight: 700;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
         .articles {
             .article {
                 .article-info {
@@ -29,6 +49,9 @@
 
                         span {
                             padding-right: 8px;
+                            white-space: nowrap;
+                            display: inline-block;
+                            margin-top: 8px;
                         }
                     }
                 }
@@ -40,7 +63,7 @@
                     }
 
                     .article-image {
-                        margin: 0 auto;
+                        margin: 32px auto;
                         display: block;
                         max-width: 100%;
                     }
@@ -63,7 +86,7 @@
         // Total enter animations time CAN exceed $transitionsDuration
         $enterAnimations: $transitionsDuration / 4;
 
-        .blog-title {
+        .blog-header {
             opacity: 0;
             animation: slide-in-left $enterAnimations forwards;
         }
@@ -103,7 +126,7 @@
         // Total exit animations time CANNOT exceed $transitionsDuration
         $exitAnimations: $transitionsDuration / 4;
 
-        .blog-title {
+        .blog-header {
             animation: slide-out-left $exitAnimations forwards;
             animation-delay: $exitAnimations * 3;
         }

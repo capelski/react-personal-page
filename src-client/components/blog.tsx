@@ -1,27 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { articles } from './articles';
+import { Language } from './articles/language';
 import { Article } from './article';
 
-export const Blog: React.FC = () => (
-    <div className="blog">
-        <div className="section-content blog-content">
-            <h1 className="blog-title">Blog</h1>
-            <div className="articles">
-                {articles.map((article) => (
-                    <Article
-                        {...article}
-                        preview={true}
-                        // TODO Sort out how to select the language
-                        selectedLanguage={article.metadata.languages[0]}
-                    />
-                ))}
+const allLanguages: string[] = [];
+for (let language in Language) {
+    allLanguages.push(language);
+}
+
+export const Blog: React.FC = () => {
+    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
+    const activeArticles = articles.filter(
+        (article) => article.metadata.languages.indexOf(selectedLanguage) > -1
+    );
+
+    return (
+        <div className="blog">
+            <div className="section-content blog-content">
+                <div className="blog-header">
+                    <h1 className="blog-title">Blog</h1>
+                    <div className="blog-languages">
+                        {allLanguages.map((language) => (
+                            <span
+                                className={`language${
+                                    selectedLanguage === language ? ' selected-language' : ''
+                                }`}
+                                onClick={() => setSelectedLanguage(language as Language)}
+                            >
+                                {selectedLanguage === language ? '🌎 ' : null}
+                                {language}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div className="articles">
+                    {activeArticles.map((article) => (
+                        <Article {...article} preview={true} selectedLanguage={selectedLanguage} />
+                    ))}
+                </div>
+            </div>
+            <div className="section-links blog-links">
+                <NavLink to="/" className="link">
+                    ➡️ Back
+                </NavLink>
             </div>
         </div>
-        <div className="section-links blog-links">
-            <NavLink to="/" className="link">
-                ➡️ Back
-            </NavLink>
-        </div>
-    </div>
-);
+    );
+};
