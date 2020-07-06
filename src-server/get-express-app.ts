@@ -9,36 +9,47 @@ import { App } from '../src-client/components/app';
 const staticPath = join(__dirname, '..');
 const indexPath = join(staticPath, 'index.html');
 
-export default () => {
-    const app = express();
+const serverRenderer: express.Handler = (req, res) => {
+    readFile(indexPath, 'utf8', (fileError, fileContents) => {
+        if (fileError) {
+            console.error(fileError);
+            return res.sendFile(indexPath);
+        }
 
-    app.get([/^\/$/, '/blog', '/portfolio', '/react-personal-page/*'], (req, res) => {
-        readFile(indexPath, 'utf8', (fileError, fileContents) => {
-            if (fileError) {
-                console.error(fileError);
-                return res.sendFile(indexPath);
-            }
+        try {
+            const context: { url: string | undefined } = { url: undefined };
 
-            try {
-                const serverApp = React.createElement(
-                    StaticRouter,
-                    { location: req.url },
-                    React.createElement(App, { isServerRendered: true })
-                );
-                const serializedApp = ReactDOMServer.renderToString(serverApp);
+            const serverApp = React.createElement(
+                StaticRouter,
+                { basename: '/react-personal-page', context, location: req.url },
+                React.createElement(App, { isServerRendered: true })
+            );
+            const serializedApp = ReactDOMServer.renderToString(serverApp);
+
+            if (context.url) {
+                res.redirect(301, context.url);
+            } else {
                 const serverRenderedApp = fileContents.replace(
                     '<div id="app-placeholder"/>',
                     `<div id="app-placeholder">${serializedApp}</div>`
                 );
                 return res.send(serverRenderedApp);
-            } catch (renderError) {
-                console.error(renderError);
-                return res.sendFile(indexPath);
             }
-        });
+        } catch (renderError) {
+            console.error(renderError);
+            return res.sendFile(indexPath);
+        }
     });
+};
+
+export default () => {
+    const app = express();
+
+    app.get(/^\/$/, serverRenderer);
 
     app.use(express.static(staticPath));
+
+    app.get('*', serverRenderer);
 
     return app;
 };

@@ -48,7 +48,9 @@ export const App: React.FC<AppProps> = (props) => {
             ))}
 
             {supportedRoutes.some((route) => route.test(location.pathname)) ? null : (
-                <Redirect to="/error" />
+                <Route path={location.pathname}>
+                    <Redirect from={location.pathname} to="/error" />
+                </Route>
             )}
         </div>
     );
