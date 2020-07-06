@@ -87,7 +87,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/existential-injustice/enough.gif?$modena=vue-personal-page"
+                src="/images/blog/existential-injustice/enough.gif?$modena=react-personal-page"
                 alt="Enough meme"
             />
             <p>

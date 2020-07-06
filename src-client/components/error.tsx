@@ -7,7 +7,7 @@ export const Error: React.FC<RouteChildrenProps | {}> = () => (
         <p className="error-body">
             <img
                 className="error-image"
-                src="/images/shrug.png?$modena=vue-personal-page"
+                src="/images/shrug.png?$modena=react-personal-page"
                 alt="Shrug meme"
             />
             Try going back to <NavLink to="/">home</NavLink>
