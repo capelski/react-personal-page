@@ -1,0 +1,107 @@
+@import './variables.scss';
+
+.article-content {
+    padding: 32px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.article {
+    &.preview-mode {
+        cursor: pointer;
+    }
+
+    .article-info {
+        @media (min-width: $medium) {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .article-title {
+            @media (min-width: $medium) {
+                margin-bottom: 8px;
+            }
+        }
+
+        .article-details {
+            margin: 8px 0;
+
+            @media (min-width: $medium) {
+                margin-left: 16px;
+            }
+
+            span {
+                padding-right: 8px;
+                white-space: nowrap;
+                display: inline-block;
+                margin-top: 8px;
+            }
+        }
+    }
+
+    .article-body {
+        .article-quote {
+            max-width: 80%;
+            margin: 32px auto;
+            line-height: 1.75;
+        }
+
+        .article-image {
+            margin: 32px auto;
+            display: block;
+            max-width: 100%;
+        }
+    }
+}
+
+// Animations
+
+.article-wrapper {
+    &.page-enter-active {
+        display: none;
+    }
+    &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
+    &.page-enter-done {
+        // Total enter animations time CAN exceed $transitionsDuration
+        $enterAnimations: $transitionsDuration / 3;
+
+        .article-info {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
+        }
+
+        .article-body {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
+            animation-delay: $enterAnimations;
+        }
+
+        .article-links {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
+            animation-delay: $enterAnimations * 2;
+        }
+    }
+
+    &.page-exit-active {
+        // Total exit animations time CANNOT exceed $transitionsDuration
+        $exitAnimations: $transitionsDuration / 3;
+
+        .article-info {
+            animation: slide-out-left $exitAnimations forwards;
+            animation-delay: $exitAnimations * 2;
+        }
+
+        .article-body {
+            animation: slide-out-left $exitAnimations forwards;
+            animation-delay: $exitAnimations;
+        }
+
+        .article-links {
+            animation: slide-out-left $exitAnimations forwards;
+        }
+    }
+    &.page-exit-done {
+        display: none;
+    }
+}

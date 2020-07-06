@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+.project {
+    padding-bottom: 40px;
+
+    @media (min-width: $medium) {
+        padding-right: 16px;
+    }
+
+    .project-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .project-title {
+            margin: 0;
+        }
+
+        .project-details {
+            margin: 8px 0;
+
+            span {
+                padding-right: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, useLocation, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { ArticleLoader } from './article-loader';
 import { Blog } from './blog';
 import { Error } from './error';
 import { Home } from './home';
@@ -8,6 +9,12 @@ import { Portfolio } from './portfolio';
 
 const routes = [
     { path: '/', name: 'Home', component: Home, pattern: /^\/$/ },
+    {
+        path: '/blog/:articleId',
+        name: 'Article',
+        component: ArticleLoader,
+        pattern: /^\/blog\/([^\/]+)\/?$/
+    },
     { path: '/blog', name: 'Blog', component: Blog, pattern: /^\/blog\/?$/ },
     { path: '/error', name: 'Error', component: Error, pattern: /^\/error$/ },
     { path: '/portfolio', name: 'Portfolio', component: Portfolio, pattern: /^\/portfolio\/?$/ }

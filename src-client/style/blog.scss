@@ -25,51 +25,6 @@
                 }
             }
         }
-
-        .articles {
-            .article {
-                .article-info {
-                    @media (min-width: $medium) {
-                        display: flex;
-                        align-items: baseline;
-                    }
-
-                    .article-title {
-                        @media (min-width: $medium) {
-                            margin-bottom: 8px;
-                        }
-                    }
-
-                    .article-details {
-                        margin: 8px 0;
-
-                        @media (min-width: $medium) {
-                            margin-left: 16px;
-                        }
-
-                        span {
-                            padding-right: 8px;
-                            white-space: nowrap;
-                            display: inline-block;
-                            margin-top: 8px;
-                        }
-                    }
-                }
-
-                .article-body {
-                    .article-quote {
-                        max-width: 80%;
-                        margin: 32px auto;
-                    }
-
-                    .article-image {
-                        margin: 32px auto;
-                        display: block;
-                        max-width: 100%;
-                    }
-                }
-            }
-        }
     }
 
     .blog-links {
