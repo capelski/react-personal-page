@@ -1,18 +1,19 @@
 @import './variables.scss';
 
-.error-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
-    padding: 32px;
-    box-sizing: border-box;
+.error {
+    .error-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px;
+        box-sizing: border-box;
 
-    .error-image {
-        margin: 32px auto;
-        display: block;
-        max-width: 100%;
-        max-height: 250px;
+        .error-image {
+            margin: 32px auto;
+            display: block;
+            max-width: 100%;
+            max-height: 250px;
+        }
     }
 
     // Animations
@@ -23,31 +24,44 @@
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
         // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 2;
+        $enterAnimations: $transitionsDuration / 6;
 
         .error-title {
             opacity: 0;
             animation: slide-in-right $enterAnimations forwards;
+            animation-delay: $enterAnimations * 2;
         }
 
-        .error-body {
+        .error-image {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
-            animation-delay: $enterAnimations;
+            animation: slide-in-right $enterAnimations forwards;
+            animation-delay: $enterAnimations * 3;
+        }
+
+        .error-links {
+            opacity: 0;
+            animation: slide-in-right $enterAnimations forwards;
+            animation-delay: $enterAnimations * 4;
         }
     }
 
     &.page-exit-active {
         // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 2;
+        $exitAnimations: $transitionsDuration / 6;
 
         .error-title {
-            animation: slide-out-left $exitAnimations forwards;
-            animation-delay: $exitAnimations;
+            animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations * 4;
         }
 
-        .error-body {
+        .error-image {
             animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations * 3;
+        }
+
+        .error-links {
+            animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations * 2;
         }
     }
     &.page-exit-done {

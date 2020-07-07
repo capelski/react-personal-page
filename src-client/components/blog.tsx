@@ -3,6 +3,7 @@ import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { articles } from './articles';
 import { Language } from './articles/language';
 import { Article } from './article';
+import { SectionContainer } from './section-container';
 
 const allLanguages: string[] = [];
 for (let language in Language) {
@@ -16,8 +17,17 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
     );
 
     return (
-        <div className="blog">
-            <div className="section-content blog-content">
+        <SectionContainer
+            contentClasses="blog-content"
+            links={
+                <NavLink to="/" className="link">
+                    Home ➡️
+                </NavLink>
+            }
+            linksClasses="blog-links"
+            sectionName="blog"
+        >
+            <React.Fragment>
                 <div className="blog-header">
                     <h1 className="blog-title">Blog</h1>
                     <div className="blog-languages">
@@ -45,12 +55,7 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
                         />
                     ))}
                 </div>
-            </div>
-            <div className="section-links blog-links">
-                <NavLink to="/" className="link">
-                    Home ➡️
-                </NavLink>
-            </div>
-        </div>
+            </React.Fragment>
+        </SectionContainer>
     );
 };

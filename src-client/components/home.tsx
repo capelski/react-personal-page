@@ -1,28 +1,33 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
+import { SectionContainer } from './section-container';
 
 export const Home: React.FC<RouteChildrenProps> = () => (
-    <React.Fragment>
-        <div className="home">
-            <div className="section-content home-content">
-                <div className="home-header">
-                    <h1>
-                        Hi, this is Carles Capellas. I develop web apps and write a blog. If you
-                        must reach me, mail is a good way to start: <i>capellas.carles@gmail.com</i>
-                    </h1>
-                </div>
-                <div className="home-image">
-                    <img src="/images/home-image.jpg?$modena=react-personal-page" />
-                </div>
-            </div>
-            <div className="section-links home-links">
+    <SectionContainer
+        contentClasses="home-content"
+        links={
+            <React.Fragment>
                 <NavLink to="/blog" className="link">
                     ⬅️ Blog
                 </NavLink>
                 <NavLink to="/portfolio" className="link">
                     Portfolio ➡️
                 </NavLink>
+            </React.Fragment>
+        }
+        linksClasses="home-links"
+        sectionName="home"
+    >
+        <React.Fragment>
+            <div className="home-header">
+                <h1>
+                    Hi, this is Carles Capellas. I develop web apps and write a blog. If you must
+                    reach me, mail is a good way to start: <i>capellas.carles@gmail.com</i>
+                </h1>
             </div>
-        </div>
-    </React.Fragment>
+            <div className="home-image">
+                <img src="/images/home-image.jpg?$modena=react-personal-page" />
+            </div>
+        </React.Fragment>
+    </SectionContainer>
 );

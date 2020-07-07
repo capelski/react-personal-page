@@ -4,6 +4,7 @@ import { RouteChildrenProps, NavLink } from 'react-router-dom';
 import { Article } from './article';
 import { Language } from './articles/language';
 import { Error } from './error';
+import { SectionContainer } from './section-container';
 
 export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> = (props) => {
     const [articleId] = useState(
@@ -15,17 +16,21 @@ export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> 
         : undefined;
 
     return article ? (
-        <div className="article-container">
-            <div className="section-content article-content">
-                {/* TODO Provide the current language */}
-                <Article {...article} preview={false} selectedLanguage={Language.en} />
-            </div>
-            <div className="section-links article-links">
-                <NavLink to="/blog" className="link">
-                    Blog ➡️
-                </NavLink>
-            </div>
-        </div>
+        <SectionContainer
+            contentClasses="article-content"
+            links={
+                <React.Fragment>
+                    <NavLink to="/blog" className="link">
+                        Blog ➡️
+                    </NavLink>
+                </React.Fragment>
+            }
+            linksClasses="article-links"
+            sectionName="article-container"
+        >
+            {/* TODO Provide the current language */}
+            <Article {...article} preview={false} selectedLanguage={Language.en} />
+        </SectionContainer>
     ) : (
         <Error />
     );

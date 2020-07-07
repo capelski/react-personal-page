@@ -1,16 +1,23 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
+import { SectionContainer } from './section-container';
 
 export const Error: React.FC<RouteChildrenProps | {}> = () => (
-    <div className="error-page">
+    <SectionContainer
+        contentClasses="error-content"
+        links={
+            <NavLink to="/" className="link">
+                ⬅️ Home
+            </NavLink>
+        }
+        linksClasses="error-links"
+        sectionName="error"
+    >
         <h1 className="error-title">Something went wrong</h1>
-        <p className="error-body">
-            <img
-                className="error-image"
-                src="/images/shrug.png?$modena=react-personal-page"
-                alt="Shrug meme"
-            />
-            Try going back to <NavLink to="/">home</NavLink>
-        </p>
-    </div>
+        <img
+            className="error-image"
+            src="/images/shrug.png?$modena=react-personal-page"
+            alt="Shrug meme"
+        />
+    </SectionContainer>
 );
