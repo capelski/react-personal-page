@@ -7,9 +7,8 @@ export const Home: React.FC<RouteChildrenProps> = () => (
             <div className="section-content home-content">
                 <div className="home-header">
                     <h1>
-                        Hi there! This is Carles Capellas. I enjoy developing web apps and writing
-                        blog posts so in this page you can and explore my web app portfolio and read
-                        my blog
+                        Hi, this is Carles Capellas. I develop web apps and write a blog. If you
+                        must reach me, mail is a good way to start: <i>capellas.carles@gmail.com</i>
                     </h1>
                 </div>
                 <div className="home-image">
