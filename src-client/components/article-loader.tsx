@@ -15,7 +15,7 @@ export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> 
         : undefined;
 
     return article ? (
-        <div className="article-wrapper">
+        <div className="article-container">
             <div className="section-content article-content">
                 {/* TODO Provide the current language */}
                 <Article {...article} preview={false} selectedLanguage={Language.en} />
