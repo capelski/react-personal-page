@@ -22,7 +22,7 @@ export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> 
             </div>
             <div className="section-links article-links">
                 <NavLink to="/blog" className="link">
-                    ⬅️ Back
+                    Blog ➡️
                 </NavLink>
             </div>
         </div>

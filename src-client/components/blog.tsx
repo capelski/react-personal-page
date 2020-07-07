@@ -48,7 +48,7 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
             </div>
             <div className="section-links blog-links">
                 <NavLink to="/" className="link">
-                    ➡️ Back
+                    Home ➡️
                 </NavLink>
             </div>
         </div>

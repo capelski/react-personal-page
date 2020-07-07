@@ -216,7 +216,7 @@ export const Portfolio: React.FC<RouteChildrenProps> = () => (
         </div>
         <div className="section-links portfolio-links">
             <NavLink to="/" className="link">
-                ⬅️ Back
+                ⬅️ Home
             </NavLink>
         </div>
     </div>
