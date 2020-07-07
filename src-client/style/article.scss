@@ -34,6 +34,10 @@
     }
 
     .article-body {
+        a {
+            color: black;
+        }
+
         .article-quote {
             max-width: 80%;
             margin: 32px auto;

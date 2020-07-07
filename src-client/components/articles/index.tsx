@@ -1,7 +1,8 @@
 import { agilityRocks } from './agility-rocks';
 import { existentialInjustice } from './existential-injustice';
+import { subscribersList } from './subscribers-list';
 
-const articlesCollection = [agilityRocks, existentialInjustice];
+const articlesCollection = [agilityRocks, existentialInjustice, subscribersList];
 
 articlesCollection.forEach((article, index) => {
     article.following =

@@ -1,4 +1,5 @@
 export enum ArticleId {
     agilityRocks = 'agility-rocks',
-    existentialInjustice = 'existential-injustice'
+    existentialInjustice = 'existential-injustice',
+    subscribersList = 'subscribers-list'
 }
