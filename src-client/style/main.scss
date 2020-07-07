@@ -7,6 +7,10 @@
 @import './project.scss';
 @import './variables.scss';
 
+$mobilePadding: 16px;
+$desktopPadding: 32px;
+$linksHeight: 64px;
+
 body {
     margin: 0;
     min-height: 100%;
@@ -23,10 +27,14 @@ body {
 
 .section-content {
     height: calc(100% - #{$linksHeight});
-    padding: 32px;
+    padding: $mobilePadding * 1.5 $mobilePadding;
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
+
+    @media (min-width: $medium) {
+        padding: $desktopPadding;
+    }
 }
 
 .section-links {
@@ -40,6 +48,7 @@ body {
         font-size: 24px;
         padding: 16px;
         cursor: pointer;
+        line-height: 32px;
     }
 }
 

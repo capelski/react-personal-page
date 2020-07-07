@@ -35,6 +35,12 @@ $mediumImageHeight: 60%;
             box-sizing: content-box;
             padding: 24px 0;
 
+            @media (max-width: $medium) {
+                position: relative;
+                left: -16px;
+                width: calc(100% + 32px);
+            }
+
             img {
                 width: 100%;
 
