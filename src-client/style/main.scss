@@ -7,20 +7,15 @@
 @import './project.scss';
 @import './variables.scss';
 
-html,
-body,
-#app-placeholder,
-.app-container {
-    min-height: 100%;
-}
-
 body {
     margin: 0;
+    min-height: 100%;
     font-family: 'Gill Sans', sans-serif;
 }
 
 .app-container {
     overflow-x: hidden;
+
     &.server-rendered {
         opacity: 0;
     }
@@ -28,6 +23,10 @@ body {
 
 .section-content {
     height: calc(100% - #{$linksHeight});
+    padding: 32px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .section-links {

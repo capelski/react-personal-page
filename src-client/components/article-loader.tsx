@@ -17,15 +17,13 @@ export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> 
 
     return article ? (
         <SectionContainer
-            contentClasses="article-content"
             links={
                 <React.Fragment>
                     <NavLink to="/blog" className="link">
-                        Blog ➡️
+                        ⬅️ Blog
                     </NavLink>
                 </React.Fragment>
             }
-            linksClasses="article-links"
             sectionName="article-container"
         >
             {/* TODO Provide the current language */}

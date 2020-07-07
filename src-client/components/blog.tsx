@@ -18,13 +18,11 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
 
     return (
         <SectionContainer
-            contentClasses="blog-content"
             links={
                 <NavLink to="/" className="link">
                     Home ➡️
                 </NavLink>
             }
-            linksClasses="blog-links"
             sectionName="blog"
         >
             <React.Fragment>

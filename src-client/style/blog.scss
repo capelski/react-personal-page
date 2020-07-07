@@ -1,33 +1,27 @@
 @import './variables.scss';
 
 .blog {
-    .blog-content {
-        padding: 32px;
-        box-sizing: border-box;
-        overflow-y: auto;
+    .blog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        .blog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .blog-languages {
+            .language {
+                margin-right: 8px;
+                padding: 8px;
+                cursor: pointer;
+                text-decoration: underline;
 
-            .blog-languages {
-                .language {
-                    margin-right: 8px;
-                    padding: 8px;
-                    cursor: pointer;
-                    text-decoration: underline;
-
-                    &.selected-language {
-                        font-weight: 700;
-                        text-decoration: none;
-                    }
+                &.selected-language {
+                    font-weight: 700;
+                    text-decoration: none;
                 }
             }
         }
     }
 
-    .blog-links {
+    .section-links {
         justify-content: flex-end;
     }
 
@@ -46,7 +40,7 @@
             animation: slide-in-left $enterAnimations forwards;
         }
 
-        .blog-links {
+        .section-links {
             opacity: 0;
             animation: slide-in-left $enterAnimations forwards;
             animation-delay: $enterAnimations;
@@ -86,7 +80,7 @@
             animation-delay: $exitAnimations * 3;
         }
 
-        .blog-links {
+        .section-links {
             animation: slide-out-left $exitAnimations forwards;
             animation-delay: $exitAnimations * 2;
         }

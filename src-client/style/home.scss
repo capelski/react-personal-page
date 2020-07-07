@@ -4,9 +4,10 @@ $extraSmallImageHeight: 50%;
 $mediumImageHeight: 60%;
 
 .home {
-    .home-content {
+    .section-content {
         display: flex;
         flex-direction: column;
+        overflow-y: hidden;
 
         .home-header,
         .home-image {
@@ -17,7 +18,7 @@ $mediumImageHeight: 60%;
         }
 
         .home-header {
-            padding: 24px 32px;
+            padding: 24px 0;
 
             h1 {
                 max-width: 700px;
@@ -46,7 +47,7 @@ $mediumImageHeight: 60%;
         }
     }
 
-    .home-links {
+    .section-links {
         justify-content: space-between;
     }
 
@@ -60,20 +61,18 @@ $mediumImageHeight: 60%;
         // Total enter animations time CAN exceed $transitionsDuration
         $enterAnimations: $transitionsDuration / 3;
 
-        .home-content {
-            .home-header {
-                opacity: 0;
-                animation: slide-in-left $enterAnimations forwards;
-            }
-
-            .home-image {
-                opacity: 0;
-                animation: slide-in-right $enterAnimations forwards;
-                animation-delay: $enterAnimations;
-            }
+        .home-header {
+            opacity: 0;
+            animation: slide-in-left $enterAnimations forwards;
         }
 
-        .home-links {
+        .home-image {
+            opacity: 0;
+            animation: slide-in-right $enterAnimations forwards;
+            animation-delay: $enterAnimations;
+        }
+
+        .section-links {
             opacity: 0;
             animation: slide-in-down $enterAnimations forwards;
             animation-delay: $enterAnimations * 2;
@@ -84,19 +83,17 @@ $mediumImageHeight: 60%;
         // Total exit animations time CANNOT exceed $transitionsDuration
         $exitAnimations: $transitionsDuration / 3;
 
-        .home-content {
-            .home-header {
-                animation: slide-out-right $exitAnimations forwards;
-                animation-delay: $exitAnimations * 2;
-            }
-
-            .home-image {
-                animation: slide-out-left $exitAnimations forwards;
-                animation-delay: $exitAnimations;
-            }
+        .home-header {
+            animation: slide-out-right $exitAnimations forwards;
+            animation-delay: $exitAnimations * 2;
         }
 
-        .home-links {
+        .home-image {
+            animation: slide-out-left $exitAnimations forwards;
+            animation-delay: $exitAnimations;
+        }
+
+        .section-links {
             animation: slide-out-up $exitAnimations forwards;
         }
     }

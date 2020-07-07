@@ -1,12 +1,11 @@
 @import './variables.scss';
 
 .error {
-    .error-content {
+    .section-content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 32px;
-        box-sizing: border-box;
+        justify-content: center;
 
         .error-image {
             margin: 32px auto;
@@ -38,7 +37,7 @@
             animation-delay: $enterAnimations * 3;
         }
 
-        .error-links {
+        .section-links {
             opacity: 0;
             animation: slide-in-right $enterAnimations forwards;
             animation-delay: $enterAnimations * 4;
@@ -59,7 +58,7 @@
             animation-delay: $exitAnimations * 3;
         }
 
-        .error-links {
+        .section-links {
             animation: slide-out-right $exitAnimations forwards;
             animation-delay: $exitAnimations * 2;
         }

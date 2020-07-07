@@ -1,28 +1,21 @@
 @import './variables.scss';
 
 .portfolio {
-    .portfolio-content {
-        padding: 32px;
-        box-sizing: border-box;
-        overflow-y: auto;
-        overflow-x: hidden;
+    .portfolio-title {
+        margin-top: 0;
+        margin-bottom: 32px;
+    }
 
-        .portfolio-title {
-            margin-top: 0;
-            margin-bottom: 32px;
+    .projects {
+        display: grid;
+        grid-template-columns: 100%;
+
+        @media (min-width: $medium) {
+            grid-template-columns: 50% 50%;
         }
 
-        .projects {
-            display: grid;
-            grid-template-columns: 100%;
-
-            @media (min-width: $medium) {
-                grid-template-columns: 50% 50%;
-            }
-
-            @media (min-width: $extra-large) {
-                grid-template-columns: 33% 33% 33%;
-            }
+        @media (min-width: $extra-large) {
+            grid-template-columns: 33% 33% 33%;
         }
     }
 
@@ -41,7 +34,8 @@
             animation: slide-in-right $enterAnimations forwards;
         }
 
-        .portfolio-links {
+        .section-links,
+        .personal-page-evolution {
             opacity: 0;
             animation: slide-in-right $enterAnimations forwards;
             animation-delay: $enterAnimations;
@@ -81,7 +75,8 @@
             animation-delay: $exitAnimations * 3;
         }
 
-        .portfolio-links {
+        .section-links,
+        .personal-page-evolution {
             animation: slide-out-right $exitAnimations forwards;
             animation-delay: $exitAnimations * 2;
         }

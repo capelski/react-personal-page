@@ -4,7 +4,6 @@ import { SectionContainer } from './section-container';
 
 export const Home: React.FC<RouteChildrenProps> = () => (
     <SectionContainer
-        contentClasses="home-content"
         links={
             <React.Fragment>
                 <NavLink to="/blog" className="link">
@@ -15,7 +14,6 @@ export const Home: React.FC<RouteChildrenProps> = () => (
                 </NavLink>
             </React.Fragment>
         }
-        linksClasses="home-links"
         sectionName="home"
     >
         <React.Fragment>

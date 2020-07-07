@@ -1,16 +1,5 @@
 @import './variables.scss';
 
-.article-content {
-    padding: 32px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.article-links {
-    justify-content: flex-end;
-}
-
 .article {
     &.preview-mode {
         cursor: pointer;
@@ -72,18 +61,18 @@
 
         .article-info {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
+            animation: slide-in-right $enterAnimations forwards;
         }
 
         .article-body {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
+            animation: slide-in-right $enterAnimations forwards;
             animation-delay: $enterAnimations;
         }
 
-        .article-links {
+        .section-links {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
+            animation: slide-in-right $enterAnimations forwards;
             animation-delay: $enterAnimations * 2;
         }
     }
@@ -93,17 +82,17 @@
         $exitAnimations: $transitionsDuration / 3;
 
         .article-info {
-            animation: slide-out-left $exitAnimations forwards;
+            animation: slide-out-right $exitAnimations forwards;
             animation-delay: $exitAnimations * 2;
         }
 
         .article-body {
-            animation: slide-out-left $exitAnimations forwards;
+            animation: slide-out-right $exitAnimations forwards;
             animation-delay: $exitAnimations;
         }
 
-        .article-links {
-            animation: slide-out-left $exitAnimations forwards;
+        .section-links {
+            animation: slide-out-right $exitAnimations forwards;
         }
     }
     &.page-exit-done {

@@ -5,7 +5,6 @@ import { SectionContainer } from './section-container';
 
 export const Portfolio: React.FC<RouteChildrenProps> = () => (
     <SectionContainer
-        contentClasses="portfolio-content"
         links={
             <NavLink to="/" className="link">
                 ⬅️ Home
@@ -189,7 +188,7 @@ export const Portfolio: React.FC<RouteChildrenProps> = () => (
             </Project>
         </div>
 
-        <h3>Personal page evolution</h3>
+        <h3 className="personal-page-evolution">Personal page evolution</h3>
 
         <div className="projects">
             <Project
