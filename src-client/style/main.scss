@@ -24,16 +24,25 @@ body {
         opacity: 0;
     }
 }
-
-.section-content {
+.section-viewport {
     height: calc(100% - #{$linksHeight});
-    padding: $mobilePadding * 1.5 $mobilePadding;
-    box-sizing: border-box;
-    overflow-x: hidden;
     overflow-y: auto;
 
-    @media (min-width: $medium) {
-        padding: $desktopPadding;
+    .section-content {
+        min-height: 100%;
+        padding: $mobilePadding * 1.5 $mobilePadding 0 $mobilePadding;
+        box-sizing: border-box;
+        overflow-x: hidden;
+
+        @media (min-width: $medium) {
+            padding: $desktopPadding 0 0 0;
+            margin: auto;
+            max-width: 720px;
+        }
+
+        @media (min-width: $large) {
+            max-width: 960px;
+        }
     }
 }
 
