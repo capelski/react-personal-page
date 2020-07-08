@@ -24,6 +24,7 @@ body {
         opacity: 0;
     }
 }
+
 .section-viewport {
     height: calc(100% - #{$linksHeight});
     overflow-y: auto;
@@ -63,4 +64,17 @@ body {
 
 p {
     line-height: 1.75;
+}
+
+.screen-splitter {
+    display: block;
+
+    @media (min-width: $medium) {
+        display: flex;
+    }
+
+    & > * {
+        flex-grow: 1;
+        margin: 0 5px;
+    }
 }

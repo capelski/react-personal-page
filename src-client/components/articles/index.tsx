@@ -1,8 +1,9 @@
 import { agilityRocks } from './agility-rocks';
 import { existentialInjustice } from './existential-injustice';
 import { subscribersList } from './subscribers-list';
+import { stadiaPlatform } from './stadia-platform';
 
-const articlesCollection = [agilityRocks, existentialInjustice, subscribersList];
+const articlesCollection = [agilityRocks, existentialInjustice, subscribersList, stadiaPlatform];
 
 articlesCollection.forEach((article, index) => {
     article.following =

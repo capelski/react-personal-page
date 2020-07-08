@@ -48,6 +48,10 @@
             margin: 32px auto;
             display: block;
             max-width: 100%;
+
+            &.mobile-screenshot {
+                max-width: 300px;
+            }
         }
     }
 }
