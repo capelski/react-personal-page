@@ -1,26 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, useLocation, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { ArticleLoader } from './article-loader';
-import { Blog } from './blog';
-import { Error } from './error';
-import { Home } from './home';
-import { Portfolio } from './portfolio';
-
-const routes = [
-    { path: '/', name: 'Home', component: Home, pattern: /^\/$/ },
-    {
-        path: '/blog/:articleId',
-        name: 'Article',
-        component: ArticleLoader,
-        pattern: /^\/blog\/([^\/]+)\/?$/
-    },
-    { path: '/blog', name: 'Blog', component: Blog, pattern: /^\/blog\/?$/ },
-    { path: '/error', name: 'Error', component: Error, pattern: /^\/error$/ },
-    { path: '/portfolio', name: 'Portfolio', component: Portfolio, pattern: /^\/portfolio\/?$/ }
-];
-
-const supportedRoutes = routes.map((route) => route.pattern);
+import { Language } from './articles/language';
+import { blogRoute, articleRoute, routes, supportedRoutes } from './routes';
 
 interface AppProps {
     isServerRendered: boolean;
@@ -28,6 +10,16 @@ interface AppProps {
 
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
+    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
+
+    blogRoute.additionalProps = {
+        selectedLanguage,
+        setSelectedLanguage
+    };
+
+    articleRoute.additionalProps = {
+        selectedLanguage
+    };
 
     return (
         <div className={`app-container${props.isServerRendered ? ' server-rendered' : ''}`}>
@@ -41,7 +33,10 @@ export const App: React.FC<AppProps> = (props) => {
                             classNames="page"
                             unmountOnExit={true}
                         >
-                            <route.component {...childrenProps} />
+                            <route.component
+                                {...childrenProps}
+                                {...(route.additionalProps ? route.additionalProps : {})}
+                            />
                         </CSSTransition>
                     )}
                 </Route>

@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { articles } from './articles';
-import { Language } from './articles/language';
+import { AllLanguages, Language } from './articles/language';
 import { Article } from './article';
 import { SectionContainer } from './section-container';
 
-const allLanguages: string[] = [];
-for (let language in Language) {
-    allLanguages.push(language);
+export interface BlogProps extends RouteChildrenProps {
+    selectedLanguage: Language;
+    setSelectedLanguage: (language: Language) => void;
 }
 
-export const Blog: React.FC<RouteChildrenProps> = () => {
-    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
+export const Blog: React.FC<BlogProps> = (props) => {
     const activeArticles = articles.filter(
-        (article) => article.metadata.languages.indexOf(selectedLanguage) > -1
+        (article) => article.metadata.languages.indexOf(props.selectedLanguage) > -1
     );
 
     return (
@@ -29,15 +28,15 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
                 <div className="blog-header">
                     <h1 className="blog-title">Blog</h1>
                     <div className="blog-languages">
-                        {allLanguages.map((language) => (
+                        {AllLanguages.map((language) => (
                             <span
                                 key={language}
                                 className={`language${
-                                    selectedLanguage === language ? ' selected-language' : ''
+                                    props.selectedLanguage === language ? ' selected-language' : ''
                                 }`}
-                                onClick={() => setSelectedLanguage(language as Language)}
+                                onClick={() => props.setSelectedLanguage(language)}
                             >
-                                {selectedLanguage === language ? '🌎 ' : null}
+                                {props.selectedLanguage === language ? '🌎 ' : null}
                                 {language}
                             </span>
                         ))}
@@ -49,7 +48,7 @@ export const Blog: React.FC<RouteChildrenProps> = () => {
                             key={article.metadata.id}
                             {...article}
                             preview={true}
-                            selectedLanguage={selectedLanguage}
+                            selectedLanguage={props.selectedLanguage}
                         />
                     ))}
                 </div>

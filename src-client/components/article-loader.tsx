@@ -6,7 +6,11 @@ import { Language } from './articles/language';
 import { Error } from './error';
 import { SectionContainer } from './section-container';
 
-export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> = (props) => {
+export interface ArticleLoaderProps extends RouteChildrenProps<{ articleId: string }> {
+    selectedLanguage: Language;
+}
+
+export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     const [articleId] = useState(
         props.match && props.match.params && props.match.params['articleId']
     );
@@ -26,8 +30,7 @@ export const ArticleLoader: React.FC<RouteChildrenProps<{ articleId: string }>> 
             }
             sectionName="article-container"
         >
-            {/* TODO Provide the current language */}
-            <Article {...article} preview={false} selectedLanguage={Language.en} />
+            <Article {...article} preview={false} selectedLanguage={props.selectedLanguage} />
         </SectionContainer>
     ) : (
         <Error />

@@ -16,6 +16,7 @@ export const Portfolio: React.FC<RouteChildrenProps> = () => (
         <div className="projects">
             {/* TODO Include vue-ssr youtube video */}
             {/* TODO Include one skills matrix client */}
+            {/* TODO Figure out what to do with the commented descriptions */}
 
             <Project date="2018" repository="webjack" title="webjack" url="/webjack">
                 <p>

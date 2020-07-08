@@ -3,3 +3,7 @@ export enum Language {
     en = 'en',
     es = 'es'
 }
+
+export const AllLanguages: Language[] = Object.keys(Language).map(
+    (languageKey) => Language[languageKey as Language]
+);
