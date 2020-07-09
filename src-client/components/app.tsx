@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Route, useLocation, Redirect } from 'react-router-dom';
+import { Redirect, Route, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { articles } from './articles';
+import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
 import { blogRoute, articleRoute, routes, supportedRoutes } from './routes';
 
@@ -9,26 +10,49 @@ interface AppProps {
     isServerRendered: boolean;
 }
 
+const getInitialArticleId = (location: { pathname: string }) => {
+    // If starting the application in an article url, we need to set the selectedArticleId.
+    // Doing this initialization in a useEffect will fail on the server side rendering
+    const urlParts = location.pathname.split('/');
+    return urlParts.length > 2 && urlParts[1] === 'blog' ? (urlParts[2] as ArticleId) : undefined;
+};
+
+// TODO Initialize language based on the location also, once articles receive the language in the url
+
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
-    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
     const [activeArticles, setActiveArticles] = useState(articles);
+    const [selectedArticleId, setSelectedArticleId] = useState<ArticleId | undefined>(
+        getInitialArticleId(location)
+    );
+    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
 
-    const selectedLanguageHandler = (language: Language) => {
+    const selectArticle = (articleId: ArticleId) => {
+        setSelectedArticleId(articleId);
+        // TODO Scroll back to article top
+        // TODO Animate the transition between articles. Different routes for each article?
+    };
+
+    const selectLanguage = (language: Language) => {
         setSelectedLanguage(language);
         const nextArticles = articles.filter(
             (article) => article.metadata.languages.indexOf(language) > -1
         );
+        // TODO Fix flickering when changing languages. Different routes for each language?
         setActiveArticles(nextArticles);
     };
 
     blogRoute.additionalProps = {
         activeArticles,
+        selectArticle,
         selectedLanguage,
-        setSelectedLanguage: selectedLanguageHandler
+        selectLanguage
     };
 
     articleRoute.additionalProps = {
+        activeArticles,
+        selectArticle,
+        selectedArticleId,
         selectedLanguage
     };
 

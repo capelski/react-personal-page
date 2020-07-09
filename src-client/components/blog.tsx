@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { Article as IArticle } from './articles/article-data';
+import { ArticleId } from './articles/article-id';
 import { AllLanguages, Language } from './articles/language';
 import { Article } from './article';
 import { SectionContainer } from './section-container';
 
 export interface BlogAdditionalProps {
     activeArticles: IArticle[];
+    selectArticle: (articleId: ArticleId) => void;
     selectedLanguage: Language;
-    setSelectedLanguage: (language: Language) => void;
+    selectLanguage: (language: Language) => void;
 }
 
 export type BlogProps = RouteChildrenProps & BlogAdditionalProps;
@@ -33,7 +35,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                                 className={`language${
                                     props.selectedLanguage === language ? ' selected-language' : ''
                                 }`}
-                                onClick={() => props.setSelectedLanguage(language)}
+                                onClick={() => props.selectLanguage(language)}
                             >
                                 {props.selectedLanguage === language ? '🌎 ' : null}
                                 {language}
@@ -47,6 +49,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                             key={article.metadata.id}
                             {...article}
                             preview={true}
+                            selectArticle={props.selectArticle}
                             selectedLanguage={props.selectedLanguage}
                         />
                     ))}
