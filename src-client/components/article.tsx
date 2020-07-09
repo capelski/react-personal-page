@@ -59,7 +59,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                 {props.preview ? (
                     <NavLink
                         ref={navigationRef}
-                        to={`/blog/${props.metadata.id}`}
+                        to={`/article/${props.metadata.id}/${props.selectedLanguage}`}
                         className="programmatic-link"
                         onClick={selectArticle(props.metadata.id)}
                     />
@@ -73,7 +73,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                         {' '}
                                         ⬅️{' '}
                                         <NavLink
-                                            to={`/blog/${props.previousArticle.metadata.id}`}
+                                            to={`/article/${props.previousArticle.metadata.id}/${props.selectedLanguage}`}
                                             onClick={selectArticle(
                                                 props.previousArticle!.metadata.id
                                             )}
@@ -95,7 +95,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                 {props.nextArticle && (
                                     <React.Fragment>
                                         <NavLink
-                                            to={`/blog/${props.nextArticle.metadata.id}`}
+                                            to={`/article/${props.nextArticle.metadata.id}/${props.selectedLanguage}`}
                                             onClick={selectArticle(props.nextArticle!.metadata.id)}
                                         >
                                             {/* TODO Translate the text for this button */}

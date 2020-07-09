@@ -43,7 +43,7 @@ $mediumImageHeight: 60%;
             img {
                 width: 100%;
 
-                @media (min-width: $medium) {
+                @media (min-width: $large) {
                     width: unset;
                     max-width: 100%;
                     height: 350px;

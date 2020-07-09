@@ -2,7 +2,7 @@ import { RouteChildrenProps } from 'react-router-dom';
 import { ArticleLoader, ArticleLoaderAdditionalProps } from './article-loader';
 import { Blog, BlogAdditionalProps } from './blog';
 import { Error } from './error';
-import { Home } from './home';
+import { Home, HomeAdditionalProps } from './home';
 import { Portfolio } from './portfolio';
 
 export interface ComponentRoute<TAdditional = {}> {
@@ -13,26 +13,33 @@ export interface ComponentRoute<TAdditional = {}> {
     pattern: RegExp;
 }
 
-export const blogRoute: ComponentRoute<BlogAdditionalProps> = {
-    path: '/blog',
-    name: 'Blog',
-    component: Blog,
-    pattern: /^\/blog\/?$/
+export const articleRoute: ComponentRoute<ArticleLoaderAdditionalProps> = {
+    path: '/article/:articleId/:language?',
+    name: 'article',
+    component: ArticleLoader,
+    pattern: /^\/article\/[^\/]+\/?[^\/]*$/
 };
 
-export const articleRoute: ComponentRoute<ArticleLoaderAdditionalProps> = {
-    path: '/blog/:articleId',
-    name: 'Article',
-    component: ArticleLoader,
-    pattern: /^\/blog\/([^\/]+)\/?$/
+export const blogRoute: ComponentRoute<BlogAdditionalProps> = {
+    path: '/blog/:language?',
+    name: 'blog',
+    component: Blog,
+    pattern: /^\/blog\/?[^\/]*$/
+};
+
+export const homeRoute: ComponentRoute<HomeAdditionalProps> = {
+    path: '/',
+    name: 'home',
+    component: Home,
+    pattern: /^\/$/
 };
 
 export const routes: ComponentRoute[] = [
-    { path: '/', name: 'Home', component: Home, pattern: /^\/$/ },
+    homeRoute,
     articleRoute,
     blogRoute,
-    { path: '/error', name: 'Error', component: Error, pattern: /^\/error$/ },
-    { path: '/portfolio', name: 'Portfolio', component: Portfolio, pattern: /^\/portfolio\/?$/ }
+    { path: '/error', name: 'error', component: Error, pattern: /^\/error$/ },
+    { path: '/portfolio', name: 'portfolio', component: Portfolio, pattern: /^\/portfolio\/?$/ }
 ];
 
 export const supportedRoutes = routes.map((route) => route.pattern);

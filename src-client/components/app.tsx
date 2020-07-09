@@ -4,21 +4,32 @@ import { CSSTransition } from 'react-transition-group';
 import { articles } from './articles';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
-import { blogRoute, articleRoute, routes, supportedRoutes } from './routes';
+import { articleRoute, blogRoute, homeRoute, routes, supportedRoutes } from './routes';
 import { transitionsDuration } from './variables';
 
 interface AppProps {
     isServerRendered: boolean;
 }
 
+// If starting the application in an article url, we need to set the selectedArticleId.
+// Doing this initialization in a useEffect will fail on the server side rendering
 const getInitialArticleId = (location: { pathname: string }) => {
-    // If starting the application in an article url, we need to set the selectedArticleId.
-    // Doing this initialization in a useEffect will fail on the server side rendering
     const urlParts = location.pathname.split('/');
-    return urlParts.length > 2 && urlParts[1] === 'blog' ? (urlParts[2] as ArticleId) : undefined;
+    return urlParts.length > 2 && urlParts[1] === articleRoute.name
+        ? (urlParts[2] as ArticleId)
+        : undefined;
 };
 
-// TODO Initialize language based on the location also, once articles receive the language in the url
+// If starting the application in an blog/article url, we need to set the selectedLanguage.
+// Doing this initialization in a useEffect will fail on the server side rendering
+const getInitialLanguage = (location: { pathname: string }): Language => {
+    const urlParts = location.pathname.split('/');
+    return urlParts.length > 3 && urlParts[1] === articleRoute.name
+        ? (urlParts[3] as Language)
+        : urlParts.length > 2 && urlParts[1] === blogRoute.name
+        ? (urlParts[2] as Language)
+        : Language.en;
+};
 
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
@@ -26,7 +37,9 @@ export const App: React.FC<AppProps> = (props) => {
     const [selectedArticleId, setSelectedArticleId] = useState<ArticleId | undefined>(
         getInitialArticleId(location)
     );
-    const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
+    const [selectedLanguage, setSelectedLanguage] = useState<Language>(
+        getInitialLanguage(location)
+    );
 
     const selectArticle = (articleId: ArticleId) => {
         setSelectedArticleId(articleId);
@@ -38,6 +51,10 @@ export const App: React.FC<AppProps> = (props) => {
             (article) => article.metadata.languages.indexOf(language) > -1
         );
         setActiveArticles(nextArticles);
+    };
+
+    homeRoute.additionalProps = {
+        selectedLanguage
     };
 
     blogRoute.additionalProps = {

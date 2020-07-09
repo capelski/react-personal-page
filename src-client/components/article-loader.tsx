@@ -17,7 +17,7 @@ export interface ArticleLoaderAdditionalProps {
     selectedLanguage: Language;
 }
 
-export type ArticleLoaderProps = RouteChildrenProps<{ articleId: string }> &
+export type ArticleLoaderProps = RouteChildrenProps<{ articleId: string; language?: string }> &
     ArticleLoaderAdditionalProps;
 
 export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
@@ -48,43 +48,46 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
         const articleIndex = props.activeArticles.findIndex(
             (article) => article.metadata.id === props.selectedArticleId
         );
-        const nextArticle = articleIndex > 0 ? props.activeArticles[articleIndex - 1] : undefined;
-        const previousArticle =
-            articleIndex < props.activeArticles.length - 1
-                ? props.activeArticles[articleIndex + 1]
-                : undefined;
+        if (articleIndex > -1) {
+            const nextArticle =
+                articleIndex > 0 ? props.activeArticles[articleIndex - 1] : undefined;
+            const previousArticle =
+                articleIndex < props.activeArticles.length - 1
+                    ? props.activeArticles[articleIndex + 1]
+                    : undefined;
 
-        result = (
-            <SectionContainer
-                links={
-                    <React.Fragment>
-                        <NavLink to="/blog" className="link">
-                            ⬅️ Blog
-                        </NavLink>
-                    </React.Fragment>
-                }
-                sectionName="article-container"
-                viewportRef={viewportRef}
-            >
-                {articles.map((article) => (
-                    <CSSTransition
-                        in={article.metadata.id === currentArticleId}
-                        timeout={transitionsDuration}
-                        classNames="article"
-                        unmountOnExit={true}
-                    >
-                        <Article
-                            {...article}
-                            nextArticle={nextArticle}
-                            preview={false}
-                            previousArticle={previousArticle}
-                            selectArticle={selectArticle}
-                            selectedLanguage={props.selectedLanguage}
-                        />
-                    </CSSTransition>
-                ))}
-            </SectionContainer>
-        );
+            result = (
+                <SectionContainer
+                    links={
+                        <React.Fragment>
+                            <NavLink to={`/blog/${props.selectedLanguage}`} className="link">
+                                ⬅️ Blog
+                            </NavLink>
+                        </React.Fragment>
+                    }
+                    sectionName="article-container"
+                    viewportRef={viewportRef}
+                >
+                    {articles.map((article) => (
+                        <CSSTransition
+                            in={article.metadata.id === currentArticleId}
+                            timeout={transitionsDuration}
+                            classNames="article"
+                            unmountOnExit={true}
+                        >
+                            <Article
+                                {...article}
+                                nextArticle={nextArticle}
+                                preview={false}
+                                previousArticle={previousArticle}
+                                selectArticle={selectArticle}
+                                selectedLanguage={props.selectedLanguage}
+                            />
+                        </CSSTransition>
+                    ))}
+                </SectionContainer>
+            );
+        }
     }
 
     return result;

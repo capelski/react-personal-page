@@ -1,12 +1,19 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
+import { Language } from './articles/language';
 import { SectionContainer } from './section-container';
 
-export const Home: React.FC<RouteChildrenProps> = () => (
+export interface HomeAdditionalProps {
+    selectedLanguage: Language;
+}
+
+export type HomeProps = RouteChildrenProps & HomeAdditionalProps;
+
+export const Home: React.FC<HomeProps> = (props) => (
     <SectionContainer
         links={
             <React.Fragment>
-                <NavLink to="/blog" className="link">
+                <NavLink to={`/blog/${props.selectedLanguage}`} className="link">
                     ⬅️ Blog
                 </NavLink>
                 <NavLink to="/portfolio" className="link">

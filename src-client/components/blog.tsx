@@ -15,7 +15,7 @@ export interface BlogAdditionalProps {
     selectLanguage: (language: Language) => void;
 }
 
-export type BlogProps = RouteChildrenProps & BlogAdditionalProps;
+export type BlogProps = RouteChildrenProps<{ language?: string }> & BlogAdditionalProps;
 
 export const Blog: React.FC<BlogProps> = (props) => {
     // We need to keep an owned copy of props.selectedLanguage value to control css exit transitions
