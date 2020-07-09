@@ -50,7 +50,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/signup-form.png?$modena=react-personal-page`"
+                src="/images/blog/subscribers-list/signup-form.png?$modena=react-personal-page"
                 alt="Mailchimp signup form builder"
             />
             <ReactGist id="b23dea8cac1e579a1ff5622b9d4aa54d" />
@@ -70,12 +70,12 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/email-editor.png?$modena=react-personal-page`"
+                src="/images/blog/subscribers-list/email-editor.png?$modena=react-personal-page"
                 alt="Mailchimp email editor"
             />
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/campaign.png?$modena=react-personal-page`"
+                src="/images/blog/subscribers-list/campaign.png?$modena=react-personal-page"
                 alt="Mailchimp email editor"
             />
             <p>

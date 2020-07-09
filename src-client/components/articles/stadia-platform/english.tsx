@@ -17,7 +17,7 @@ export const english: ArticleContent = {
         <React.Fragment>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/stadia-landing-page.png?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/stadia-landing-page.png?$modena=react-personal-page"
                 alt="Stadia website landing page"
             />
             <p>
@@ -57,18 +57,18 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/stadia-devices.png?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/stadia-devices.png?$modena=react-personal-page"
                 alt="Stadia supported devices"
             />
             <div className="screen-splitter">
                 <img
                     className="article-image mobile-screenshot"
-                    src="/images/blog/stadia-platform/stadia-mobile-1.jpg?$modena=react-personal-page`"
+                    src="/images/blog/stadia-platform/stadia-mobile-1.jpg?$modena=react-personal-page"
                     alt="Stadia mobile initial screen"
                 />
                 <img
                     className="article-image mobile-screenshot"
-                    src="/images/blog/stadia-platform/stadia-mobile-2.jpg?$modena=react-personal-page`"
+                    src="/images/blog/stadia-platform/stadia-mobile-2.jpg?$modena=react-personal-page"
                     alt="Stadia mobile development in process disclaimer"
                 />
             </div>
@@ -90,7 +90,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/stadia-game-store.png?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/stadia-game-store.png?$modena=react-personal-page"
                 alt="Stadia game store"
             />
             <p>
@@ -118,7 +118,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/stadia-glitch.jpg?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/stadia-glitch.jpg?$modena=react-personal-page"
                 alt="Stadia glitch while playing Destiny 2"
             />
             <p>
@@ -131,7 +131,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/stadia-subscription.png?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/stadia-subscription.png?$modena=react-personal-page"
                 alt="Stadia subscriptions page"
             />
             <p>
@@ -143,28 +143,28 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/destiny-graphics-1.jpg?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/destiny-graphics-1.jpg?$modena=react-personal-page"
                 alt="Destiny 2 spaceship"
             />
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/destiny-graphics-2.jpg?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/destiny-graphics-2.jpg?$modena=react-personal-page"
                 alt="Destiny 2 snowed landscape"
             />
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/destiny-graphics-3.jpg?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/destiny-graphics-3.jpg?$modena=react-personal-page"
                 alt="Destiny 2 fantasy scene"
             />
             <img
                 className="article-image"
-                src="/images/blog/stadia-platform/destiny-graphics-4.jpg?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/destiny-graphics-4.jpg?$modena=react-personal-page"
                 alt="Destiny 2 fantasy scene"
             />
             <video
                 controls
                 width="100%"
-                src="/images/blog/stadia-platform/destiny-graphics-5.mp4?$modena=react-personal-page`"
+                src="/images/blog/stadia-platform/destiny-graphics-5.mp4?$modena=react-personal-page"
             />
         </React.Fragment>
     )
