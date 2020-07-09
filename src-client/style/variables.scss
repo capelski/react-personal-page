@@ -3,5 +3,5 @@ $medium: 768px;
 $large: 992px;
 $extra-large: 1200px;
 
-// Keep in sync with index.tsx CSSTransition.timeout
+// Keep in sync with variables.ts transitionsDuration
 $transitionsDuration: 1200ms;

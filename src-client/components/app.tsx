@@ -5,6 +5,7 @@ import { articles } from './articles';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
 import { blogRoute, articleRoute, routes, supportedRoutes } from './routes';
+import { transitionsDuration } from './variables';
 
 interface AppProps {
     isServerRendered: boolean;
@@ -29,8 +30,6 @@ export const App: React.FC<AppProps> = (props) => {
 
     const selectArticle = (articleId: ArticleId) => {
         setSelectedArticleId(articleId);
-        // TODO Scroll back to article top
-        // TODO Animate the transition between articles. Different routes for each article?
     };
 
     const selectLanguage = (language: Language) => {
@@ -38,7 +37,6 @@ export const App: React.FC<AppProps> = (props) => {
         const nextArticles = articles.filter(
             (article) => article.metadata.languages.indexOf(language) > -1
         );
-        // TODO Fix flickering when changing languages. Different routes for each language?
         setActiveArticles(nextArticles);
     };
 
@@ -63,8 +61,7 @@ export const App: React.FC<AppProps> = (props) => {
                     {(childrenProps) => (
                         <CSSTransition
                             in={childrenProps.match != null}
-                            // Keep in sync with variables.scss $transitionsDuration
-                            timeout={1200}
+                            timeout={transitionsDuration}
                             classNames="page"
                             unmountOnExit={true}
                         >

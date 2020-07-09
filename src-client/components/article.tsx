@@ -56,59 +56,65 @@ export const Article: React.FC<ArticleProps> = (props) => {
             <div className="article-body">
                 {content.introduction}
                 {props.preview ? null : content.body}
+                {props.preview ? (
+                    <NavLink
+                        ref={navigationRef}
+                        to={`/blog/${props.metadata.id}`}
+                        className="programmatic-link"
+                        onClick={selectArticle(props.metadata.id)}
+                    />
+                ) : (
+                    <React.Fragment>
+                        <h3 className="posts-timeline">Posts timeline</h3>
+                        <div className="article-links">
+                            <div className="previous-link">
+                                {props.previousArticle && (
+                                    <React.Fragment>
+                                        {' '}
+                                        ⬅️{' '}
+                                        <NavLink
+                                            to={`/blog/${props.previousArticle.metadata.id}`}
+                                            onClick={selectArticle(
+                                                props.previousArticle!.metadata.id
+                                            )}
+                                        >
+                                            {/* TODO Translate the text for this button */}
+                                            Previous
+                                        </NavLink>
+                                        <div className="title-preview">
+                                            {
+                                                props.previousArticle.content(
+                                                    props.selectedLanguage
+                                                ).title
+                                            }
+                                        </div>
+                                    </React.Fragment>
+                                )}
+                            </div>
+                            <div className="next-link">
+                                {props.nextArticle && (
+                                    <React.Fragment>
+                                        <NavLink
+                                            to={`/blog/${props.nextArticle.metadata.id}`}
+                                            onClick={selectArticle(props.nextArticle!.metadata.id)}
+                                        >
+                                            {/* TODO Translate the text for this button */}
+                                            Following
+                                        </NavLink>{' '}
+                                        ➡️
+                                        <div className="title-preview">
+                                            {
+                                                props.nextArticle.content(props.selectedLanguage)
+                                                    .title
+                                            }
+                                        </div>
+                                    </React.Fragment>
+                                )}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )}
             </div>
-            {props.preview ? (
-                <NavLink
-                    ref={navigationRef}
-                    to={`/blog/${props.metadata.id}`}
-                    className="programmatic-link"
-                    onClick={selectArticle(props.metadata.id)}
-                />
-            ) : (
-                <React.Fragment>
-                    <h3 className="posts-timeline">Posts timeline</h3>
-                    <div className="article-links">
-                        <div className="previous-link">
-                            {props.previousArticle && (
-                                <React.Fragment>
-                                    {' '}
-                                    ⬅️{' '}
-                                    <NavLink
-                                        to={`/blog/${props.previousArticle.metadata.id}`}
-                                        onClick={selectArticle(props.previousArticle!.metadata.id)}
-                                    >
-                                        {/* TODO Translate the text for this button */}
-                                        Previous
-                                    </NavLink>
-                                    <div className="title-preview">
-                                        {
-                                            props.previousArticle.content(props.selectedLanguage)
-                                                .title
-                                        }
-                                    </div>
-                                </React.Fragment>
-                            )}
-                        </div>
-                        <div className="next-link">
-                            {props.nextArticle && (
-                                <React.Fragment>
-                                    <NavLink
-                                        to={`/blog/${props.nextArticle.metadata.id}`}
-                                        onClick={selectArticle(props.nextArticle!.metadata.id)}
-                                    >
-                                        {/* TODO Translate the text for this button */}
-                                        Following
-                                    </NavLink>{' '}
-                                    ➡️
-                                    <div className="title-preview">
-                                        {props.nextArticle.content(props.selectedLanguage).title}
-                                    </div>
-                                </React.Fragment>
-                            )}
-                        </div>
-                    </div>
-                </React.Fragment>
-            )}
         </div>
     );
 };

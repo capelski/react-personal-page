@@ -1,5 +1,52 @@
 @import './variables.scss';
 
+@mixin articlesEnterAnimation($animationTime) {
+    $articleEnterTime: $animationTime * 2 / 4;
+    .article {
+        opacity: 0;
+        animation: slide-in-left $articleEnterTime forwards;
+
+        &:nth-child(1n) {
+            animation-delay: $animationTime * 2;
+        }
+
+        &:nth-child(2n) {
+            animation-delay: $animationTime * 2 + $articleEnterTime;
+        }
+
+        &:nth-child(3n) {
+            animation-delay: $animationTime * 2 + $articleEnterTime * 2;
+        }
+
+        &:nth-child(4n) {
+            animation-delay: $animationTime * 2 + $articleEnterTime * 3;
+        }
+    }
+}
+
+@mixin articlesExitAnimation($animationTime) {
+    $articleExitTime: $animationTime * 2 / 4;
+    .article {
+        animation: slide-out-left $articleExitTime forwards;
+
+        &:nth-child(1n) {
+            animation-delay: $articleExitTime * 3;
+        }
+
+        &:nth-child(2n) {
+            animation-delay: $articleExitTime * 2;
+        }
+
+        &:nth-child(3n) {
+            animation-delay: $articleExitTime;
+        }
+
+        &:nth-child(4n) {
+            animation-delay: 0s;
+        }
+    }
+}
+
 .blog {
     .blog-header {
         display: flex;
@@ -25,7 +72,7 @@
         justify-content: flex-end;
     }
 
-    // Animations
+    // Section animations
 
     &.page-enter-active {
         display: none;
@@ -46,28 +93,8 @@
             animation-delay: $enterAnimations;
         }
 
-        .articles {
-            $articleEnterTime: $enterAnimations * 2 / 4;
-            .article {
-                opacity: 0;
-                animation: slide-in-left $articleEnterTime forwards;
-
-                &:nth-child(1n) {
-                    animation-delay: $enterAnimations * 2;
-                }
-
-                &:nth-child(2n) {
-                    animation-delay: $enterAnimations * 2 + $articleEnterTime;
-                }
-
-                &:nth-child(3n) {
-                    animation-delay: $enterAnimations * 2 + $articleEnterTime * 2;
-                }
-
-                &:nth-child(4n) {
-                    animation-delay: $enterAnimations * 2 + $articleEnterTime * 3;
-                }
-            }
+        .articles:not(.articles-exit-active) {
+            @include articlesEnterAnimation($enterAnimations);
         }
     }
 
@@ -86,29 +113,32 @@
         }
 
         .articles {
-            $articleExitTime: $exitAnimations * 2 / 4;
-            .article {
-                animation: slide-out-left $articleExitTime forwards;
-
-                &:nth-child(1n) {
-                    animation-delay: $articleExitTime * 3;
-                }
-
-                &:nth-child(2n) {
-                    animation-delay: $articleExitTime * 2;
-                }
-
-                &:nth-child(3n) {
-                    animation-delay: $articleExitTime;
-                }
-
-                &:nth-child(4n) {
-                    animation-delay: 0s;
-                }
-            }
+            @include articlesExitAnimation($exitAnimations);
         }
     }
     &.page-exit-done {
         display: none;
+    }
+
+    // Language change animations
+
+    &:not(.page-exit-active) {
+        .articles.articles-enter-active {
+            display: none;
+        }
+        .articles.articles-enter-done {
+            // Total enter animations time CAN exceed $transitionsDuration
+            $enterAnimations: $transitionsDuration / 4;
+            @include articlesEnterAnimation($enterAnimations);
+        }
+
+        .articles.articles-exit-active {
+            // Total exit animations time CANNOT exceed $transitionsDuration
+            $exitAnimations: $transitionsDuration / 4;
+            @include articlesExitAnimation($exitAnimations);
+        }
+        .articles.articles-exit-done {
+            display: none;
+        }
     }
 }

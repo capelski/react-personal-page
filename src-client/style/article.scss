@@ -1,5 +1,31 @@
 @import './variables.scss';
 
+@mixin articleEnterAnimation($animationTime) {
+    .article-info {
+        opacity: 0;
+        animation: slide-in-right $animationTime forwards;
+    }
+
+    .article-body {
+        opacity: 0;
+        animation: slide-in-right $animationTime forwards;
+        animation-delay: $animationTime;
+    }
+}
+
+@mixin articleExitAnimation($animationTime) {
+    .article-info {
+        animation: slide-out-right $animationTime forwards;
+        animation-delay: $animationTime * 2;
+    }
+
+    .article-body {
+        animation: slide-out-right $animationTime forwards;
+        animation-delay: $animationTime;
+    }
+}
+
+// This selector is defined outside .article-container so it applies also in the blog list
 .article {
     &.preview-mode {
         cursor: pointer;
@@ -88,7 +114,7 @@
     }
 }
 
-// Animations
+// Section animations
 
 .article-container {
     &.page-enter-active {
@@ -99,17 +125,8 @@
         // Total enter animations time CAN exceed $transitionsDuration
         $enterAnimations: $transitionsDuration / 3;
 
-        .article-info {
-            opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-        }
-
-        .article-body,
-        .posts-timeline,
-        .article-links {
-            opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations;
+        .article:not(.article-exit-active) {
+            @include articleEnterAnimation($enterAnimations);
         }
 
         .section-links {
@@ -123,16 +140,8 @@
         // Total exit animations time CANNOT exceed $transitionsDuration
         $exitAnimations: $transitionsDuration / 3;
 
-        .article-info {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations * 2;
-        }
-
-        .article-body,
-        .posts-timeline,
-        .article-links {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations;
+        .article {
+            @include articleExitAnimation($exitAnimations);
         }
 
         .section-links {
@@ -141,5 +150,29 @@
     }
     &.page-exit-done {
         display: none;
+    }
+}
+
+// Article navigation animations
+
+.article-container:not(.page-exit-active) {
+    .article {
+        &.article-enter-active {
+            display: none;
+        }
+        &.article-enter-done {
+            // Total enter animations time CAN exceed $transitionsDuration
+            $enterAnimations: $transitionsDuration / 3;
+            @include articleEnterAnimation($enterAnimations);
+        }
+
+        &.article-exit-active {
+            // Total exit animations time CANNOT exceed $transitionsDuration
+            $exitAnimations: $transitionsDuration / 3;
+            @include articleExitAnimation($exitAnimations);
+        }
+        &.article-exit-done {
+            display: none;
+        }
     }
 }
