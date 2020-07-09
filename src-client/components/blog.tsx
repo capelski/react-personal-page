@@ -1,20 +1,19 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
-import { articles } from './articles';
+import { Article as IArticle } from './articles/article-data';
 import { AllLanguages, Language } from './articles/language';
 import { Article } from './article';
 import { SectionContainer } from './section-container';
 
-export interface BlogProps extends RouteChildrenProps {
+export interface BlogAdditionalProps {
+    activeArticles: IArticle[];
     selectedLanguage: Language;
     setSelectedLanguage: (language: Language) => void;
 }
 
-export const Blog: React.FC<BlogProps> = (props) => {
-    const activeArticles = articles.filter(
-        (article) => article.metadata.languages.indexOf(props.selectedLanguage) > -1
-    );
+export type BlogProps = RouteChildrenProps & BlogAdditionalProps;
 
+export const Blog: React.FC<BlogProps> = (props) => {
     return (
         <SectionContainer
             links={
@@ -43,7 +42,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                     </div>
                 </div>
                 <div className="articles">
-                    {activeArticles.map((article) => (
+                    {props.activeArticles.map((article) => (
                         <Article
                             key={article.metadata.id}
                             {...article}

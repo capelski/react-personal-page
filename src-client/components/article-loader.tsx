@@ -6,9 +6,12 @@ import { Language } from './articles/language';
 import { Error } from './error';
 import { SectionContainer } from './section-container';
 
-export interface ArticleLoaderProps extends RouteChildrenProps<{ articleId: string }> {
+export interface ArticleLoaderAdditionalProps {
     selectedLanguage: Language;
 }
+
+export type ArticleLoaderProps = RouteChildrenProps<{ articleId: string }> &
+    ArticleLoaderAdditionalProps;
 
 export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     const [articleId] = useState(

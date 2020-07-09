@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, useLocation, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { articles } from './articles';
 import { Language } from './articles/language';
 import { blogRoute, articleRoute, routes, supportedRoutes } from './routes';
 
@@ -11,10 +12,20 @@ interface AppProps {
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.en);
+    const [activeArticles, setActiveArticles] = useState(articles);
+
+    const selectedLanguageHandler = (language: Language) => {
+        setSelectedLanguage(language);
+        const nextArticles = articles.filter(
+            (article) => article.metadata.languages.indexOf(language) > -1
+        );
+        setActiveArticles(nextArticles);
+    };
 
     blogRoute.additionalProps = {
+        activeArticles,
         selectedLanguage,
-        setSelectedLanguage
+        setSelectedLanguage: selectedLanguageHandler
     };
 
     articleRoute.additionalProps = {

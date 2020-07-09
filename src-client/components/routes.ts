@@ -1,26 +1,26 @@
 import { RouteChildrenProps } from 'react-router-dom';
-import { ArticleLoader, ArticleLoaderProps } from './article-loader';
-import { Blog, BlogProps } from './blog';
+import { ArticleLoader, ArticleLoaderAdditionalProps } from './article-loader';
+import { Blog, BlogAdditionalProps } from './blog';
 import { Error } from './error';
 import { Home } from './home';
 import { Portfolio } from './portfolio';
 
-export interface ComponentRoute<TProps extends RouteChildrenProps = RouteChildrenProps> {
-    additionalProps?: Partial<TProps>;
-    component: React.FC<TProps>;
+export interface ComponentRoute<TAdditional = {}> {
+    additionalProps?: TAdditional;
+    component: React.FC<RouteChildrenProps & TAdditional>;
     name: string;
     path: string;
     pattern: RegExp;
 }
 
-export const blogRoute: ComponentRoute<BlogProps> = {
+export const blogRoute: ComponentRoute<BlogAdditionalProps> = {
     path: '/blog',
     name: 'Blog',
     component: Blog,
     pattern: /^\/blog\/?$/
 };
 
-export const articleRoute: ComponentRoute<ArticleLoaderProps> = {
+export const articleRoute: ComponentRoute<ArticleLoaderAdditionalProps> = {
     path: '/blog/:articleId',
     name: 'Article',
     component: ArticleLoader,
