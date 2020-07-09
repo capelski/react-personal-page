@@ -29,7 +29,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
     const clickHandler = () => {
         if (props.preview) {
             props.selectArticle(props.metadata.id);
-            // Server side required casting. The click will never get triggered anyway
+            // Server side required casting. The click will never get triggered in the server anyway
             (navigationRef.current as { click: () => void })?.click();
         }
     };

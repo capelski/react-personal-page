@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { RouteChildrenProps, NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Article } from './article';
@@ -23,6 +23,7 @@ export type ArticleLoaderProps = RouteChildrenProps<{ articleId: string }> &
 export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     // We need to keep an owned copy of props.selectedArticleId value to control css exit transitions
     const [currentArticleId, setCurrentArticleId] = useState(props.selectedArticleId);
+    const viewportRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setCurrentArticleId(props.selectedArticleId);
@@ -30,11 +31,14 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
 
     const selectArticle = (articleId: ArticleId) => {
         setCurrentArticleId(articleId);
-        // TODO Scroll the section-viewport to the top
 
         // Setting a timeout so the article exit animation completes
         setTimeout(() => {
             props.selectArticle(articleId);
+            // Server side required casting. The scrollTo will never get triggered in the server anyway
+            (viewportRef.current as { scrollTo: (params: { top: number }) => void })?.scrollTo({
+                top: 0
+            });
         }, transitionsDuration);
     };
 
@@ -60,6 +64,7 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
                     </React.Fragment>
                 }
                 sectionName="article-container"
+                viewportRef={viewportRef}
             >
                 {articles.map((article) => (
                     <CSSTransition
