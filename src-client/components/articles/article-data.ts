@@ -1,6 +1,7 @@
 import { ArticleId } from './article-id';
 import { Language } from './language';
 
+// TODO Add a sentence for sharing, similar to description but calling to action
 export interface ArticleContent {
     body: JSX.Element;
     description: string;
