@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
+import { ArticleId } from '../article-id';
 
 export const english: ArticleContent = {
     title: 'Kanban: keep track of your goals',
@@ -100,7 +101,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/kanban-goals-tracking/trello-board.png?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.kanbanGoalsTracking}/trello-board.png?$modena=react-personal-page`}
                 alt="Kanban board in Trello"
             />
             <p>

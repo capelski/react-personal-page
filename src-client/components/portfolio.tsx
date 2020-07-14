@@ -71,7 +71,6 @@ export const Portfolio: React.FC<RouteChildrenProps> = () => (
                     newspaper), but it is not bulletproof; it might fail to find the solution.
                 </p>
                 <img src="/images/portfolio/sudoku-generator.png?$modena=react-personal-page" />
-                {/* TODO Include link to the blog article */}
                 {/* <p>
                         I decided to figure out by myself how to generate sudoku puzzles after
                         having been talking about it with my mom. The resulting application persists

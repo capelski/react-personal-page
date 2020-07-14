@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArticleId } from '../article-id';
 
 interface PersuasionHeaderProps {
     description: string;
@@ -14,7 +15,7 @@ export const PersuasionHeader: React.FC<PersuasionHeaderProps> = (props) => (
             <p>{props.description}</p>
         </div>
         <img
-            src={`/images/blog/persuasion-in-pictures/${props.image}?$modena=react-personal-page`}
+            src={`/images/blog/${ArticleId.persuasionInPictures}/${props.image}?$modena=react-personal-page`}
             alt={props.imageAlt}
         />
     </div>
@@ -31,7 +32,7 @@ export const PersuasionStage: React.FC<PersuasionStageProps> = (props) => (
     <div className="persuasion-resource">
         <img
             className="persuasion-resource-image"
-            src={`/images/blog/persuasion-in-pictures/${props.image}?$modena=react-personal-page`}
+            src={`/images/blog/${ArticleId.persuasionInPictures}/${props.image}?$modena=react-personal-page`}
             alt={props.image}
         />
         <h4>{props.title}</h4>
@@ -48,7 +49,7 @@ export const PersuasionResource: React.FC<PersuasionResourceProps> = (props) => 
         <h4>{props.title}</h4>
         <img
             className="persuasion-resource-image"
-            src={`/images/blog/persuasion-in-pictures/${props.image}?$modena=react-personal-page`}
+            src={`/images/blog/${ArticleId.persuasionInPictures}/${props.image}?$modena=react-personal-page`}
             alt={props.imageAlt}
         />
         <p>{props.description}</p>

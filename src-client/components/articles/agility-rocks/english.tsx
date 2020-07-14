@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
+import { ArticleId } from '../article-id';
 
 export const english: ArticleContent = {
     title: 'Agility... rocks?',
@@ -33,7 +34,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/agility-rocks/agile-exercise.png?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.agilityRocks}/agile-exercise.png?$modena=react-personal-page`}
                 alt="Agility exercise representation"
             />
             <p>

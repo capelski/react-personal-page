@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactGist from 'react-gist';
 import { ArticleContent } from '../article-data';
+import { ArticleId } from '../article-id';
 
 export const english: ArticleContent = {
     title: 'Building a subscribers list',
@@ -50,7 +51,7 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/signup-form.png?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.subscribersList}/signup-form.png?$modena=react-personal-page`}
                 alt="Mailchimp signup form builder"
             />
             <ReactGist id="b23dea8cac1e579a1ff5622b9d4aa54d" />
@@ -70,12 +71,12 @@ export const english: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/email-editor.png?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.subscribersList}/email-editor.png?$modena=react-personal-page`}
                 alt="Mailchimp email editor"
             />
             <img
                 className="article-image"
-                src="/images/blog/subscribers-list/campaign.png?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.subscribersList}/campaign.png?$modena=react-personal-page`}
                 alt="Mailchimp email editor"
             />
             <p>

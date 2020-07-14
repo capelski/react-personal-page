@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
+import { ArticleId } from '../article-id';
 
 export const catalan: ArticleContent = {
     title: 'Injustícia existencial',
@@ -87,7 +88,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src="/images/blog/existential-injustice/enough.gif?$modena=react-personal-page"
+                src={`/images/blog/${ArticleId.existentialInjustice}/enough.gif?$modena=react-personal-page`}
                 alt="Enough meme"
             />
             <p>

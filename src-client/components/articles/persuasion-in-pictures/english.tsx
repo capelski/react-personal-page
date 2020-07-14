@@ -2,8 +2,6 @@ import React from 'react';
 import { ArticleContent } from '../article-data';
 import { PersuasionHeader, PersuasionResource, PersuasionStage } from './helpers';
 
-// TODO Use the ArticleId enum inside images path
-
 export const english: ArticleContent = {
     title: 'Persuasion in pictures',
     description: 'A graphical cheat sheet to become a better persuader',
