@@ -4,5 +4,6 @@ export enum ArticleId {
     subscribersList = 'subscribers-list',
     kanbanGoalsTracking = 'kanban-goals-tracking',
     sudokuGeneration = 'sudoku-generation',
+    persuasionInPictures = 'persuasion-in-pictures',
     stadiaPlatform = 'stadia-platform'
 }
