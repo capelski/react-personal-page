@@ -25,7 +25,6 @@ interface PersuasionStageProps {
     description: string;
     image: string;
     title: string;
-    // TODO Add image alt
 }
 
 export const PersuasionStage: React.FC<PersuasionStageProps> = (props) => (
@@ -33,7 +32,7 @@ export const PersuasionStage: React.FC<PersuasionStageProps> = (props) => (
         <img
             className="persuasion-resource-image"
             src={`/images/blog/${ArticleId.persuasionInPictures}/${props.image}?$modena=react-personal-page`}
-            alt={props.image}
+            alt={`${props.image.split('.')[0]} representation`}
         />
         <h4>{props.title}</h4>
         <p>{props.description}</p>
