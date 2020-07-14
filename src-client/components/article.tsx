@@ -21,6 +21,21 @@ export interface ArticleFullProps extends ArticleBaseProps {
 
 export type ArticleProps = ArticlePreviewProps | ArticleFullProps;
 
+const articleLinksContent: { [key: string]: { [Language.ca]: string; [Language.en]: string } } = {
+    following: {
+        ca: 'Següent',
+        en: 'Following'
+    },
+    previous: {
+        ca: 'Anterior',
+        en: 'Previous'
+    },
+    postsTimeline: {
+        ca: 'Històric de posts',
+        en: 'Posts timeline'
+    }
+};
+
 // TODO Create Image component with an optional text footer
 
 // Server side required casting. The share will never get triggered in the server anyway
@@ -84,7 +99,9 @@ export const Article: React.FC<ArticleProps> = (props) => {
                     />
                 ) : (
                     <React.Fragment>
-                        <h3 className="posts-timeline">Posts timeline</h3>
+                        <h3 className="posts-timeline">
+                            {articleLinksContent['postsTimeline'][props.selectedLanguage]}
+                        </h3>
                         <div className="article-links">
                             <div className="previous-link">
                                 {props.previousArticle && (
@@ -97,8 +114,11 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                                 props.previousArticle!.metadata.id
                                             )}
                                         >
-                                            {/* TODO Translate the text for this button */}
-                                            Previous
+                                            {
+                                                articleLinksContent['previous'][
+                                                    props.selectedLanguage
+                                                ]
+                                            }
                                         </NavLink>
                                         <div className="title-preview">
                                             {
@@ -117,8 +137,11 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                             to={`/article/${props.nextArticle.metadata.id}/${props.selectedLanguage}`}
                                             onClick={selectArticle(props.nextArticle!.metadata.id)}
                                         >
-                                            {/* TODO Translate the text for this button */}
-                                            Following
+                                            {
+                                                articleLinksContent['following'][
+                                                    props.selectedLanguage
+                                                ]
+                                            }
                                         </NavLink>{' '}
                                         ➡️
                                         <div className="title-preview">
