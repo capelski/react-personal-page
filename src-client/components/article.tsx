@@ -23,6 +23,12 @@ export type ArticleProps = ArticlePreviewProps | ArticleFullProps;
 
 // TODO Create Image component with an optional text footer
 
+// Server side required casting. The share will never get triggered in the server anyway
+const navigator = (this as {
+    navigator?: { share: (params: { text: string; title: string; url: string }) => void };
+}).navigator;
+const isShareAvailable = navigator && 'share' in navigator;
+
 export const Article: React.FC<ArticleProps> = (props) => {
     const navigationRef = useRef<HTMLAnchorElement>(null);
 
@@ -33,6 +39,17 @@ export const Article: React.FC<ArticleProps> = (props) => {
             props.selectArticle(props.metadata.id);
             // Server side required casting. The click will never get triggered in the server anyway
             (navigationRef.current as { click: () => void })?.click();
+        }
+    };
+
+    const shareHandler = () => {
+        if (isShareAvailable) {
+            navigator!.share({
+                text: content.description,
+                title: content.title,
+                // TODO Extract url base into environment parameter?
+                url: `https://carlescapellas.xyz/article/${props.metadata.id}/${props.selectedLanguage}`
+            });
         }
     };
 
@@ -114,6 +131,14 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                 )}
                             </div>
                         </div>
+                        {isShareAvailable && (
+                            <div className="share-button">
+                                <img
+                                    src="/images/share.png?$modena=react-personal-page"
+                                    onClick={shareHandler}
+                                />
+                            </div>
+                        )}
                     </React.Fragment>
                 )}
             </div>
