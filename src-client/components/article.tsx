@@ -72,7 +72,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
 
     return (
         <div
-            className={`article${props.preview ? '  preview-mode' : ''}`}
+            className={`article ${props.metadata.id}${props.preview ? '  preview-mode' : ''}`}
             onClick={props.preview ? clickHandler : undefined}
         >
             <div className="article-info">

@@ -1,23 +1,25 @@
 @import './variables.scss';
 
-.kanban-board {
-    > div {
-        min-height: 80px;
-    }
-
-    @media (min-width: $medium) {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-
+.kanban-goals-tracking {
+    .kanban-board {
         > div {
-            padding: 0 8px;
+            min-height: 80px;
         }
-    }
 
-    .kanban-board-header {
-        font-weight: bold;
-        border-bottom: 1px solid black;
-        padding: 8px;
-        margin: 8px 0;
+        @media (min-width: $medium) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            > div {
+                padding: 0 8px;
+            }
+        }
+
+        .kanban-board-header {
+            font-weight: bold;
+            border-bottom: 1px solid black;
+            padding: 8px;
+            margin: 8px 0;
+        }
     }
 }
