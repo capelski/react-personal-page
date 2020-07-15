@@ -24,14 +24,14 @@ export const Home: React.FC<HomeProps> = (props) => (
         sectionName="home"
     >
         <React.Fragment>
+            <div className="home-image">
+                <img src="/images/home-image.jpg?$modena=react-personal-page" />
+            </div>
             <div className="home-header">
                 <h1>
                     Hi, this is Carles Capellas. I develop web apps and write a blog. If you must
-                    reach me, mail is a good way to start: <i>capellas.carles@gmail.com</i>
+                    reach me, <b>capellas.carles@gmail.com</b> is a good way to start
                 </h1>
-            </div>
-            <div className="home-image">
-                <img src="/images/home-image.jpg?$modena=react-personal-page" />
             </div>
         </React.Fragment>
     </SectionContainer>

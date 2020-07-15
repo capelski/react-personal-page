@@ -23,10 +23,8 @@ $mediumImageHeight: 60%;
             h1 {
                 margin: 0;
                 font-size: 24px;
-
-                @media (min-width: $medium) {
-                    font-size: 28px;
-                }
+                line-height: 1.75;
+                font-weight: 400;
             }
         }
 
