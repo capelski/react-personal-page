@@ -56,48 +56,45 @@ $mediumImageHeight: 60%;
 
     /* Animations */
 
+    $animationSegments: 3;
+    $animationSegmentTime: $transitionsDuration / $animationSegments;
+
     &.page-enter-active {
         display: none;
     }
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
-        // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 3;
-
         .home-header {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
+            animation: slide-in-left $animationSegmentTime forwards;
         }
 
         .home-image {
             opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations;
+            animation: slide-in-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime;
         }
 
         .section-links {
             opacity: 0;
-            animation: slide-in-down $enterAnimations forwards;
-            animation-delay: $enterAnimations * 2;
+            animation: slide-in-down $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
     }
 
     &.page-exit-active {
-        // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 3;
-
         .home-header {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations * 2;
+            animation: slide-out-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
 
         .home-image {
-            animation: slide-out-left $exitAnimations forwards;
-            animation-delay: $exitAnimations;
+            animation: slide-out-left $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime;
         }
 
         .section-links {
-            animation: slide-out-up $exitAnimations forwards;
+            animation: slide-out-up $animationSegmentTime forwards;
         }
     }
     &.page-exit-done {

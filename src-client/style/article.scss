@@ -143,36 +143,33 @@
 
 // Section animations
 
+$animationSegments: 3;
+$animationSegmentTime: $transitionsDuration / $animationSegments;
+
 .article-container {
     &.page-enter-active {
         display: none;
     }
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
-        // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 3;
-
         .article:not(.article-exit-active) {
-            @include articleEnterAnimation($enterAnimations);
+            @include articleEnterAnimation($animationSegmentTime);
         }
 
         .section-links {
             opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations * 2;
+            animation: slide-in-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
     }
 
     &.page-exit-active {
-        // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 3;
-
         .article {
-            @include articleExitAnimation($exitAnimations);
+            @include articleExitAnimation($animationSegmentTime);
         }
 
         .section-links {
-            animation: slide-out-right $exitAnimations forwards;
+            animation: slide-out-right $animationSegmentTime forwards;
         }
     }
     &.page-exit-done {
@@ -188,15 +185,13 @@
             display: none;
         }
         &.article-enter-done {
-            // Total enter animations time CAN exceed $transitionsDuration
-            $enterAnimations: $transitionsDuration / 3;
-            @include articleEnterAnimation($enterAnimations);
+            $animationSegmentTime: $transitionsDuration / 3;
+            @include articleEnterAnimation($animationSegmentTime);
         }
 
         &.article-exit-active {
-            // Total exit animations time CANNOT exceed $transitionsDuration
-            $exitAnimations: $transitionsDuration / 3;
-            @include articleExitAnimation($exitAnimations);
+            $animationSegmentTime: $transitionsDuration / 3;
+            @include articleExitAnimation($animationSegmentTime);
         }
         &.article-exit-done {
             display: none;

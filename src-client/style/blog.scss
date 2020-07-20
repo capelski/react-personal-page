@@ -74,46 +74,44 @@
 
     // Section animations
 
+    // TODO Create custom times for each route?
+    $animationSegments: 4;
+    $animationSegmentTime: $transitionsDuration / $animationSegments;
+
     &.page-enter-active {
         display: none;
     }
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
-        // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 4;
-
         .blog-header {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
+            animation: slide-in-left $animationSegmentTime forwards;
         }
 
         .section-links {
             opacity: 0;
-            animation: slide-in-left $enterAnimations forwards;
-            animation-delay: $enterAnimations;
+            animation: slide-in-left $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime;
         }
 
         .articles:not(.articles-exit-active) {
-            @include articlesEnterAnimation($enterAnimations);
+            @include articlesEnterAnimation($animationSegmentTime);
         }
     }
 
     &.page-exit-active {
-        // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 4;
-
         .blog-header {
-            animation: slide-out-left $exitAnimations forwards;
-            animation-delay: $exitAnimations * 3;
+            animation: slide-out-left $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 3;
         }
 
         .section-links {
-            animation: slide-out-left $exitAnimations forwards;
-            animation-delay: $exitAnimations * 2;
+            animation: slide-out-left $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
 
         .articles {
-            @include articlesExitAnimation($exitAnimations);
+            @include articlesExitAnimation($animationSegmentTime);
         }
     }
     &.page-exit-done {
@@ -127,15 +125,11 @@
             display: none;
         }
         .articles.articles-enter-done {
-            // Total enter animations time CAN exceed $transitionsDuration
-            $enterAnimations: $transitionsDuration / 4;
-            @include articlesEnterAnimation($enterAnimations);
+            @include articlesEnterAnimation($animationSegmentTime);
         }
 
         .articles.articles-exit-active {
-            // Total exit animations time CANNOT exceed $transitionsDuration
-            $exitAnimations: $transitionsDuration / 4;
-            @include articlesExitAnimation($exitAnimations);
+            @include articlesExitAnimation($animationSegmentTime);
         }
         .articles.articles-exit-done {
             display: none;

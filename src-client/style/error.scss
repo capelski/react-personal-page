@@ -17,50 +17,47 @@
 
     // Animations
 
+    $animationSegments: 6;
+    $animationSegmentTime: $transitionsDuration / $animationSegments;
+
     &.page-enter-active {
         display: none;
     }
     &:not(.page-enter-done):not(.page-exit-active), // Apply home first load too
     &.page-enter-done {
-        // Total enter animations time CAN exceed $transitionsDuration
-        $enterAnimations: $transitionsDuration / 6;
-
         .error-title {
             opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations * 2;
+            animation: slide-in-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
 
         .error-image {
             opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations * 3;
+            animation: slide-in-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 3;
         }
 
         .section-links {
             opacity: 0;
-            animation: slide-in-right $enterAnimations forwards;
-            animation-delay: $enterAnimations * 4;
+            animation: slide-in-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 4;
         }
     }
 
     &.page-exit-active {
-        // Total exit animations time CANNOT exceed $transitionsDuration
-        $exitAnimations: $transitionsDuration / 6;
-
         .error-title {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations * 4;
+            animation: slide-out-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 4;
         }
 
         .error-image {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations * 3;
+            animation: slide-out-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 3;
         }
 
         .section-links {
-            animation: slide-out-right $exitAnimations forwards;
-            animation-delay: $exitAnimations * 2;
+            animation: slide-out-right $animationSegmentTime forwards;
+            animation-delay: $animationSegmentTime * 2;
         }
     }
     &.page-exit-done {
