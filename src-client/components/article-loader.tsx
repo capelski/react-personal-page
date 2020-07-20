@@ -4,89 +4,94 @@ import { CSSTransition } from 'react-transition-group';
 import { Article } from './article';
 import { articles } from './articles';
 import { ArticleCategory } from './articles/article-category';
-import { ArticleId } from './articles/article-id';
+import { Language } from './articles/language';
 import { Error } from './error';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
 export interface ArticleLoaderAdditionalProps {
-    selectArticle: (articleId: ArticleId) => void;
-    selectedArticleId?: ArticleId;
     selectedCategory: ArticleCategory;
 }
 
-export type ArticleLoaderProps = RouteChildrenProps & ArticleLoaderAdditionalProps;
+export type ArticleLoaderProps = RouteChildrenProps<{ articleId?: string }> &
+    ArticleLoaderAdditionalProps;
 
 export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
-    // We need to keep an owned copy of props.selectedArticleId value to control css exit transitions
-    const [currentArticleId, setCurrentArticleId] = useState(props.selectedArticleId);
+    const articleIdInUrl = props.match?.params['articleId'];
+
+    // We need to keep an owned copy of props.match?.params['articleId'] value
+    // to control css exit transitions
+    const [currentArticleId, setCurrentArticleId] = useState(articleIdInUrl);
+    const [selectedLanguage, setSelectedLanguage] = useState(Language.en);
+
     const viewportRef = useRef<HTMLDivElement>(null);
+    const filteredArticles = articles.filter(
+        (article) => article.metadata.category === props.selectedCategory
+    );
 
     useEffect(() => {
-        setCurrentArticleId(props.selectedArticleId);
-    }, [props.selectedArticleId]);
+        // When the articleId in the url is modified we need to update the currentArticleId,
+        // except when articleId is undefined (e.g. the component is being unmounted)
+        articleIdInUrl && setCurrentArticleId(articleIdInUrl);
+    }, [articleIdInUrl]);
 
-    const selectArticle = (articleId: ArticleId) => {
-        setCurrentArticleId(articleId);
-
-        // Setting a timeout so the article exit animation completes
-        setTimeout(() => {
-            props.selectArticle(articleId);
-            // Server side required casting. The scrollTo will never get triggered in the server anyway
-            (viewportRef.current as { scrollTo: (params: { top: number }) => void })?.scrollTo({
-                top: 0
-            });
-        }, transitionsDuration);
+    const onArticleExit = () => {
+        setSelectedLanguage(Language.en);
+        (viewportRef.current as { scrollTo: (params: { top: number }) => void })?.scrollTo({
+            top: 0
+        });
     };
 
-    let result = <Error />;
+    // Protection against non-existing urls (e.g. /article/non-existing)
+    const currentArticle = filteredArticles.find(
+        (article) => article.metadata.id === currentArticleId
+    );
 
-    if (props.selectedArticleId) {
-        const filteredArticles = articles.filter(
-            (article) => article.metadata.category === props.selectedCategory
-        );
-        const articleIndex = filteredArticles.findIndex(
-            (article) => article.metadata.id === props.selectedArticleId
-        );
-        if (articleIndex > -1) {
-            const nextArticle = articleIndex > 0 ? filteredArticles[articleIndex - 1] : undefined;
-            const previousArticle =
-                articleIndex < filteredArticles.length - 1
-                    ? filteredArticles[articleIndex + 1]
-                    : undefined;
+    return currentArticle ? (
+        <SectionContainer
+            links={
+                <React.Fragment>
+                    <NavLink to="/blog" className="link">
+                        ⬅️ Blog
+                    </NavLink>
+                </React.Fragment>
+            }
+            sectionName="article-container"
+            viewportRef={viewportRef}
+        >
+            {filteredArticles.map((article) => {
+                const articleIndex = filteredArticles.findIndex(
+                    (a) => a.metadata.id === article.metadata.id
+                );
+                const nextArticle =
+                    articleIndex > 0 ? filteredArticles[articleIndex - 1] : undefined;
+                const previousArticle =
+                    articleIndex < filteredArticles.length - 1
+                        ? filteredArticles[articleIndex + 1]
+                        : undefined;
 
-            result = (
-                <SectionContainer
-                    links={
-                        <React.Fragment>
-                            <NavLink to="/blog" className="link">
-                                ⬅️ Blog
-                            </NavLink>
-                        </React.Fragment>
-                    }
-                    sectionName="article-container"
-                    viewportRef={viewportRef}
-                >
-                    {articles.map((article) => (
-                        <CSSTransition
-                            in={article.metadata.id === currentArticleId}
-                            timeout={transitionsDuration}
-                            classNames="article"
-                            unmountOnExit={true}
-                        >
-                            <Article
-                                {...article}
-                                nextArticle={nextArticle}
-                                preview={false}
-                                previousArticle={previousArticle}
-                                selectArticle={selectArticle}
-                            />
-                        </CSSTransition>
-                    ))}
-                </SectionContainer>
-            );
-        }
-    }
-
-    return result;
+                return (
+                    <CSSTransition
+                        classNames="article"
+                        in={article.metadata.id === currentArticleId}
+                        onExited={onArticleExit}
+                        timeout={transitionsDuration}
+                        unmountOnExit={true}
+                    >
+                        <Article
+                            {...article}
+                            nextArticle={nextArticle}
+                            onArticleNavigation={setCurrentArticleId}
+                            preview={false}
+                            previousArticle={previousArticle}
+                            selectedLanguage={selectedLanguage}
+                            setSelectedLanguage={setSelectedLanguage}
+                        />
+                    </CSSTransition>
+                );
+            })}
+        </SectionContainer>
+    ) : (
+        <Error />
+    );
 };

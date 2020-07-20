@@ -122,8 +122,6 @@
 
     // Category change animations
 
-    // TODO Fix category flickering animations
-
     &:not(.page-exit-active) {
         .articles.articles-enter-active {
             display: none;

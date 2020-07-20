@@ -4,12 +4,11 @@ import { CSSTransition } from 'react-transition-group';
 import { Article } from './article';
 import { articles } from './articles';
 import { ArticleCategory, AllArticleCategories } from './articles/article-category';
-import { ArticleId } from './articles/article-id';
+import { Language } from './articles/language';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
 export interface BlogAdditionalProps {
-    selectArticle: (articleId: ArticleId) => void;
     selectedCategory: ArticleCategory;
     setSelectedCategory: (category: ArticleCategory) => void;
 }
@@ -21,14 +20,6 @@ export const Blog: React.FC<BlogProps> = (props) => {
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategory>(
         props.selectedCategory
     );
-
-    const selectCategoryHandler = (category: ArticleCategory) => () => {
-        setSelectedCategory(category);
-        // Setting a timeout so the articles list exit animation completes
-        setTimeout(() => {
-            props.setSelectedCategory(category);
-        }, transitionsDuration);
-    };
 
     return (
         <SectionContainer
@@ -49,7 +40,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                                 className={`category${
                                     selectedCategory === category ? ' selected-category' : ''
                                 }`}
-                                onClick={selectCategoryHandler(category)}
+                                onClick={() => setSelectedCategory(category)}
                             >
                                 {category}
                             </span>
@@ -62,6 +53,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                         timeout={transitionsDuration}
                         classNames="articles"
                         unmountOnExit={true}
+                        onExited={() => props.setSelectedCategory(selectedCategory)}
                     >
                         <div className="articles">
                             {articles
@@ -74,7 +66,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
                                         key={article.metadata.id + category}
                                         {...article}
                                         preview={true}
-                                        selectArticle={props.selectArticle}
+                                        selectedLanguage={Language.en}
                                     />
                                 ))}
                         </div>

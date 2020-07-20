@@ -11,8 +11,6 @@ interface AppProps {
     isServerRendered: boolean;
 }
 
-// If starting the application in an article url, we need to set the selectedArticleId.
-// Doing this initialization in a useEffect will fail on the server side rendering
 const getInitialArticleId = (location: { pathname: string }) => {
     const urlParts = location.pathname.split('/');
     return urlParts.length > 2 && urlParts[1] === articleRoute.name
@@ -20,13 +18,14 @@ const getInitialArticleId = (location: { pathname: string }) => {
         : undefined;
 };
 
-// TODO If the browser navigation buttons are used, we might need to update the selectedArticleId
-
-const getInitialCategory = (articleId: string | undefined) => {
+// If starting the application in an article url, we need to set the selectedCategory
+// accordingly. Doing so in a useEffect will fail on the server side rendering
+const getInitialCategory = (location: { pathname: string }) => {
+    const initialArticleId = getInitialArticleId(location);
     let initialCategory = ArticleCategory.tech;
 
-    if (articleId) {
-        const article = articles.find((a) => a.metadata.id === articleId);
+    if (initialArticleId) {
+        const article = articles.find((a) => a.metadata.id === initialArticleId);
         if (article) {
             initialCategory = article.metadata.category;
         }
@@ -37,26 +36,16 @@ const getInitialCategory = (articleId: string | undefined) => {
 
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
-    const [selectedArticleId, setSelectedArticleId] = useState<ArticleId | undefined>(
-        getInitialArticleId(location)
-    );
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategory>(
-        getInitialCategory(selectedArticleId)
+        getInitialCategory(location)
     );
-
-    const selectArticle = (articleId: ArticleId) => {
-        setSelectedArticleId(articleId);
-    };
 
     blogRoute.additionalProps = {
-        selectArticle,
         selectedCategory,
         setSelectedCategory
     };
 
     articleRoute.additionalProps = {
-        selectArticle,
-        selectedArticleId,
         selectedCategory
     };
 

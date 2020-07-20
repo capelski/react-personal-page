@@ -1,12 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Article as IArticle } from './articles/article-data';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
-import { transitionsDuration } from './variables';
 
 interface ArticleBaseProps extends IArticle {
-    selectArticle: (articleId: ArticleId) => void;
+    selectedLanguage: Language;
 }
 
 export interface ArticlePreviewProps extends ArticleBaseProps {
@@ -14,9 +13,11 @@ export interface ArticlePreviewProps extends ArticleBaseProps {
 }
 
 export interface ArticleFullProps extends ArticleBaseProps {
-    preview: false;
+    onArticleNavigation: (articleId: ArticleId) => void;
     nextArticle?: IArticle;
+    preview: false;
     previousArticle?: IArticle;
+    setSelectedLanguage: (language: Language) => void;
 }
 
 export type ArticleProps = ArticlePreviewProps | ArticleFullProps;
@@ -46,13 +47,11 @@ const isShareAvailable = navigator && 'share' in navigator;
 
 export const Article: React.FC<ArticleProps> = (props) => {
     const navigationRef = useRef<HTMLAnchorElement>(null);
-    const [selectedLanguage, setSelectedLanguage] = useState(Language.en);
 
-    const content = props.content(selectedLanguage);
+    const content = props.content(props.selectedLanguage);
 
-    const clickHandler = () => {
+    const containerClickHandler = () => {
         if (props.preview) {
-            props.selectArticle(props.metadata.id);
             // Server side required casting. The click will never get triggered in the server anyway
             (navigationRef.current as { click: () => void })?.click();
         }
@@ -69,19 +68,16 @@ export const Article: React.FC<ArticleProps> = (props) => {
         }
     };
 
-    const selectArticle = (articleId: ArticleId) => () => {
-        props.selectArticle(articleId);
-
-        // Setting a timeout so the article exit animation completes
-        setTimeout(() => {
-            setSelectedLanguage(Language.en);
-        }, transitionsDuration);
+    const articleNavigationHandler = (articleId: ArticleId) => () => {
+        if (!props.preview) {
+            props.onArticleNavigation(articleId);
+        }
     };
 
     return (
         <div
             className={`article ${props.metadata.id}${props.preview ? '  preview-mode' : ''}`}
-            onClick={props.preview ? clickHandler : undefined}
+            onClick={props.preview ? containerClickHandler : undefined}
         >
             <div className="article-info">
                 <h3 className="article-title">{content.title}</h3>
@@ -97,13 +93,15 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                     props.preview
                                         ? ''
                                         : `article-language${
-                                              selectedLanguage === language
+                                              props.selectedLanguage === language
                                                   ? ' selected-language'
                                                   : ''
                                           }`
                                 }
                                 onClick={
-                                    props.preview ? undefined : () => setSelectedLanguage(language)
+                                    props.preview
+                                        ? undefined
+                                        : () => props.setSelectedLanguage(language)
                                 }
                             >
                                 {language}
@@ -120,29 +118,35 @@ export const Article: React.FC<ArticleProps> = (props) => {
                         ref={navigationRef}
                         to={`/article/${props.metadata.id}`}
                         className="programmatic-link"
-                        onClick={selectArticle(props.metadata.id)}
                     />
                 ) : (
                     <React.Fragment>
                         <h3 className="posts-timeline">
-                            {articleLinksContent['postsTimeline'][selectedLanguage]}
+                            {articleLinksContent['postsTimeline'][props.selectedLanguage]}
                         </h3>
                         <div className="article-links">
                             <div className="previous-link">
                                 {props.previousArticle && (
                                     <React.Fragment>
-                                        {' '}
                                         ⬅️{' '}
                                         <NavLink
                                             to={`/article/${props.previousArticle.metadata.id}`}
-                                            onClick={selectArticle(
-                                                props.previousArticle!.metadata.id
+                                            onClick={articleNavigationHandler(
+                                                props.previousArticle.metadata.id
                                             )}
                                         >
-                                            {articleLinksContent['previous'][selectedLanguage]}
+                                            {
+                                                articleLinksContent['previous'][
+                                                    props.selectedLanguage
+                                                ]
+                                            }
                                         </NavLink>
                                         <div className="title-preview">
-                                            {props.previousArticle.content(selectedLanguage).title}
+                                            {
+                                                props.previousArticle.content(
+                                                    props.selectedLanguage
+                                                ).title
+                                            }
                                         </div>
                                     </React.Fragment>
                                 )}
@@ -152,13 +156,22 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                     <React.Fragment>
                                         <NavLink
                                             to={`/article/${props.nextArticle.metadata.id}`}
-                                            onClick={selectArticle(props.nextArticle!.metadata.id)}
+                                            onClick={articleNavigationHandler(
+                                                props.nextArticle.metadata.id
+                                            )}
                                         >
-                                            {articleLinksContent['following'][selectedLanguage]}
+                                            {
+                                                articleLinksContent['following'][
+                                                    props.selectedLanguage
+                                                ]
+                                            }
                                         </NavLink>{' '}
                                         ➡️
                                         <div className="title-preview">
-                                            {props.nextArticle.content(selectedLanguage).title}
+                                            {
+                                                props.nextArticle.content(props.selectedLanguage)
+                                                    .title
+                                            }
                                         </div>
                                     </React.Fragment>
                                 )}
