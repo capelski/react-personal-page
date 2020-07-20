@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Redirect, Route, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { articles } from './articles';
+import { ArticleCategory } from './articles/article-category';
 import { ArticleId } from './articles/article-id';
-import { Language } from './articles/language';
-import { articleRoute, blogRoute, homeRoute, routes, supportedRoutes } from './routes';
+import { articleRoute, blogRoute, routes, supportedRoutes } from './routes';
 import { transitionsDuration } from './variables';
 
 interface AppProps {
@@ -20,55 +20,44 @@ const getInitialArticleId = (location: { pathname: string }) => {
         : undefined;
 };
 
-// If starting the application in an blog/article url, we need to set the selectedLanguage.
-// Doing this initialization in a useEffect will fail on the server side rendering
-const getInitialLanguage = (location: { pathname: string }): Language => {
-    const urlParts = location.pathname.split('/');
-    return urlParts.length > 3 && urlParts[1] === articleRoute.name
-        ? (urlParts[3] as Language)
-        : urlParts.length > 2 && urlParts[1] === blogRoute.name
-        ? (urlParts[2] as Language)
-        : Language.en;
+// TODO If the browser navigation buttons are used, we might need to update the selectedArticleId
+
+const getInitialCategory = (articleId: string | undefined) => {
+    let initialCategory = ArticleCategory.tech;
+
+    if (articleId) {
+        const article = articles.find((a) => a.metadata.id === articleId);
+        if (article) {
+            initialCategory = article.metadata.category;
+        }
+    }
+
+    return initialCategory;
 };
 
 export const App: React.FC<AppProps> = (props) => {
     const location = useLocation();
-    const [activeArticles, setActiveArticles] = useState(articles);
     const [selectedArticleId, setSelectedArticleId] = useState<ArticleId | undefined>(
         getInitialArticleId(location)
     );
-    const [selectedLanguage, setSelectedLanguage] = useState<Language>(
-        getInitialLanguage(location)
+    const [selectedCategory, setSelectedCategory] = useState<ArticleCategory>(
+        getInitialCategory(selectedArticleId)
     );
 
     const selectArticle = (articleId: ArticleId) => {
         setSelectedArticleId(articleId);
     };
 
-    const selectLanguage = (language: Language) => {
-        setSelectedLanguage(language);
-        const nextArticles = articles.filter(
-            (article) => article.metadata.languages.indexOf(language) > -1
-        );
-        setActiveArticles(nextArticles);
-    };
-
-    homeRoute.additionalProps = {
-        selectedLanguage
-    };
-
     blogRoute.additionalProps = {
-        activeArticles,
         selectArticle,
-        selectedLanguage,
-        selectLanguage
+        selectedCategory,
+        setSelectedCategory
     };
 
     articleRoute.additionalProps = {
-        activeArticles,
         selectArticle,
         selectedArticleId,
-        selectedLanguage
+        selectedCategory
     };
 
     return (

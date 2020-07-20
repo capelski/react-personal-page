@@ -3,22 +3,19 @@ import { RouteChildrenProps, NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Article } from './article';
 import { articles } from './articles';
-import { Article as IArticle } from './articles/article-data';
+import { ArticleCategory } from './articles/article-category';
 import { ArticleId } from './articles/article-id';
-import { Language } from './articles/language';
 import { Error } from './error';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
 export interface ArticleLoaderAdditionalProps {
-    activeArticles: IArticle[];
     selectArticle: (articleId: ArticleId) => void;
     selectedArticleId?: ArticleId;
-    selectedLanguage: Language;
+    selectedCategory: ArticleCategory;
 }
 
-export type ArticleLoaderProps = RouteChildrenProps<{ articleId: string; language?: string }> &
-    ArticleLoaderAdditionalProps;
+export type ArticleLoaderProps = RouteChildrenProps & ArticleLoaderAdditionalProps;
 
 export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     // We need to keep an owned copy of props.selectedArticleId value to control css exit transitions
@@ -45,22 +42,24 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     let result = <Error />;
 
     if (props.selectedArticleId) {
-        const articleIndex = props.activeArticles.findIndex(
+        const filteredArticles = articles.filter(
+            (article) => article.metadata.category === props.selectedCategory
+        );
+        const articleIndex = filteredArticles.findIndex(
             (article) => article.metadata.id === props.selectedArticleId
         );
         if (articleIndex > -1) {
-            const nextArticle =
-                articleIndex > 0 ? props.activeArticles[articleIndex - 1] : undefined;
+            const nextArticle = articleIndex > 0 ? filteredArticles[articleIndex - 1] : undefined;
             const previousArticle =
-                articleIndex < props.activeArticles.length - 1
-                    ? props.activeArticles[articleIndex + 1]
+                articleIndex < filteredArticles.length - 1
+                    ? filteredArticles[articleIndex + 1]
                     : undefined;
 
             result = (
                 <SectionContainer
                     links={
                         <React.Fragment>
-                            <NavLink to={`/blog/${props.selectedLanguage}`} className="link">
+                            <NavLink to="/blog" className="link">
                                 ⬅️ Blog
                             </NavLink>
                         </React.Fragment>
@@ -81,7 +80,6 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
                                 preview={false}
                                 previousArticle={previousArticle}
                                 selectArticle={selectArticle}
-                                selectedLanguage={props.selectedLanguage}
                             />
                         </CSSTransition>
                     ))}

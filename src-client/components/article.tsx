@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Article as IArticle } from './articles/article-data';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
+import { transitionsDuration } from './variables';
 
 interface ArticleBaseProps extends IArticle {
     selectArticle: (articleId: ArticleId) => void;
-    selectedLanguage: Language;
 }
 
 export interface ArticlePreviewProps extends ArticleBaseProps {
@@ -46,8 +46,9 @@ const isShareAvailable = navigator && 'share' in navigator;
 
 export const Article: React.FC<ArticleProps> = (props) => {
     const navigationRef = useRef<HTMLAnchorElement>(null);
+    const [selectedLanguage, setSelectedLanguage] = useState(Language.en);
 
-    const content = props.content(props.selectedLanguage);
+    const content = props.content(selectedLanguage);
 
     const clickHandler = () => {
         if (props.preview) {
@@ -63,12 +64,19 @@ export const Article: React.FC<ArticleProps> = (props) => {
                 text: content.description,
                 title: content.title,
                 // TODO Extract url base into environment parameter?
-                url: `https://carlescapellas.xyz/article/${props.metadata.id}/${props.selectedLanguage}`
+                url: `https://carlescapellas.xyz/article/${props.metadata.id}`
             });
         }
     };
 
-    const selectArticle = (articleId: ArticleId) => () => props.selectArticle(articleId);
+    const selectArticle = (articleId: ArticleId) => () => {
+        props.selectArticle(articleId);
+
+        // Setting a timeout so the article exit animation completes
+        setTimeout(() => {
+            setSelectedLanguage(Language.en);
+        }, transitionsDuration);
+    };
 
     return (
         <div
@@ -81,9 +89,26 @@ export const Article: React.FC<ArticleProps> = (props) => {
                     <span className="article-date">📅 {props.metadata.date}</span>
                     <span className="article-duration">🕐 {props.metadata.duration} mins</span>
                     {props.metadata.languages.map((language) => (
-                        <span key={language} className="article-language">
-                            🌎 {language}
-                        </span>
+                        <React.Fragment>
+                            🌎{' '}
+                            <span
+                                key={language}
+                                className={
+                                    props.preview
+                                        ? ''
+                                        : `article-language${
+                                              selectedLanguage === language
+                                                  ? ' selected-language'
+                                                  : ''
+                                          }`
+                                }
+                                onClick={
+                                    props.preview ? undefined : () => setSelectedLanguage(language)
+                                }
+                            >
+                                {language}
+                            </span>
+                        </React.Fragment>
                     ))}
                 </div>
             </div>
@@ -93,14 +118,14 @@ export const Article: React.FC<ArticleProps> = (props) => {
                 {props.preview ? (
                     <NavLink
                         ref={navigationRef}
-                        to={`/article/${props.metadata.id}/${props.selectedLanguage}`}
+                        to={`/article/${props.metadata.id}`}
                         className="programmatic-link"
                         onClick={selectArticle(props.metadata.id)}
                     />
                 ) : (
                     <React.Fragment>
                         <h3 className="posts-timeline">
-                            {articleLinksContent['postsTimeline'][props.selectedLanguage]}
+                            {articleLinksContent['postsTimeline'][selectedLanguage]}
                         </h3>
                         <div className="article-links">
                             <div className="previous-link">
@@ -109,23 +134,15 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                         {' '}
                                         ⬅️{' '}
                                         <NavLink
-                                            to={`/article/${props.previousArticle.metadata.id}/${props.selectedLanguage}`}
+                                            to={`/article/${props.previousArticle.metadata.id}`}
                                             onClick={selectArticle(
                                                 props.previousArticle!.metadata.id
                                             )}
                                         >
-                                            {
-                                                articleLinksContent['previous'][
-                                                    props.selectedLanguage
-                                                ]
-                                            }
+                                            {articleLinksContent['previous'][selectedLanguage]}
                                         </NavLink>
                                         <div className="title-preview">
-                                            {
-                                                props.previousArticle.content(
-                                                    props.selectedLanguage
-                                                ).title
-                                            }
+                                            {props.previousArticle.content(selectedLanguage).title}
                                         </div>
                                     </React.Fragment>
                                 )}
@@ -134,21 +151,14 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                 {props.nextArticle && (
                                     <React.Fragment>
                                         <NavLink
-                                            to={`/article/${props.nextArticle.metadata.id}/${props.selectedLanguage}`}
+                                            to={`/article/${props.nextArticle.metadata.id}`}
                                             onClick={selectArticle(props.nextArticle!.metadata.id)}
                                         >
-                                            {
-                                                articleLinksContent['following'][
-                                                    props.selectedLanguage
-                                                ]
-                                            }
+                                            {articleLinksContent['following'][selectedLanguage]}
                                         </NavLink>{' '}
                                         ➡️
                                         <div className="title-preview">
-                                            {
-                                                props.nextArticle.content(props.selectedLanguage)
-                                                    .title
-                                            }
+                                            {props.nextArticle.content(selectedLanguage).title}
                                         </div>
                                     </React.Fragment>
                                 )}

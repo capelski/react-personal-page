@@ -2,7 +2,7 @@ import { RouteChildrenProps } from 'react-router-dom';
 import { ArticleLoader, ArticleLoaderAdditionalProps } from './article-loader';
 import { Blog, BlogAdditionalProps } from './blog';
 import { Error } from './error';
-import { Home, HomeAdditionalProps } from './home';
+import { Home } from './home';
 import { Portfolio } from './portfolio';
 
 export interface ComponentRoute<TAdditional = {}> {
@@ -14,28 +14,21 @@ export interface ComponentRoute<TAdditional = {}> {
 }
 
 export const articleRoute: ComponentRoute<ArticleLoaderAdditionalProps> = {
-    path: '/article/:articleId/:language?',
+    path: '/article/:articleId',
     name: 'article',
     component: ArticleLoader,
-    pattern: /^\/article\/[^\/]+\/?[^\/]*$/
+    pattern: /^\/article\/[^\/]+\/?$/
 };
 
 export const blogRoute: ComponentRoute<BlogAdditionalProps> = {
-    path: '/blog/:language?',
+    path: '/blog',
     name: 'blog',
     component: Blog,
-    pattern: /^\/blog\/?[^\/]*$/
-};
-
-export const homeRoute: ComponentRoute<HomeAdditionalProps> = {
-    path: '/',
-    name: 'home',
-    component: Home,
-    pattern: /^\/$/
+    pattern: /^\/blog\/?$/
 };
 
 export const routes: ComponentRoute[] = [
-    homeRoute,
+    { path: '/', name: 'home', component: Home, pattern: /^\/$/ },
     articleRoute,
     blogRoute,
     { path: '/error', name: 'error', component: Error, pattern: /^\/error$/ },

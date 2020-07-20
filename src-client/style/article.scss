@@ -55,6 +55,17 @@
                 white-space: nowrap;
                 display: inline-block;
                 margin-top: 8px;
+
+                &.article-language {
+                    cursor: pointer;
+                    text-decoration: underline;
+
+                    &.selected-language {
+                        cursor: default;
+                        text-decoration: none;
+                        font-weight: 700;
+                    }
+                }
             }
         }
     }

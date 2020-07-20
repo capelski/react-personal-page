@@ -53,14 +53,14 @@
         justify-content: space-between;
         align-items: center;
 
-        .blog-languages {
-            .language {
+        .blog-categories {
+            .category {
                 margin-right: 8px;
                 padding: 8px;
                 cursor: pointer;
                 text-decoration: underline;
 
-                &.selected-language {
+                &.selected-category {
                     font-weight: 700;
                     text-decoration: none;
                 }
@@ -120,7 +120,9 @@
         display: none;
     }
 
-    // Language change animations
+    // Category change animations
+
+    // TODO Fix category flickering animations
 
     &:not(.page-exit-active) {
         .articles.articles-enter-active {

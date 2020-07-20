@@ -1,36 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { Article as IArticle } from './articles/article-data';
-import { ArticleId } from './articles/article-id';
-import { AllLanguages, Language } from './articles/language';
 import { Article } from './article';
+import { articles } from './articles';
+import { ArticleCategory, AllArticleCategories } from './articles/article-category';
+import { ArticleId } from './articles/article-id';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
 export interface BlogAdditionalProps {
-    activeArticles: IArticle[];
     selectArticle: (articleId: ArticleId) => void;
-    selectedLanguage: Language;
-    selectLanguage: (language: Language) => void;
+    selectedCategory: ArticleCategory;
+    setSelectedCategory: (category: ArticleCategory) => void;
 }
 
-export type BlogProps = RouteChildrenProps<{ language?: string }> & BlogAdditionalProps;
+export type BlogProps = RouteChildrenProps & BlogAdditionalProps;
 
 export const Blog: React.FC<BlogProps> = (props) => {
-    // We need to keep an owned copy of props.selectedLanguage value to control css exit transitions
-    const [currentLanguage, setCurrentLanguage] = useState(props.selectedLanguage);
+    // We need to keep an owned copy of props.selectedCategory value to control css exit transitions
+    const [selectedCategory, setSelectedCategory] = useState<ArticleCategory>(
+        props.selectedCategory
+    );
 
-    useEffect(() => {
-        setCurrentLanguage(props.selectedLanguage);
-    }, [props.selectedLanguage]);
-
-    const selectLanguage = (language: Language) => () => {
-        setCurrentLanguage(language);
-
+    const selectCategoryHandler = (category: ArticleCategory) => () => {
+        setSelectedCategory(category);
         // Setting a timeout so the articles list exit animation completes
         setTimeout(() => {
-            props.selectLanguage(language);
+            props.setSelectedCategory(category);
         }, transitionsDuration);
     };
 
@@ -46,40 +42,39 @@ export const Blog: React.FC<BlogProps> = (props) => {
             <React.Fragment>
                 <div className="blog-header">
                     <h1 className="blog-title">Blog</h1>
-                    <div className="blog-languages">
-                        {AllLanguages.map((language) => (
+                    <div className="blog-categories">
+                        {AllArticleCategories.map((category) => (
                             <span
-                                key={language}
-                                className={`language${
-                                    props.selectedLanguage === language ? ' selected-language' : ''
+                                key={category}
+                                className={`category${
+                                    selectedCategory === category ? ' selected-category' : ''
                                 }`}
-                                onClick={selectLanguage(language)}
+                                onClick={selectCategoryHandler(category)}
                             >
-                                {props.selectedLanguage === language ? '🌎 ' : null}
-                                {language}
+                                {category}
                             </span>
                         ))}
                     </div>
                 </div>
-                {AllLanguages.map((language) => (
+                {AllArticleCategories.map((category) => (
                     <CSSTransition
-                        in={language === currentLanguage}
+                        in={category === selectedCategory}
                         timeout={transitionsDuration}
                         classNames="articles"
                         unmountOnExit={true}
                     >
                         <div className="articles">
-                            {props.activeArticles
+                            {articles
                                 .filter(
-                                    (article) => article.metadata.languages.indexOf(language) > -1
+                                    (article) =>
+                                        article.metadata.category === props.selectedCategory
                                 )
                                 .map((article) => (
                                     <Article
-                                        key={article.metadata.id + language}
+                                        key={article.metadata.id + category}
                                         {...article}
                                         preview={true}
                                         selectArticle={props.selectArticle}
-                                        selectedLanguage={language}
                                     />
                                 ))}
                         </div>

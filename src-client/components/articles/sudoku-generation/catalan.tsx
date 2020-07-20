@@ -25,7 +25,7 @@ export const catalan: ArticleContent = {
                 <div>
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/easy-sudoku.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/easy-sudoku.png?$modena=react-personal-page`}
                         alt="Easy sudoku"
                         style={{ marginBottom: 0 }}
                     />
@@ -34,7 +34,7 @@ export const catalan: ArticleContent = {
                 <div>
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/hard-sudoku.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/hard-sudoku.png?$modena=react-personal-page`}
                         alt="Hard sudoku"
                         style={{ marginBottom: 0 }}
                     />
@@ -68,7 +68,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src={`"/images/blog/${ArticleId.sudokuGeneration}/sky-tv-hillside.jpg?$modena=react-personal-page`}
+                src={`/images/blog/${ArticleId.sudokuGeneration}/sky-tv-hillside.jpg?$modena=react-personal-page`}
                 alt="Sky TV hillside sudoku"
             />
             <p>
@@ -106,7 +106,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src={`"/images/blog/${ArticleId.sudokuGeneration}/command-line.png?$modena=react-personal-page`}
+                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line.png?$modena=react-personal-page`}
                 alt="Command line generated sudoku"
             />
             <p>
@@ -118,7 +118,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src={`"/images/blog/${ArticleId.sudokuGeneration}/command-line-error.png?$modena=react-personal-page`}
+                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line-error.png?$modena=react-personal-page`}
                 alt="Command line generation error"
             />
             <p>
@@ -132,7 +132,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src={`"/images/blog/${ArticleId.sudokuGeneration}/web-app-first-approach.png?$modena=react-personal-page`}
+                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-first-approach.png?$modena=react-personal-page`}
                 alt="Web app first approach"
             />
             <p>
@@ -145,7 +145,7 @@ export const catalan: ArticleContent = {
             </p>
             <img
                 className="article-image"
-                src={`"/images/blog/${ArticleId.sudokuGeneration}/web-app-final-approach.png?$modena=react-personal-page`}
+                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-final-approach.png?$modena=react-personal-page`}
                 alt="Web app final approach"
             />
             <p>
@@ -167,7 +167,7 @@ export const catalan: ArticleContent = {
                     columna i regió):
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/box-only-left-candidate.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/box-only-left-candidate.png?$modena=react-personal-page`}
                         alt="Sudoku box single candidate example"
                     />
                 </li>
@@ -177,7 +177,7 @@ export const catalan: ArticleContent = {
                     la casella X:
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/group-single-candidate.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/group-single-candidate.png?$modena=react-personal-page`}
                         alt="Sudoku group single candidate example"
                     />
                 </li>
@@ -186,7 +186,7 @@ export const catalan: ArticleContent = {
                     números no són vàlids en cap altra casella del mateix grup:
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/owned-candidates.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/owned-candidates.png?$modena=react-personal-page`}
                         alt="Sudoku owned candidates rule example"
                     />
                 </li>
@@ -196,7 +196,7 @@ export const catalan: ArticleContent = {
                     mateixa fila o columna:
                     <img
                         className="article-image"
-                        src={`"/images/blog/${ArticleId.sudokuGeneration}/region-subset.png?$modena=react-personal-page`}
+                        src={`/images/blog/${ArticleId.sudokuGeneration}/region-subset.png?$modena=react-personal-page`}
                         alt="Sudoku region subset rule example"
                     />
                 </li>

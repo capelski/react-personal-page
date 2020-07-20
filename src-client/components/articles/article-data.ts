@@ -1,5 +1,6 @@
 import { ArticleId } from './article-id';
 import { Language } from './language';
+import { ArticleCategory } from './article-category';
 
 // TODO Add a sentence for sharing, similar to description but calling to action
 export interface ArticleContent {
@@ -10,6 +11,7 @@ export interface ArticleContent {
 }
 
 export interface ArticleMetadata {
+    category: ArticleCategory;
     date: string;
     duration: number;
     id: ArticleId;
