@@ -6,6 +6,7 @@ import { articles } from './articles';
 import { ArticleCategory } from './articles/article-category';
 import { Language } from './articles/language';
 import { Error } from './error';
+import { blogRoute } from './routes';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
@@ -51,7 +52,7 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
         <SectionContainer
             links={
                 <React.Fragment>
-                    <NavLink to="/blog" className="link">
+                    <NavLink to={blogRoute.path} className="link">
                         ⬅️ Blog
                     </NavLink>
                 </React.Fragment>

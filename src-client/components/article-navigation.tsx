@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Article as IArticle } from './articles/article-data';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
+import { articleRoute } from './routes';
 
 declare const navigator:
     | undefined // Undefined on the server side
@@ -58,7 +59,10 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                         <React.Fragment>
                             ⬅️{' '}
                             <NavLink
-                                to={`/article/${props.previousArticle.metadata.id}`}
+                                to={articleRoute.path.replace(
+                                    ':articleId',
+                                    props.previousArticle.metadata.id
+                                )}
                                 onClick={articleNavigationHandler(
                                     props.previousArticle.metadata.id
                                 )}
@@ -75,7 +79,10 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                     {props.nextArticle && (
                         <React.Fragment>
                             <NavLink
-                                to={`/article/${props.nextArticle.metadata.id}`}
+                                to={articleRoute.path.replace(
+                                    ':articleId',
+                                    props.nextArticle.metadata.id
+                                )}
                                 onClick={articleNavigationHandler(props.nextArticle.metadata.id)}
                             >
                                 {articleLinksContent['following'][props.selectedLanguage]}

@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
+import { blogRoute, portfolioRoute } from './routes';
 import { SectionContainer } from './section-container';
 
 export const Home: React.FC<RouteChildrenProps> = () => (
     <SectionContainer
         links={
             <React.Fragment>
-                <NavLink to="/blog" className="link">
+                <NavLink to={blogRoute.path} className="link">
                     ⬅️ Blog
                 </NavLink>
-                <NavLink to="/portfolio" className="link">
+                <NavLink to={portfolioRoute.path} className="link">
                     Portfolio ➡️
                 </NavLink>
             </React.Fragment>

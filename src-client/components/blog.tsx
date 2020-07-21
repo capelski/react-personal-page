@@ -5,6 +5,7 @@ import { Article } from './article';
 import { articles } from './articles';
 import { ArticleCategory, AllArticleCategories } from './articles/article-category';
 import { Language } from './articles/language';
+import { homeRoute } from './routes';
 import { SectionContainer } from './section-container';
 import { transitionsDuration } from './variables';
 
@@ -24,7 +25,7 @@ export const Blog: React.FC<BlogProps> = (props) => {
     return (
         <SectionContainer
             links={
-                <NavLink to="/" className="link">
+                <NavLink to={homeRoute.path} className="link">
                     Home ➡️
                 </NavLink>
             }

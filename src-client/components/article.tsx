@@ -4,6 +4,7 @@ import { Article as IArticle } from './articles/article-data';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
 import { ArticleNavigation } from './article-navigation';
+import { articleRoute } from './routes';
 
 interface ArticleBaseProps extends IArticle {
     selectedLanguage: Language;
@@ -81,7 +82,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                 {props.preview ? (
                     <NavLink
                         ref={navigationRef}
-                        to={`/article/${props.metadata.id}`}
+                        to={articleRoute.path.replace(':articleId', props.metadata.id)}
                         className="programmatic-link"
                     />
                 ) : (

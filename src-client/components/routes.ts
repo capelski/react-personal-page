@@ -28,12 +28,33 @@ export const blogRoute: ComponentRoute<BlogAdditionalProps> = {
     pattern: /^\/blog\/?$/
 };
 
+export const errorRoute: ComponentRoute = {
+    path: '/error',
+    name: 'error',
+    component: Error,
+    pattern: /^\/error$/
+};
+
+export const homeRoute: ComponentRoute = {
+    path: '/',
+    name: 'home',
+    component: Home,
+    pattern: /^\/$/
+};
+
+export const portfolioRoute: ComponentRoute = {
+    path: '/portfolio',
+    name: 'portfolio',
+    component: Portfolio,
+    pattern: /^\/portfolio\/?$/
+};
+
 export const routes: ComponentRoute[] = [
-    { path: '/', name: 'home', component: Home, pattern: /^\/$/ },
+    homeRoute,
     articleRoute,
     blogRoute,
-    { path: '/error', name: 'error', component: Error, pattern: /^\/error$/ },
-    { path: '/portfolio', name: 'portfolio', component: Portfolio, pattern: /^\/portfolio\/?$/ }
+    errorRoute,
+    portfolioRoute
 ];
 
 export const supportedRoutes = routes.map((route) => route.pattern);

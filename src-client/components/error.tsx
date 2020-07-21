@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
+import { homeRoute } from './routes';
 import { SectionContainer } from './section-container';
 
 export const Error: React.FC<RouteChildrenProps | {}> = () => (
     <SectionContainer
         links={
-            <NavLink to="/" className="link">
+            <NavLink to={homeRoute.path} className="link">
                 ⬅️ Home
             </NavLink>
         }
