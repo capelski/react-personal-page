@@ -97,9 +97,24 @@
             display: block;
             max-width: 100%;
 
-            &.mobile-screenshot {
+            &.with-footer {
+                margin-bottom: 0;
+            }
+
+            &.image-300 {
                 max-width: 300px;
             }
+
+            &.image-600 {
+                @media (min-width: $medium) {
+                    max-width: 600px;
+                }
+            }
+        }
+
+        .article-image-footer {
+            text-align: center;
+            margin-top: 0;
         }
     }
 

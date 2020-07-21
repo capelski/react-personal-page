@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const catalan: ArticleContent = {
     title: 'Injustícia existencial',
@@ -86,10 +87,10 @@ export const catalan: ArticleContent = {
                 de les classes de taekwondo. Potser deixar la teva parella. Sigui el que sigui,
                 trobaràs un responsable de la teva falta d'organització.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.existentialInjustice}/enough.gif?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.existentialInjustice}
                 alt="Enough meme"
+                filename="enough.gif"
             />
             <p>
                 Si mai t'has sentit així, benvingut al món real. Tots tenim dies en què la

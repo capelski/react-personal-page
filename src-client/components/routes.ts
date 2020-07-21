@@ -13,6 +13,7 @@ export interface ComponentRoute<TAdditional = {}> {
     pattern: RegExp;
 }
 
+// TODO Change route to /blog for cross compatibility with vue website links
 export const articleRoute: ComponentRoute<ArticleLoaderAdditionalProps> = {
     path: '/article/:articleId',
     name: 'article',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Stadia: cloud gaming',
@@ -16,10 +17,10 @@ export const english: ArticleContent = {
     ),
     body: (
         <React.Fragment>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-landing-page.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
                 alt="Stadia website landing page"
+                filename="stadia-landing-page.png"
             />
             <p>
                 First things first! <b>Stadia is not free forever</b>. You can try it free of charge
@@ -56,21 +57,23 @@ export const english: ArticleContent = {
                 (sold for 69€ at the time of writing), compatible with all device types and
                 mandatory for TVs.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-devices.png?$modena=react-personal-page`}
-                alt="Stadia supported devices"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="stadia-devices.png"
             />
             <div className="screen-splitter">
-                <img
-                    className="article-image mobile-screenshot"
-                    src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-mobile-1.jpg?$modena=react-personal-page`}
+                <ArticleImage
+                    articleId={ArticleId.stadiaPlatform}
                     alt="Stadia mobile initial screen"
+                    className="image-300"
+                    filename="stadia-mobile-1.jpg"
                 />
-                <img
-                    className="article-image mobile-screenshot"
-                    src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-mobile-2.jpg?$modena=react-personal-page`}
+                <ArticleImage
+                    articleId={ArticleId.stadiaPlatform}
                     alt="Stadia mobile development in process disclaimer"
+                    className="image-300"
+                    filename="stadia-mobile-2.jpg"
                 />
             </div>
             <p>
@@ -89,10 +92,10 @@ export const english: ArticleContent = {
                 the list will grow as the time goes by, as well as the number of players in the
                 community
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-game-store.png?$modena=react-personal-page`}
-                alt="Stadia game store"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="stadia-game-store.png"
             />
             <p>
                 Another issue I do must point out are the <b>recurrent disconnections</b> I've been
@@ -117,10 +120,10 @@ export const english: ArticleContent = {
                 keeps running in Stadia servers in the meanwhile, so you can be sure you will have
                 died by the time you reconnect.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-glitch.jpg?$modena=react-personal-page`}
-                alt="Stadia glitch while playing Destiny 2"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="stadia-glitch.jpg"
             />
             <p>
                 That being said I still believe is worth giving Stadia a chance. Maybe it won't
@@ -130,10 +133,10 @@ export const english: ArticleContent = {
                 (you can easily cancel the subscription when the time arrives) and it will give you
                 a clue of what the future of the video games might look like.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/stadia-subscription.png?$modena=react-personal-page`}
-                alt="Stadia subscriptions page"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="stadia-subscription.png"
             />
             <p>
                 Last but not least, an image is supposed to be worth thousand words. Have a look at
@@ -142,25 +145,25 @@ export const english: ArticleContent = {
                 hesitating. Try out Stadia, enjoy your gaming session and see you in the next post
                 🎮
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/destiny-graphics-1.jpg?$modena=react-personal-page`}
-                alt="Destiny 2 spaceship"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="destiny-graphics-1.jpg"
             />
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/destiny-graphics-2.jpg?$modena=react-personal-page`}
-                alt="Destiny 2 snowed landscape"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="destiny-graphics-2.jpg"
             />
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/destiny-graphics-3.jpg?$modena=react-personal-page`}
-                alt="Destiny 2 fantasy scene"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="destiny-graphics-3.jpg"
             />
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/destiny-graphics-4.jpg?$modena=react-personal-page`}
-                alt="Destiny 2 fantasy scene"
+            <ArticleImage
+                articleId={ArticleId.stadiaPlatform}
+                alt="Stadia website landing page"
+                filename="destiny-graphics-4.jpg"
             />
             <video
                 controls

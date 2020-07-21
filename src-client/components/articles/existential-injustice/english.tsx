@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Existential injustice',
@@ -86,10 +87,10 @@ export const english: ArticleContent = {
                 dumping your partner. Whatever it is, you will find a responsible for your lack of
                 organization.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.existentialInjustice}/enough.gif?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.existentialInjustice}
                 alt="Enough meme"
+                filename="enough.gif"
             />
             <p>
                 If you've ever felt like this, welcome to the real world. All of us have days in

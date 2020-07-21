@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Kanban: keep track of your goals',
@@ -99,10 +100,10 @@ export const english: ArticleContent = {
                 them, you can label them, you can create check lists, etc. This is what my books
                 Kanban board looks like in Trello:
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.kanbanGoalsTracking}/trello-board.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.kanbanGoalsTracking}
                 alt="Kanban board in Trello"
+                filename="trello-board.png"
             />
             <p>
                 This is it! Simple but effective Kanban helps you managing and tracking your

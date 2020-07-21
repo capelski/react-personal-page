@@ -2,6 +2,7 @@ import React from 'react';
 import ReactGist from 'react-gist';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Building a subscribers list',
@@ -49,10 +50,10 @@ export const english: ArticleContent = {
                 like on your web. The generated code will vary depending on the options you choose
                 but you should end up getting something similar to the code below.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.subscribersList}/signup-form.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.subscribersList}
                 alt="Mailchimp signup form builder"
+                filename="signup-form.png"
             />
             <ReactGist id="b23dea8cac1e579a1ff5622b9d4aa54d" />
             <p>
@@ -69,15 +70,15 @@ export const english: ArticleContent = {
                 WYSIWYG editor to help you building the mail and you can test it at any point by
                 sending a copy to your own address.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.subscribersList}/email-editor.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.subscribersList}
                 alt="Mailchimp email editor"
+                filename="email-editor.png"
             />
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.subscribersList}/campaign.png?$modena=react-personal-page`}
-                alt="Mailchimp email editor"
+            <ArticleImage
+                articleId={ArticleId.subscribersList}
+                alt="Mailchimp campaign creator"
+                filename="campaign.png"
             />
             <p>
                 And that's how easy mail marketing can be! There are much more things that you can

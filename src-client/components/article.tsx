@@ -23,8 +23,6 @@ export interface ArticleFullProps extends ArticleBaseProps {
 
 export type ArticleProps = ArticlePreviewProps | ArticleFullProps;
 
-// TODO Create Image component with an optional text footer
-
 export const Article: React.FC<ArticleProps> = (props) => {
     const navigationRef = useRef<HTMLAnchorElement>(null);
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const catalan: ArticleContent = {
     title: 'Generació de sudokus',
@@ -23,22 +24,20 @@ export const catalan: ArticleContent = {
         <React.Fragment>
             <div className="screen-splitter">
                 <div>
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/easy-sudoku.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Easy sudoku"
-                        style={{ marginBottom: 0 }}
+                        filename="easy-sudoku.png"
+                        footer="Sudoku fàcil"
                     />
-                    <p style={{ textAlign: 'center', marginTop: 0 }}>Sudoku fàcil</p>
                 </div>
                 <div>
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/hard-sudoku.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Hard sudoku"
-                        style={{ marginBottom: 0 }}
+                        filename="hard-sudoku.png"
+                        footer="Sudoku difícil"
                     />
-                    <p style={{ textAlign: 'center', marginTop: 0 }}>Sudoku difícil</p>
                 </div>
             </div>
             <p>
@@ -66,10 +65,10 @@ export const catalan: ArticleContent = {
                 </a>
                 . Aquesta anècdota va aconseguir despertar la meva curiositat.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/sky-tv-hillside.jpg?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Sky TV hillside sudoku"
+                filename="sky-tv-hillside.jpg"
             />
             <p>
                 <b>Normalment hi hauria rumiat una estona</b>, m'hauria adonat que és una tasca
@@ -104,10 +103,11 @@ export const catalan: ArticleContent = {
                 procés de generar un sudoku de 9x9 seria el mateix que el de generar-ne un de 4x4 i
                 vaig tirar per un algoritme de consola ràpid.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
+                className="image-600"
                 alt="Command line generated sudoku"
+                filename="command-line.png"
             />
             <p>
                 <b>2. Punyeta! Necessito una eina gràfica</b>: En teoria, només havia d'adaptar
@@ -116,10 +116,11 @@ export const catalan: ArticleContent = {
                 entendre que estava fent malament només amb la informació que l'algoritme escrivia a
                 la consola, així que no vaig tenir més remei que construir una eina gràfica.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line-error.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Command line generation error"
+                className="image-600"
+                filename="command-line-error.png"
             />
             <p>
                 <b>3. Cordons... això és complicat</b>: No em va portar gaire estona crear una
@@ -130,10 +131,11 @@ export const catalan: ArticleContent = {
                 casella) contenen un conjunt de regles derivades que no son òbvies a primer cop
                 d'ull.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-first-approach.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Web app first approach"
+                className="image-600"
+                filename="web-app-first-approach.png"
             />
             <p>
                 <b>4. La llum al final del túnel</b>: Després de seure i donar-hi unes quantes
@@ -143,10 +145,11 @@ export const catalan: ArticleContent = {
                 considerar-les. Em va portar la seva estona, però finalment vaig aconseguir un
                 generador vàlid.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-final-approach.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Web app final approach"
+                className="image-600"
+                filename="web-app-final-approach.png"
             />
             <p>
                 Mira mama, ho he fet! En el meu cas no vaig construir un enorme imperi de les
@@ -165,39 +168,43 @@ export const catalan: ArticleContent = {
                     Si a una casella X només hi pot anar un número, aquest número ha d'anar a la
                     casella X i no és vàlid en cap altra casella dels grups de la casella X (fila,
                     columna i regió):
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/box-only-left-candidate.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku box single candidate example"
+                        className="image-600"
+                        filename="box-only-left-candidate.png"
                     />
                 </li>
                 <li>
                     Si, per un grup determinat, un número només pot anar a la casella X, aquest
                     número ha d'anar a la casella X i no és vàlid en cap altra casella dels grups de
                     la casella X:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/group-single-candidate.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku group single candidate example"
+                        className="image-600"
+                        filename="group-single-candidate.png"
                     />
                 </li>
                 <li>
                     Si 2-3 caselles d'un grup només poden tenir els mateixos 2-3 números, aquests
                     números no són vàlids en cap altra casella del mateix grup:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/owned-candidates.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku owned candidates rule example"
+                        className="image-600"
+                        filename="owned-candidates.png"
                     />
                 </li>
                 <li>
                     Si, per una regió determinada, les úniques caselles on pot anar un número estan
                     a la mateixa fila o columna, aquest número no és vàlid a cap altra casella de la
                     mateixa fila o columna:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/region-subset.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku region subset rule example"
+                        className="image-600"
+                        filename="region-subset.png"
                     />
                 </li>
             </ul>

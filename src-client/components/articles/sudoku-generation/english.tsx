@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Sudoku generation',
@@ -23,22 +24,20 @@ export const english: ArticleContent = {
         <React.Fragment>
             <div className="screen-splitter">
                 <div>
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/easy-sudoku.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Easy sudoku"
-                        style={{ marginBottom: 0 }}
+                        filename="easy-sudoku.png"
+                        footer="Easy sudoku"
                     />
-                    <p style={{ textAlign: 'center', marginTop: 0 }}>Easy sudoku</p>
                 </div>
                 <div>
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/hard-sudoku.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Hard sudoku"
-                        style={{ marginBottom: 0 }}
+                        filename="hard-sudoku.png"
+                        footer="Hard sudoku"
                     />
-                    <p style={{ textAlign: 'center', marginTop: 0 }}>Hard sudoku</p>
                 </div>
             </div>
             <p>
@@ -65,10 +64,10 @@ export const english: ArticleContent = {
                 </a>
                 . That anecdote aroused my curiosity.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/sky-tv-hillside.jpg?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Sky TV hillside sudoku"
+                filename="sky-tv-hillside.jpg"
             />
             <p>
                 <b>Usually I would have thought about it for a while</b>, realize it is a
@@ -100,10 +99,11 @@ export const english: ArticleContent = {
                 9x9 sudoku would be the same as generating a 4x4 one and I went for a quick command
                 line algorithm.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Command line generated sudoku"
+                className="image-600"
+                filename="command-line.png"
             />
             <p>
                 <b>2. Damn! I need a graphical tool</b>: In theory, I just needed to adapt the
@@ -112,10 +112,11 @@ export const english: ArticleContent = {
                 what I was doing wrong just by reading the command line output, so I was compelled
                 to built a graphical tool.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/command-line-error.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Command line generation error"
+                className="image-600"
+                filename="command-line-error.png"
             />
             <p>
                 <b>3. Frog... this is complicated</b>: It didn't take me much time to create a web
@@ -125,10 +126,11 @@ export const english: ArticleContent = {
                 same number is already placed in the column, region or row of that box) contain a
                 set of derived rules, which are not easy to see at first glance.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-first-approach.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Web app first approach"
+                className="image-600"
+                filename="web-app-first-approach.png"
             />
             <p>
                 <b>4. The light at the end of the tunnel</b>: After sitting down and thinking about
@@ -137,10 +139,11 @@ export const english: ArticleContent = {
                 little bastards, it was just a matter of rewriting the algorithm to consider them.
                 It took me a number of hours, but I could finally get a working generator.
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.sudokuGeneration}/web-app-final-approach.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.sudokuGeneration}
                 alt="Web app final approach"
+                className="image-600"
+                filename="web-app-final-approach.png"
             />
             <p>
                 Hey look ma, I made it! In my case I didn't build a massive hamburger empire but
@@ -158,38 +161,42 @@ export const english: ArticleContent = {
                 <li>
                     If a box has only one possible number left, the number must be placed in that
                     box and it's not valid in any peer box:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/box-only-left-candidate.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku box single candidate example"
+                        className="image-600"
+                        filename="box-only-left-candidate.png"
                     />
                 </li>
                 <li>
                     If a number can only be placed in one box for a given group (column, region or
                     row), the number must be placed in that box and it's not valid in any peer box:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/group-single-candidate.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku group single candidate example"
+                        className="image-600"
+                        filename="group-single-candidate.png"
                     />
                 </li>
                 <li>
                     If 2-3 boxes in a group have only the same 2-3 numbers available, those numbers
                     are not valid in the rest of boxes in the group:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/owned-candidates.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku owned candidates rule example"
+                        className="image-600"
+                        filename="owned-candidates.png"
                     />
                 </li>
                 <li>
                     If the only boxes where a number is available for a given region are in the same
                     row or column, that number is not valid in the rest of boxes of that row or
                     column:
-                    <img
-                        className="article-image"
-                        src={`/images/blog/${ArticleId.sudokuGeneration}/region-subset.png?$modena=react-personal-page`}
+                    <ArticleImage
+                        articleId={ArticleId.sudokuGeneration}
                         alt="Sudoku region subset rule example"
+                        className="image-600"
+                        filename="region-subset.png"
                     />
                 </li>
             </ul>

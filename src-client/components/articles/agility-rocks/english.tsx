@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Agility... rocks?',
@@ -32,10 +33,10 @@ export const english: ArticleContent = {
                 the exercise (a picture is worth a thousand words) drastically limited by my drawing
                 skills on GIMP (so I should be happy if its worth anything more than two hundred):
             </p>
-            <img
-                className="article-image"
-                src={`/images/blog/${ArticleId.agilityRocks}/agile-exercise.png?$modena=react-personal-page`}
+            <ArticleImage
+                articleId={ArticleId.agilityRocks}
                 alt="Agility exercise representation"
+                filename="agile-exercise.png"
             />
             <p>
                 In short, the exercise consist of any even number of people (4 at least) standing in

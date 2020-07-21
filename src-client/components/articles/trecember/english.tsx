@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
+import { ArticleImage } from '../article-image';
 import { ConventionalYear, TrecemberYear } from './helpers';
 
 export const english: ArticleContent = {
@@ -51,10 +52,10 @@ export const english: ArticleContent = {
                         holidays when Christmas takes place on a Sunday).
                     </li>
                 </ul>
-                <img
-                    className="article-image"
-                    src={`/images/blog/${ArticleId.trecember}/not-crazy.gif?$modena=react-personal-page`}
+                <ArticleImage
+                    articleId={ArticleId.trecember}
                     alt="Person claiming not to be crazy GIF"
+                    filename="not-crazy.gif"
                 />
                 <p>
                     We could create a thousand different calendar systems that would track the time
