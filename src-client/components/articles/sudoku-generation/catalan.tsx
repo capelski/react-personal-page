@@ -4,7 +4,7 @@ import { ArticleId } from '../article-id';
 import { ArticleImage } from '../article-image';
 
 export const catalan: ArticleContent = {
-    title: 'Generació de sudokus',
+    title: 'Un algoritme de sudokus',
     description: 'Tot el que necessites saber per construir un generador de sudokus',
     introduction: (
         <p>

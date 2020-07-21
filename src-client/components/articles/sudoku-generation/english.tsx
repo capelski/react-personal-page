@@ -4,7 +4,7 @@ import { ArticleId } from '../article-id';
 import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
-    title: 'Sudoku generation',
+    title: 'Writing a sudoku algorithm',
     description: 'All you need to know in order to build a sudoku generator',
     introduction: (
         <p>
