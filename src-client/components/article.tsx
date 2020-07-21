@@ -4,6 +4,10 @@ import { Article as IArticle } from './articles/article-data';
 import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
 
+declare const navigator:
+    | undefined // Undefined on the server side
+    | { share?: (params: { text: string; title: string; url: string }) => void };
+
 interface ArticleBaseProps extends IArticle {
     selectedLanguage: Language;
 }
@@ -39,12 +43,6 @@ const articleLinksContent: { [key: string]: { [Language.ca]: string; [Language.e
 
 // TODO Create Image component with an optional text footer
 
-// Server side required casting. The share will never get triggered in the server anyway
-const navigator = (this as {
-    navigator?: { share: (params: { text: string; title: string; url: string }) => void };
-}).navigator;
-const isShareAvailable = navigator && 'share' in navigator;
-
 export const Article: React.FC<ArticleProps> = (props) => {
     const navigationRef = useRef<HTMLAnchorElement>(null);
 
@@ -58,14 +56,12 @@ export const Article: React.FC<ArticleProps> = (props) => {
     };
 
     const shareHandler = () => {
-        if (isShareAvailable) {
-            navigator!.share({
-                text: content.description,
-                title: content.title,
-                // TODO Extract url base into environment parameter?
-                url: `https://carlescapellas.xyz/article/${props.metadata.id}`
-            });
-        }
+        navigator!.share!({
+            text: content.description,
+            title: content.title,
+            // TODO Extract url base into environment parameter?
+            url: `https://carlescapellas.xyz/article/${props.metadata.id}`
+        });
     };
 
     const articleNavigationHandler = (articleId: ArticleId) => () => {
@@ -181,7 +177,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                                 )}
                             </div>
                         </div>
-                        {isShareAvailable && (
+                        {typeof navigator !== 'undefined' && navigator.share && (
                             <div className="share-button">
                                 <img
                                     src="/images/share.png?$modena=react-personal-page"
