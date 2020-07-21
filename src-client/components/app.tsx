@@ -12,10 +12,11 @@ interface AppProps {
 }
 
 const getInitialArticleId = (location: { pathname: string }) => {
+    const articlePathname = articleRoute.path.split('/')[1];
     const urlParts = location.pathname.split('/');
-    return urlParts.length > 2 && urlParts[1] === articleRoute.name
-        ? (urlParts[2] as ArticleId)
-        : undefined;
+    const isArticleUrl = urlParts.length > 2 && urlParts[1] === articlePathname;
+
+    return isArticleUrl ? (urlParts[2] as ArticleId) : undefined;
 };
 
 // If starting the application in an article url, we need to set the selectedCategory

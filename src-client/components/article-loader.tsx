@@ -43,7 +43,7 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
         });
     };
 
-    // Protection against non-existing urls (e.g. /article/non-existing)
+    // Protection against non-existing urls (e.g. /blog/non-existing)
     const currentArticle = filteredArticles.find(
         (article) => article.metadata.id === currentArticleId
     );
