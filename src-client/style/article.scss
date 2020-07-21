@@ -75,9 +75,15 @@
             color: black;
         }
 
-        ul li {
-            line-height: 1.75;
-            margin-top: 16px;
+        ul {
+            &.numbered {
+                list-style-type: decimal;
+            }
+
+            li {
+                line-height: 1.75;
+                margin-top: 16px;
+            }
         }
 
         .article-quote {

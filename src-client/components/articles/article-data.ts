@@ -4,7 +4,7 @@ import { ArticleCategory } from './article-category';
 
 // TODO Add a sentence for sharing, similar to description but calling to action
 export interface ArticleContent {
-    body: JSX.Element;
+    body: JSX.Element | React.FC<{}>;
     description: string;
     introduction: JSX.Element;
     title: string;

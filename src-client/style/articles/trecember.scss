@@ -1,0 +1,79 @@
+@import './variables.scss';
+
+.trecember {
+    .year {
+        display: flex;
+        margin-top: 20px;
+
+        .months {
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+
+            .month {
+                box-sizing: border-box;
+                border-bottom: 1px solid black;
+                border-left: 1px solid black;
+
+                &.odd-month {
+                    background-color: #ddd8e4;
+                }
+
+                &:first-child {
+                    border-top: 1px solid black;
+                }
+
+                &.weeks-4 {
+                    height: 200px;
+                }
+                &.weeks-5 {
+                    height: 250px;
+                }
+
+                .name {
+                    height: 100%;
+                    writing-mode: tb-rl;
+                    margin: auto;
+                    text-align: center;
+                }
+            }
+        }
+
+        .weeks {
+            width: 90%;
+
+            .week {
+                display: flex;
+                justify-content: space-between;
+
+                .day {
+                    text-align: center;
+                    width: 14.28%;
+                    padding: 15px 0;
+                    border-bottom: 1px solid black;
+                    border-left: 1px solid black;
+                    line-height: 20px;
+                    box-sizing: border-box;
+                    height: 50px;
+
+                    &.odd-month {
+                        background-color: #ddd8e4;
+                    }
+
+                    &.selected,
+                    &.odd-month.selected {
+                        background-color: $primaryColor;
+                    }
+
+                    &:last-child {
+                        border-right: 1px solid black;
+                    }
+                }
+
+                &:first-child .day {
+                    border-top: 1px solid black;
+                }
+            }
+        }
+    }
+}

@@ -112,7 +112,11 @@ export const Article: React.FC<ArticleProps> = (props) => {
             </div>
             <div className="article-body">
                 {content.introduction}
-                {props.preview ? null : content.body}
+                {props.preview
+                    ? null
+                    : typeof content.body === 'function'
+                    ? content.body({})
+                    : content.body}
                 {props.preview ? (
                     <NavLink
                         ref={navigationRef}
