@@ -2,6 +2,7 @@ import React from 'react';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
 import { ArticleImage } from '../article-image';
+import { ArticleVideo } from '../article-video';
 
 export const english: ArticleContent = {
     title: 'Stadia: cloud gaming',
@@ -165,11 +166,7 @@ export const english: ArticleContent = {
                 alt="Stadia website landing page"
                 filename="destiny-graphics-4.jpg"
             />
-            <video
-                controls
-                width="100%"
-                src={`/images/blog/${ArticleId.stadiaPlatform}/destiny-graphics-5.mp4?$modena=react-personal-page`}
-            />
+            <ArticleVideo articleId={ArticleId.stadiaPlatform} filename="destiny-graphics-5.mp4" />
         </React.Fragment>
     )
 };
