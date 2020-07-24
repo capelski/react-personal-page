@@ -23,22 +23,18 @@ export const catalan: ArticleContent = {
     body: (
         <React.Fragment>
             <div className="screen-splitter">
-                <div>
-                    <ArticleImage
-                        articleId={ArticleId.sudokuGeneration}
-                        alt="Easy sudoku"
-                        filename="easy-sudoku.png"
-                        footer="Sudoku fàcil"
-                    />
-                </div>
-                <div>
-                    <ArticleImage
-                        articleId={ArticleId.sudokuGeneration}
-                        alt="Hard sudoku"
-                        filename="hard-sudoku.png"
-                        footer="Sudoku difícil"
-                    />
-                </div>
+                <ArticleImage
+                    articleId={ArticleId.sudokuGeneration}
+                    alt="Easy sudoku"
+                    filename="easy-sudoku.png"
+                    footer="Sudoku fàcil"
+                />
+                <ArticleImage
+                    articleId={ArticleId.sudokuGeneration}
+                    alt="Hard sudoku"
+                    filename="hard-sudoku.png"
+                    footer="Sudoku difícil"
+                />
             </div>
             <p>
                 En el diari que la mama llegia aquell dia en concret, el sudoku fàcil tenia 28

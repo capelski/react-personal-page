@@ -10,7 +10,7 @@ interface ArticleImageProps {
 }
 
 export const ArticleImage: React.FC<ArticleImageProps> = (props) => (
-    <React.Fragment>
+    <div>
         <img
             className={`article-image${props.footer ? ' with-footer' : ''} ${
                 props.className ? props.className : ''
@@ -19,5 +19,5 @@ export const ArticleImage: React.FC<ArticleImageProps> = (props) => (
             alt={props.alt}
         />
         {props.footer ? <p className="article-image-footer">{props.footer}</p> : null}
-    </React.Fragment>
+    </div>
 );

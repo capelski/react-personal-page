@@ -23,22 +23,18 @@ export const english: ArticleContent = {
     body: (
         <React.Fragment>
             <div className="screen-splitter">
-                <div>
-                    <ArticleImage
-                        articleId={ArticleId.sudokuGeneration}
-                        alt="Easy sudoku"
-                        filename="easy-sudoku.png"
-                        footer="Easy sudoku"
-                    />
-                </div>
-                <div>
-                    <ArticleImage
-                        articleId={ArticleId.sudokuGeneration}
-                        alt="Hard sudoku"
-                        filename="hard-sudoku.png"
-                        footer="Hard sudoku"
-                    />
-                </div>
+                <ArticleImage
+                    articleId={ArticleId.sudokuGeneration}
+                    alt="Easy sudoku"
+                    filename="easy-sudoku.png"
+                    footer="Easy sudoku"
+                />
+                <ArticleImage
+                    articleId={ArticleId.sudokuGeneration}
+                    alt="Hard sudoku"
+                    filename="hard-sudoku.png"
+                    footer="Hard sudoku"
+                />
             </div>
             <p>
                 In the particular newspaper my mom was reading that day, the easy sudoku had 28
