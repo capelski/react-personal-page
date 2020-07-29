@@ -6,5 +6,6 @@ export enum ArticleId {
     trecember = 'trecember',
     sudokuGeneration = 'sudoku-generation',
     persuasionInPictures = 'persuasion-in-pictures',
-    stadiaPlatform = 'stadia-platform'
+    stadiaPlatform = 'stadia-platform',
+    webBadDecisions = 'web-bad-decisions'
 }

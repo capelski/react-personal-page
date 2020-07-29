@@ -6,6 +6,7 @@ import { trecember } from './trecember';
 import { sudokuGeneration } from './sudoku-generation';
 import { persuasionInPictures } from './persuasion-in-pictures';
 import { stadiaPlatform } from './stadia-platform';
+import { webBadDecisions } from './web-bad-decisions';
 
 export const articles = [
     agilityRocks,
@@ -15,5 +16,6 @@ export const articles = [
     trecember,
     sudokuGeneration,
     persuasionInPictures,
-    stadiaPlatform
+    stadiaPlatform,
+    webBadDecisions
 ].reverse();
