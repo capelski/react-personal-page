@@ -27,15 +27,16 @@ export const english: ArticleContent = {
                 I created my web page because I wanted to have a stronger online presence. Given
                 that web was about to become the official public online version of me, I built it as
                 a descriptive website, a formal presentation on how I'd like to be introduced. It
-                was more or less aesthetic, but it was designed for the general public; it just
-                provided information in a reasonably nice user interface.
+                was more or less aesthetic, but it was designed for the general public; it provided
+		information in a reasonably nice user interface.
             </p>
             <p>
-                When it comes to building software, the main point is always the same. Who are the
-                users of the app? My audience are not recruiters or fans. No one visits my website
-                to check out my CV neither to see the list of places I've travelled to. My audience
-                are friends, family and co-workers: they visit it out of curiosity. Is not the
-                information they can find there but the user experience that they will remember.
+                My audience are not recruiters or fans though. No one visits my website to check out
+		my CV neither to see the list of places I've travelled to. When it comes to building
+		software, the main point is always the same. Who are the users of the app? My
+		audience are friends, family and co-workers: they visit my website out of curiosity.
+		Is not the information they can find there but the user experience that they will
+		remember.
             </p>
             <p>
                 Having understood what my visitors expect to find in my website I designed this new
@@ -69,7 +70,7 @@ export const english: ArticleContent = {
             </p>
             <p>
                 In my old website I tackled this issue by adding a link to the actual websites, so
-                visitors could access them. I later learned this is to much to ask for; they need a
+                visitors could access them. I later learned this is to much to ask for; visitors need a
                 preview of what they will find there in order to click the links. I did keep the
                 links in the new version of the page, but I also added an image of each website and
                 I cut down the descriptions.
@@ -121,7 +122,7 @@ export const english: ArticleContent = {
             </p>
             <p>
                 While I think it's admirable not to settle with the standard solution and go for
-                higher standards, I must admit than in this case I went too far. Monaco editor is a
+                higher standards, I must admit that in this case I went too far. Monaco editor is a
                 complex library; it's meant to write code, not to display code snippets. It can be
                 used for that purpose but it heavily increases the website load time for very little
                 gain. In the new version of the website I lowered my perfectionist demands, accepted
@@ -195,17 +196,15 @@ export const english: ArticleContent = {
             <p>
                 The segmentation system I came up with was simple: labels. Each of the blog entries
                 has a category label and visitors of the blog can select the labels they want to
-                read about. So far so good. What I missed in this approach was defining standard
-                labels that could be easily understood by the visitors of the site upfront, instead
-                of creating new arbitrary Opinionated labels every time I wrote an entry which
-                didn't fit in any existing category. Not everyone will expect to find the same thing
-                in a category named 'Dissemination'.
+                read about. So far so good. What I missed in this approach was defining upfront
+		standard labels that could be easily understood by the visitors of the site: not
+		everyone will expect to find the same thing in a category named 'Dissemination'.
             </p>
             <p>
                 In the new version of the page I solved this issue by reducing the number of
                 categories to two. It's a less refined system but it's easier to understand.
                 Hopefully, it will also force me to select more relevant topics in future blog
-                entries.
+                entries 🤞
             </p>
             <div className="screen-splitter">
                 <ArticleImage
@@ -224,15 +223,15 @@ export const english: ArticleContent = {
             <h4>Conclusion</h4>
             <p>
                 Did I really need to make a new version of the page to fix the issues I mentioned?
-                Probably not. Don't forget that I'm a developer however! We take every opportunity
-                we can to rebuild a project from scratch using a whole different bunch of
-                technologies (in this case I was tired of Vue.js and I wanted to play around with
-                React transitions and add type safety to the equation).
+                Probably not. But don't forget that I'm a developer! We take every opportunity we can
+		to rebuild a project from scratch using a whole different bunch of technologies (in
+		this case I was tired of Vue.js and I wanted to play around with React transitions
+		and add type safety to the equation).
             </p>
             <p>
                 It's your turn now! Can you identify any of the issues above in your web page? It
                 can be hard to understand that this awesome website you are so proud of it's being
-                perceived in a different manner by your visitors. Best test? Try let your mother use
+                perceived in a different manner by your visitors. Best test? Watch your mother browsing
                 the page without explaining her how it works. See you in the next post!
             </p>
         </React.Fragment>
