@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+.four-coin-challenge {
+    .solution-buttons {
+        display: flex;
+        justify-content: space-between;
+
+        .solution-button {
+            border: none;
+            padding: 8px 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+            border-radius: 8px;
+            color: white;
+            background-color: $primaryColor;
+            outline: none;
+
+            &:hover {
+                background-color:  mix(white, $primaryColor, 15%);
+            }
+
+            &:active {
+                background-color: mix(black, $primaryColor, 15%);
+            }
+
+            &:not(.disabled-button) {
+                cursor: pointer;
+            }
+
+            &.disabled-button {
+                background-color:  mix(white, $primaryColor, 45%);
+            }
+        }
+    }
+}
