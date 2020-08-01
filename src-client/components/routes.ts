@@ -1,9 +1,9 @@
 import { RouteChildrenProps } from 'react-router-dom';
-import { ArticleLoader, ArticleLoaderAdditionalProps } from './article-loader';
-import { Blog, BlogAdditionalProps } from './blog';
-import { Error } from './error';
-import { Home } from './home';
-import { Portfolio } from './portfolio';
+import { ArticleLoader, ArticleLoaderAdditionalProps } from './sections/article-loader';
+import { Blog, BlogAdditionalProps } from './sections/blog';
+import { Error } from './sections/error';
+import { Home } from './sections/home';
+import { Portfolio } from './sections/portfolio';
 
 export interface ComponentRoute<TAdditional = {}> {
     additionalProps?: TAdditional;

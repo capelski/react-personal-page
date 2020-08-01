@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { RouteChildrenProps, NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { Article } from './article';
-import { articles } from './articles';
-import { ArticleCategory } from './articles/article-category';
-import { Language } from './articles/language';
+import { Article } from '../article';
+import { articles } from '../articles';
+import { ArticleCategory } from '../articles/article-category';
+import { Language } from '../articles/language';
+import { blogRoute } from '../routes';
+import { SectionContainer } from '../section-container';
+import { transitionsDuration } from '../variables';
 import { Error } from './error';
-import { blogRoute } from './routes';
-import { SectionContainer } from './section-container';
-import { transitionsDuration } from './variables';
 
 export interface ArticleLoaderAdditionalProps {
     selectedCategory: ArticleCategory;
@@ -47,6 +48,7 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
     const currentArticle = filteredArticles.find(
         (article) => article.metadata.id === currentArticleId
     );
+    const articleContent = currentArticle?.content(selectedLanguage);
 
     return currentArticle ? (
         <SectionContainer
@@ -60,6 +62,10 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
             sectionName="article-container"
             viewportRef={viewportRef}
         >
+        <Helmet>
+            <title>{articleContent!.title} | Carles Capellas</title>
+            <meta name="description" content={articleContent!.description} />
+        </Helmet>
             {filteredArticles.map((article) => {
                 const articleIndex = filteredArticles.findIndex(
                     (a) => a.metadata.id === article.metadata.id

@@ -21,6 +21,7 @@
         "@types/express": "4.17.6",
         "@types/react": "16.9.41",
         "@types/react-dom": "16.9.8",
+        "@types/react-helmet": "6.0.0",
         "@types/react-router-dom": "5.1.5",
         "@types/react-transition-group": "4.4.0",
         "awesome-typescript-loader": "5.2.1",
@@ -44,6 +45,7 @@
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-gist": "1.2.1",
+        "react-helmet": "6.1.0",
         "react-router-dom": "5.2.0",
         "react-transition-group": "4.4.1"
     }

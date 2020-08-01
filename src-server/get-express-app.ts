@@ -3,6 +3,7 @@ import { readFile } from 'fs';
 import { join } from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom';
 import { App } from '../src-client/components/app';
 
@@ -25,14 +26,21 @@ const serverRenderer: express.Handler = (req, res) => {
                 React.createElement(App, { isServerRendered: true })
             );
             const serializedApp = ReactDOMServer.renderToString(serverApp);
+            const headTags = Helmet.renderStatic();
 
             if (context.url) {
                 res.redirect(301, context.url);
             } else {
-                const serverRenderedApp = fileContents.replace(
-                    '<div id="app-placeholder"/>',
-                    `<div id="app-placeholder">${serializedApp}</div>`
-                );
+                const serverRenderedApp = fileContents
+                    .replace(
+                        '<div id="app-placeholder"/>',
+                        `<div id="app-placeholder">${serializedApp}</div>`
+                    )
+                    .replace(
+                        '<meta name="head-placeholder"/>',
+                        headTags.title.toString() + headTags.meta.toString()
+                    );
+
                 return res.send(serverRenderedApp);
             }
         } catch (renderError) {

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
-import { Project } from './project';
-import { homeRoute } from './routes';
-import { SectionContainer } from './section-container';
+import { Project } from '../project';
+import { homeRoute } from '../routes';
+import { SectionContainer } from '../section-container';
 
 export const Portfolio: React.FC<RouteChildrenProps> = () => (
     <SectionContainer
@@ -13,6 +14,10 @@ export const Portfolio: React.FC<RouteChildrenProps> = () => (
         }
         sectionName="portfolio"
     >
+        <Helmet>
+            <title>Portfolio | Carles Capellas</title>
+            <meta name="description" content="The personal web projects I have developed on my free time" />
+        </Helmet>
         <h1 className="portfolio-title">Portfolio</h1>
         <div className="projects">
             {/* TODO Include vue-ssr youtube video */}

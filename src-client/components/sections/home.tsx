@@ -1,7 +1,8 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { NavLink, RouteChildrenProps } from 'react-router-dom';
-import { blogRoute, portfolioRoute } from './routes';
-import { SectionContainer } from './section-container';
+import { blogRoute, portfolioRoute } from '../routes';
+import { SectionContainer } from '../section-container';
 
 export const Home: React.FC<RouteChildrenProps> = () => (
     <SectionContainer
@@ -17,9 +18,13 @@ export const Home: React.FC<RouteChildrenProps> = () => (
         }
         sectionName="home"
     >
+        <Helmet>
+            <title>Carles Capellas</title>
+            <meta name="description" content="Carles Capellas personal page. Read my blog entries and check out my portfolio" />
+        </Helmet>
         <React.Fragment>
             <div className="home-image">
-                <img src="/images/home-image.jpg?$modena=react-personal-page" />
+                <img src="/images/home-image.jpg?$modena=react-personal-page" alt="World map lines image" />
             </div>
             <div className="home-header">
                 <h1>
