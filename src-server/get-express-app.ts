@@ -19,6 +19,7 @@ const serverRenderer: express.Handler = (req, res) => {
 
         try {
             const context: { url: string | undefined } = { url: undefined };
+            process.env.PRODUCTION_URL_BASE = 'https://carlescapellas.xyz/react-personal-page';
 
             const serverApp = React.createElement(
                 StaticRouter,
