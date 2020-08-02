@@ -6,7 +6,7 @@ import { Article } from '../article';
 import { articles } from '../articles';
 import { ArticleCategory } from '../articles/article-category';
 import { Language } from '../articles/language';
-import { blogRoute } from '../routes';
+import { articleRoute, blogRoute } from '../routes';
 import { SectionContainer } from '../section-container';
 import { transitionsDuration } from '../variables';
 import { Error } from './error';
@@ -62,10 +62,27 @@ export const ArticleLoader: React.FC<ArticleLoaderProps> = (props) => {
             sectionName="article-container"
             viewportRef={viewportRef}
         >
-        <Helmet>
-            <title>{articleContent!.title} | Carles Capellas</title>
-            <meta name="description" content={articleContent!.description} />
-        </Helmet>
+            <Helmet>
+                <title>{articleContent!.title} | Carles Capellas</title>
+                <meta name="description" content={articleContent!.description} />
+                <meta property="og:site_name" content="Carles Capellas" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content={articleContent!.title} />
+                <meta property="og:description" content={articleContent!.description} />
+                <meta
+                    property="og:url"
+                    content={`${process.env.PRODUCTION_URL_BASE}${articleRoute.path.replace(
+                        ':articleId',
+                        currentArticle.metadata.id
+                    )}`}
+                />
+                {currentArticle.metadata.shareImage ? (
+                    <meta
+                        property="og:image"
+                        content={`${process.env.PRODUCTION_URL_BASE}/images/blog/${currentArticle.metadata.id}/${currentArticle.metadata.shareImage}`}
+                    />
+                ) : undefined}
+            </Helmet>
             {filteredArticles.map((article) => {
                 const articleIndex = filteredArticles.findIndex(
                     (a) => a.metadata.id === article.metadata.id

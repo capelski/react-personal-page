@@ -88,7 +88,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
                 ) : (
                     <ArticleNavigation
                         articleId={props.metadata.id}
-                        description={content.description}
+                        shareSentence={content.shareSentence || content.description}
                         onArticleNavigation={props.onArticleNavigation}
                         nextArticle={props.nextArticle}
                         previousArticle={props.previousArticle}

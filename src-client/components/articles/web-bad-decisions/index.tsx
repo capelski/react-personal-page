@@ -11,6 +11,7 @@ export const webBadDecisions: Article = {
         date: '2020-07-29',
         duration: 3,
         id: ArticleId.webBadDecisions,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'page-animations-vue.gif'
     }
 };

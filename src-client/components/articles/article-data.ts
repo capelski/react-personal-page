@@ -2,11 +2,12 @@ import { ArticleId } from './article-id';
 import { Language } from './language';
 import { ArticleCategory } from './article-category';
 
-// TODO Add a sentence for sharing, similar to description but calling to action
 export interface ArticleContent {
     body: JSX.Element | React.FC<{}>;
     description: string;
     introduction: JSX.Element;
+    // TODO Make mandatory
+    shareSentence?: string;
     title: string;
 }
 
@@ -16,6 +17,7 @@ export interface ArticleMetadata {
     duration: number;
     id: ArticleId;
     languages: Language[];
+    shareImage?: string;
 }
 
 export interface Article {

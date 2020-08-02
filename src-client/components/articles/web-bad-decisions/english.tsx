@@ -5,7 +5,9 @@ import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Web development bad decisions',
-    description: 'Some bad decisions I made while developing my old website',
+    description: 'Bad decisions I made while developing my old website and how to prevent them',
+    shareSentence:
+        'Check out some bad decisions I made while developing my website and learn how you can avoid them in the future',
     introduction: (
         <p>
             When building a web on my own, I face two challenges: what to put on it and how to put

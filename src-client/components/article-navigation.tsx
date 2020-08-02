@@ -5,9 +5,6 @@ import { ArticleId } from './articles/article-id';
 import { Language } from './articles/language';
 import { articleRoute } from './routes';
 
-// TODO Extract base url into environment parameter
-const baseUrl = 'https://carlescapellas.xyz';
-
 declare const navigator:
     | undefined // Undefined on the server side
     | { share?: (params: { text: string; title: string; url: string }) => void };
@@ -29,11 +26,11 @@ const articleLinksContent: { [key: string]: { [Language.ca]: string; [Language.e
 
 export interface ArticleNavigationProps {
     articleId: ArticleId;
-    description: string;
     nextArticle?: IArticle;
     onArticleNavigation: (articleId: ArticleId) => void;
     previousArticle?: IArticle;
     selectedLanguage: Language;
+    shareSentence: string;
     title: string;
 }
 
@@ -44,9 +41,12 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
 
     const shareHandler = () => {
         navigator!.share!({
-            text: props.description,
+            text: props.shareSentence,
             title: props.title,
-            url: `${baseUrl}${articleRoute.path.replace(':articleId', props.articleId)}`
+            url: `${process.env.PRODUCTION_URL_BASE}${articleRoute.path.replace(
+                ':articleId',
+                props.articleId
+            )}`
         });
     };
 
