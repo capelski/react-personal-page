@@ -10,16 +10,20 @@ export const english: ArticleContent = {
         'Check out some bad decisions I made while developing my website and learn how you can avoid them in the future',
     introduction: (
         <p>
-            When building a web on my own, I face two challenges: what to put on it and how to put
-            it. Usually the urge of getting the job done pushes me to start developing after
-            visualizing the global picture, and I don't spent enough time trying to solve those
+            When building a web on my own I generally face two challenges: what to put in it and how
+            to put it. Usually the urge of getting the job done pushes me to start developing after
+            visualizing the global picture, and I don't spend enough time trying to solve those
             challenges properly. As a consequence of this haste, I sometimes feel my web sites are
             lacking something... but what exactly? Here are the bad decisions I made while
             developing my{' '}
             <a href="https://carlescapellas.xyz/vue-personal-page" target="_blank">
                 old website
             </a>{' '}
-            and how I approached them on this new version of my web page.
+            and how I approached them on{' '}
+            <a href="https://carlescapellas.xyz/react-personal-page" target="_blank">
+                this new version
+            </a>{' '}
+            of my web page.
         </p>
     ),
     body: (
@@ -43,7 +47,7 @@ export const english: ArticleContent = {
             <p>
                 Having understood what my visitors expect to find in my website I designed this new
                 version of the page to have less information and to be more enjoyable; although
-                there are no page loads between sections navigation I still animated the
+                there are no page loads between sections navigation, I still animated the
                 transitions.
             </p>
             <div className="screen-splitter">
@@ -66,13 +70,13 @@ export const english: ArticleContent = {
                 I am proud of the websites I've developed and I could spend hours talking about why
                 I built them and how I did it. There is a purpose behind each of them and I lived
                 the whole ideation and development history. The visitors of my web don't share this
-                enthusiasm though. Not only they don't know about the projects context; they are not
-                even aware about their existence. Why would they waste their time reading about
+                enthusiasm though. Not only they don't know about the projects' context; they are
+                not even aware about their existence. Why would they waste their time reading about
                 something they can't relate to?
             </p>
             <p>
                 In my old website I tackled this issue by adding a link to the actual websites, so
-                visitors could access them. I later learned this is to much to ask for; visitors
+                visitors could access them. I later learned this is too much to ask for; visitors
                 need a preview of what they will find there in order to click the links. I did keep
                 the links in the new version of the page, but I also added an image of each website
                 and I cut down the descriptions.
@@ -128,8 +132,8 @@ export const english: ArticleContent = {
                 complex library; it's meant to write code, not to display code snippets. It can be
                 used for that purpose but it heavily increases the website load time for very little
                 gain. In the new version of the website I lowered my perfectionist demands, accepted
-                the Gist limitations and achieve a similar solution to the problem while keeping the
-                web light.
+                the Gist limitations and achieved a similar solution to the problem while keeping
+                the web light.
             </p>
             <div className="screen-splitter">
                 <ArticleImage
@@ -151,9 +155,9 @@ export const english: ArticleContent = {
                 calendar view of the blog entries, so I could check how often I was posting on my
                 blog. I quickly found a compatible library, managed to display a calendar
                 highlighting the dates in which I posted to the blog and rearranged the blog layout
-                to include the calendar view. Because the calendar took to much space to always be
+                to include the calendar view. Because the calendar took too much space to always be
                 visible, I created a collapsible section, moved the blog filters in it and proudly
-                deploy my latest feature.
+                deployed my latest feature.
             </p>
             <ArticleImage
                 articleId={ArticleId.webBadDecisions}
@@ -181,7 +185,7 @@ export const english: ArticleContent = {
                 as I made the blog filters less accessible while adding little value with the
                 calendar view itself 😔 Yes, I could have solved this issues by changing the way to
                 access the calendar view while keeping the blog filters always visible. My point
-                here is that sometimes is better not to have a feature than to force the web to
+                here is that sometimes it's better not to have a feature than to force the web to
                 accommodate it. In my new web page I decided to omit the calendar view, both for
                 better filters access and because I felt it wasn't worth spending time on
                 integrating it given the minor improvement it adds to the web.
@@ -232,7 +236,7 @@ export const english: ArticleContent = {
             </p>
             <p>
                 It's your turn now! Can you identify any of the issues above in your web page? It
-                can be hard to understand that this awesome website you are so proud of it's being
+                can be hard to understand that this awesome website you are so proud of is being
                 perceived in a different manner by your visitors. Best test? Watch your mother
                 browsing the page without explaining her how it works. See you in the next post!
             </p>
