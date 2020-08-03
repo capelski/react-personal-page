@@ -1,8 +1,8 @@
 import React from 'react';
 
-// TODO Include the image in this component
 interface ProjectProps {
     date?: string;
+    image: string;
     repository?: string;
     title: string;
     url?: string;
@@ -14,22 +14,25 @@ export const Project: React.FC<ProjectProps> = (props) => (
             <h3 className="project-title">{props.title}</h3>
             <div className="project-details">
                 {props.date ? <span className="project-date">📅 {props.date}</span> : null}
-                {props.url ? (
-                    <span className="project-demo">
-                        <a target="_blank" href={props.url}>
-                            🌐
-                        </a>
-                    </span>
-                ) : null}
                 {props.repository ? (
-                    <span className="project-source">
-                        <a target="_blank" href={`https://github.com/capelski/${props.repository}`}>
-                            🖥️
-                        </a>
-                    </span>
+                    <a
+                        target="_blank"
+                        className="project-source"
+                        href={`https://github.com/capelski/${props.repository}`}
+                    >
+                        ⌨️ source
+                    </a>
                 ) : null}
             </div>
         </div>
         {props.children ? props.children : null}
+        <div className="project-image-wrapper">
+            <img src={`/images/portfolio/${props.image}?$modena=react-personal-page`} />
+            {props.url ? (
+                <a target="_blank" href={props.url} className="project-demo">
+                    ▶️
+                </a>
+            ) : null}
+        </div>
     </div>
 );
