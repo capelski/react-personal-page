@@ -11,6 +11,7 @@ export const persuasionInPictures: Article = {
         date: '2020-06-14',
         duration: 4,
         id: ArticleId.persuasionInPictures,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'contagion.png'
     }
 };

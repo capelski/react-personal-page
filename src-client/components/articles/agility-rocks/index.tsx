@@ -11,6 +11,7 @@ export const agilityRocks: Article = {
         date: '2019-06-17',
         duration: 2,
         id: ArticleId.agilityRocks,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'agile-exercise.png'
     }
 };

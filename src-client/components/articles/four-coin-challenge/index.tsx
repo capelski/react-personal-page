@@ -11,6 +11,7 @@ export const fourCoinChallenge: Article = {
         date: '2019-07-22',
         duration: 2,
         id: ArticleId.fourCoinChallenge,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'initial-position.jpg'
     }
 };

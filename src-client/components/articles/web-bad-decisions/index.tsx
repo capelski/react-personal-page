@@ -12,6 +12,6 @@ export const webBadDecisions: Article = {
         duration: 3,
         id: ArticleId.webBadDecisions,
         languages: [Language.en],
-        shareImage: 'page-animations-vue.gif'
+        shareImage: 'blog-filters-vue.png'
     }
 };

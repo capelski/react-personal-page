@@ -11,6 +11,7 @@ export const subscribersList: Article = {
         date: '2019-09-13',
         duration: 4,
         id: ArticleId.subscribersList,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'signup-form.png'
     }
 };

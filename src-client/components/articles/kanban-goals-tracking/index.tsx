@@ -11,6 +11,7 @@ export const kanbanGoalsTracking: Article = {
         date: '2019-10-21',
         duration: 3,
         id: ArticleId.kanbanGoalsTracking,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'trello-board.png'
     }
 };

@@ -11,6 +11,7 @@ export const stadiaPlatform: Article = {
         date: '2020-06-20',
         duration: 3,
         id: ArticleId.stadiaPlatform,
-        languages: [Language.en]
+        languages: [Language.en],
+        shareImage: 'destiny-graphics-1.jpg'
     }
 };

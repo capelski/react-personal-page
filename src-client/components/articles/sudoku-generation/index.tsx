@@ -12,6 +12,7 @@ export const sudokuGeneration: Article = {
         date: '2020-04-29',
         duration: 6,
         id: ArticleId.sudokuGeneration,
-        languages: [Language.ca, Language.en]
+        languages: [Language.ca, Language.en],
+        shareImage: 'sky-tv-hillside.jpg'
     }
 };
