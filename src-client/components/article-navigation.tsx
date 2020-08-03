@@ -58,7 +58,7 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
             <div className="article-links">
                 <div className="previous-link">
                     {props.previousArticle && (
-                        <React.Fragment>
+                        <span className="link-text">
                             ⬅️{' '}
                             <NavLink
                                 to={articleRoute.path.replace(
@@ -74,12 +74,12 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                             <div className="title-preview">
                                 {props.previousArticle.content(props.selectedLanguage).title}
                             </div>
-                        </React.Fragment>
+                        </span>
                     )}
                 </div>
                 <div className="next-link">
                     {props.nextArticle && (
-                        <React.Fragment>
+                        <span className="link-text">
                             <NavLink
                                 to={articleRoute.path.replace(
                                     ':articleId',
@@ -93,7 +93,7 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                             <div className="title-preview">
                                 {props.nextArticle.content(props.selectedLanguage).title}
                             </div>
-                        </React.Fragment>
+                        </span>
                     )}
                 </div>
             </div>

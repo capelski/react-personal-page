@@ -29,9 +29,18 @@
 .article {
     &.preview-mode {
         cursor: pointer;
+
+        &:hover {
+            .article-info,
+            .article-body {
+                opacity: $hoverOpacity;
+            }
+        }
     }
 
     .article-info {
+        transition: opacity $hoverOpacity;
+
         @media (min-width: $medium) {
             display: flex;
             align-items: baseline;
@@ -58,12 +67,18 @@
 
                 &.article-language {
                     cursor: pointer;
-                    text-decoration: underline;
+                    transition: font-size $hoverTransition, margin $hoverTransition,
+                        opacity $hoverTransition;
 
                     &.selected-language {
                         cursor: default;
-                        text-decoration: none;
                         font-weight: 700;
+                    }
+
+                    &:hover:not(.selected-language) {
+                        opacity: $hoverOpacity;
+                        margin-top: 0;
+                        font-size: 20px;
                     }
                 }
             }
@@ -71,6 +86,8 @@
     }
 
     .article-body {
+        transition: opacity $hoverOpacity;
+
         a {
             color: black;
         }
@@ -141,13 +158,24 @@
         .next-link {
             margin: 16px 0;
 
-            a {
+            .link-text {
                 color: black;
                 font-size: 20px;
-            }
+                transition: font-size $hoverTransition, opacity $hoverTransition;
 
-            .title-preview {
-                margin-top: 8px;
+                a {
+                    text-decoration: none;
+                }
+
+                .title-preview {
+                    margin-top: 8px;
+                    font-size: 16px;
+                }
+
+                &:hover {
+                    font-size: 24px;
+                    opacity: $hoverOpacity;
+                }
             }
         }
 

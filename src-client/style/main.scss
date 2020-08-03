@@ -63,6 +63,12 @@ body {
         padding: 16px;
         cursor: pointer;
         line-height: 32px;
+        transition: font-size $hoverTransition, opacity $hoverTransition;
+
+        &:hover {
+            font-size: 30px;
+            opacity: $hoverOpacity;
+        }
     }
 }
 

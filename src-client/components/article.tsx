@@ -47,28 +47,25 @@ export const Article: React.FC<ArticleProps> = (props) => {
                     <span className="article-date">📅 {props.metadata.date}</span>
                     <span className="article-duration">🕐 {props.metadata.duration} mins</span>
                     {props.metadata.languages.map((language) => (
-                        <React.Fragment>
-                            🌎{' '}
-                            <span
-                                key={language}
-                                className={
-                                    props.preview
-                                        ? ''
-                                        : `article-language${
-                                              props.selectedLanguage === language
-                                                  ? ' selected-language'
-                                                  : ''
-                                          }`
-                                }
-                                onClick={
-                                    props.preview
-                                        ? undefined
-                                        : () => props.setSelectedLanguage(language)
-                                }
-                            >
-                                {language}
-                            </span>
-                        </React.Fragment>
+                        <span
+                            key={language}
+                            className={
+                                props.preview
+                                    ? ''
+                                    : `article-language${
+                                          props.selectedLanguage === language
+                                              ? ' selected-language'
+                                              : ''
+                                      }`
+                            }
+                            onClick={
+                                props.preview
+                                    ? undefined
+                                    : () => props.setSelectedLanguage(language)
+                            }
+                        >
+                            🌎 {language}
+                        </span>
                     ))}
                 </div>
             </div>
