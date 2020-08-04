@@ -6,6 +6,7 @@ import ReactDOMServer from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom';
 import { App } from '../src-client/components/app';
+import { supportedRoutes } from '../src-client/components/routes';
 
 const staticPath = join(__dirname, '..');
 const indexPath = join(staticPath, 'index.html');
@@ -19,6 +20,7 @@ const serverRenderer: express.Handler = (req, res) => {
 
         try {
             const context: { url: string | undefined } = { url: undefined };
+            // Necessary for meta tags rendering
             process.env.PRODUCTION_URL_BASE = 'https://carlescapellas.xyz/react-personal-page';
 
             const serverApp = React.createElement(
@@ -54,11 +56,12 @@ const serverRenderer: express.Handler = (req, res) => {
 export default () => {
     const app = express();
 
+    // Need to capture the base url to avoid express.static serving the index.html
     app.get(/^\/$/, serverRenderer);
 
     app.use(express.static(staticPath));
 
-    app.get('*', serverRenderer);
+    app.get([/^\/react-personal-page/].concat(supportedRoutes), serverRenderer);
 
     return app;
 };
