@@ -12,9 +12,8 @@ export const english: ArticleContent = {
             At this point in your life there might be a few things you are not familiar with:
             wasabi, free falling or David Lynch's movies for instance. The gregorian calendar
             however is not one of them. You learned it in school when you were a child, got used to
-            it and never question it again. Brace yourselves because today{' '}
-            <b>the questioning day has arrived</b>. What would a calendar with thirteen months look
-            like?
+            it and never question it again. Brace yourselves because today the questioning day has
+            arrived. What would a calendar with thirteen months look like?
         </p>
     ),
     body: () => {

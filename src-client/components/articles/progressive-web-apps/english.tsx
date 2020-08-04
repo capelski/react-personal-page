@@ -111,10 +111,9 @@ export const english: ArticleContent = {
                 <b>fetch</b> listener. This handler will intercept every network request and will
                 allow us to serve a cached version of a given resource, which, due to the{' '}
                 <b>Network falling back to cache</b> strategy, will happen only if the corresponding
-                network request fails (lines 35-37). {/*TODO Update the lines number*/} Don't forget
-                to add the asset to the cache on a successful network response in order to keep the
-                cache content updated (line 31). The <b>clone</b> method is required because the
-                responses can only be consumed once.
+                network request fails (lines 35-37). Don't forget to add the asset to the cache on a
+                successful network response in order to keep the cache content updated (line 31).
+                The <b>clone</b> method is required because the responses can only be consumed once.
             </p>
             <p>
                 Optionally, an <b>activate</b> listener can also be defined in order to run some

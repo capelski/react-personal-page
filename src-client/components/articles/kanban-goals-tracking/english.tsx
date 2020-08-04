@@ -8,11 +8,11 @@ export const english: ArticleContent = {
     description: 'How to efficiently manage your personal goals using Kanban strategy',
     introduction: (
         <p>
-            As a software engineer I am quite used to <b>project management</b> practice. With it's{' '}
-            <b>never ending meetings</b>, the excess of <b>control mechanisms</b> and the recurrent{' '}
-            <b>mail chains</b> it is certainly not the most popular system between the employees.
-            Far from perfect however, it let to some techniques that are simple and effective when
-            it comes to goals management.
+            As a software engineer I am quite used to project management practice. With it's never
+            ending meetings, the excess of control mechanisms and the recurrent mail chains it is
+            certainly not the most popular system between the employees. Far from perfect however,
+            it let to some techniques that are simple and effective when it comes to goals
+            management.
         </p>
     ),
     body: (

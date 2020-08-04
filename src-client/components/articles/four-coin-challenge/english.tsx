@@ -12,9 +12,9 @@ export const english: ArticleContent = {
             In contrast to my abstract esoteric last post on the meaning of life, today I bring a
             light and enjoyable post that will make you think in a different manner; you will need
             to find a way to lay four coins in a row. Doesn't sound complicated, does it? Just let
-            me add a couple of restrictions so that the word <b>challenge</b> on the title is not
-            used in vain and in order for you to feel proud of yourself if you are able to find out
-            a solution.
+            me add a couple of restrictions so that the word challenge on the title is not used in
+            vain and in order for you to feel proud of yourself if you are able to find out a
+            solution.
         </p>
     ),
     body: () => {
