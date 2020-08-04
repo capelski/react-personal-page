@@ -1,6 +1,7 @@
 export enum ArticleId {
     agilityRocks = 'agility-rocks',
     fourCoinChallenge = 'four-coin-challenge',
+    progressiveWebApps = 'progressive-web-apps',
     existentialInjustice = 'existential-injustice',
     subscribersList = 'subscribers-list',
     kanbanGoalsTracking = 'kanban-goals-tracking',

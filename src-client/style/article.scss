@@ -119,12 +119,12 @@
             }
 
             &.image-300 {
-                max-width: 300px;
+                width: 300px;
             }
 
             &.image-600 {
                 @media (min-width: $medium) {
-                    max-width: 600px;
+                    width: 600px;
                 }
             }
         }

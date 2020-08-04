@@ -1,5 +1,6 @@
 import { agilityRocks } from './agility-rocks';
 import { fourCoinChallenge } from './four-coin-challenge';
+import { progressiveWebApps } from './progressive-web-apps';
 import { existentialInjustice } from './existential-injustice';
 import { subscribersList } from './subscribers-list';
 import { kanbanGoalsTracking } from './kanban-goals-tracking';
@@ -12,6 +13,7 @@ import { webBadDecisions } from './web-bad-decisions';
 export const articles = [
     agilityRocks,
     fourCoinChallenge,
+    progressiveWebApps,
     existentialInjustice,
     subscribersList,
     kanbanGoalsTracking,
