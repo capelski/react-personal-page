@@ -1,5 +1,6 @@
 export enum ArticleId {
     agilityRocks = 'agility-rocks',
+    meaningOfLife = 'meaning-of-life',
     fourCoinChallenge = 'four-coin-challenge',
     progressiveWebApps = 'progressive-web-apps',
     existentialInjustice = 'existential-injustice',
