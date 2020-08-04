@@ -59,7 +59,6 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                 <div className="previous-link">
                     {props.previousArticle && (
                         <span className="link-text">
-                            ⬅️{' '}
                             <NavLink
                                 to={articleRoute.path.replace(
                                     ':articleId',
@@ -69,7 +68,7 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                                     props.previousArticle.metadata.id
                                 )}
                             >
-                                {articleLinksContent['previous'][props.selectedLanguage]}
+                                ⬅️ {articleLinksContent['previous'][props.selectedLanguage]}
                             </NavLink>
                             <div className="title-preview">
                                 {props.previousArticle.content(props.selectedLanguage).title}
@@ -87,9 +86,8 @@ export const ArticleNavigation: React.FC<ArticleNavigationProps> = (props) => {
                                 )}
                                 onClick={articleNavigationHandler(props.nextArticle.metadata.id)}
                             >
-                                {articleLinksContent['following'][props.selectedLanguage]}
-                            </NavLink>{' '}
-                            ➡️
+                                {articleLinksContent['following'][props.selectedLanguage]} ➡️
+                            </NavLink>
                             <div className="title-preview">
                                 {props.nextArticle.content(props.selectedLanguage).title}
                             </div>
