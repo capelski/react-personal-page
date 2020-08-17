@@ -1,4 +1,5 @@
 import { agilityRocks } from './agility-rocks';
+import { leakedApiKey } from './leaked-api-key';
 import { meaningOfLife } from './meaning-of-life';
 import { fourCoinChallenge } from './four-coin-challenge';
 import { progressiveWebApps } from './progressive-web-apps';
@@ -13,6 +14,7 @@ import { webBadDecisions } from './web-bad-decisions';
 
 export const articles = [
     agilityRocks,
+    leakedApiKey,
     meaningOfLife,
     fourCoinChallenge,
     progressiveWebApps,
