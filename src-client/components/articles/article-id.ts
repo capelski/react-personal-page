@@ -9,6 +9,7 @@ export enum ArticleId {
     kanbanGoalsTracking = 'kanban-goals-tracking',
     trecember = 'trecember',
     webDevOnSteroidsI = 'web-dev-on-steroids-i',
+    webDevOnSteroidsII = 'web-dev-on-steroids-ii',
     sudokuGeneration = 'sudoku-generation',
     persuasionInPictures = 'persuasion-in-pictures',
     stadiaPlatform = 'stadia-platform',

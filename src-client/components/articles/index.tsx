@@ -8,6 +8,7 @@ import { subscribersList } from './subscribers-list';
 import { kanbanGoalsTracking } from './kanban-goals-tracking';
 import { trecember } from './trecember';
 import { webDevOnSteroidsI } from './web-dev-on-steroids-i';
+import { webDevOnSteroidsII } from './web-dev-on-steroids-ii';
 import { sudokuGeneration } from './sudoku-generation';
 import { persuasionInPictures } from './persuasion-in-pictures';
 import { stadiaPlatform } from './stadia-platform';
@@ -24,6 +25,7 @@ export const articles = [
     kanbanGoalsTracking,
     trecember,
     webDevOnSteroidsI,
+    webDevOnSteroidsII,
     sudokuGeneration,
     persuasionInPictures,
     stadiaPlatform,
