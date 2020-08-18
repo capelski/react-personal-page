@@ -8,6 +8,7 @@ export enum ArticleId {
     subscribersList = 'subscribers-list',
     kanbanGoalsTracking = 'kanban-goals-tracking',
     trecember = 'trecember',
+    webDevOnSteroidsI = 'web-dev-on-steroids-i',
     sudokuGeneration = 'sudoku-generation',
     persuasionInPictures = 'persuasion-in-pictures',
     stadiaPlatform = 'stadia-platform',

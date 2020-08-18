@@ -226,7 +226,7 @@ export const english: ArticleContent = {
                     footer="New website blog filters"
                 />
             </div>
-            <h4>Conclusion</h4>
+            <h4>Conclusions</h4>
             <p>
                 Did I really need to make a new version of the page to fix the issues I mentioned?
                 Probably not. But don't forget that I'm a developer! We take every opportunity we

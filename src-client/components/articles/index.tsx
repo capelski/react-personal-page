@@ -7,6 +7,7 @@ import { existentialInjustice } from './existential-injustice';
 import { subscribersList } from './subscribers-list';
 import { kanbanGoalsTracking } from './kanban-goals-tracking';
 import { trecember } from './trecember';
+import { webDevOnSteroidsI } from './web-dev-on-steroids-i';
 import { sudokuGeneration } from './sudoku-generation';
 import { persuasionInPictures } from './persuasion-in-pictures';
 import { stadiaPlatform } from './stadia-platform';
@@ -22,6 +23,7 @@ export const articles = [
     subscribersList,
     kanbanGoalsTracking,
     trecember,
+    webDevOnSteroidsI,
     sudokuGeneration,
     persuasionInPictures,
     stadiaPlatform,
