@@ -68,7 +68,9 @@ export const english: ArticleContent = {
                 <div className="solution-buttons">
                     <button
                         type="button"
-                        className={`solution-button ${solutionStep > 1 ? '' : 'disabled-button'}`}
+                        className={`button primary big ${
+                            solutionStep > 1 ? '' : 'disabled-button'
+                        }`}
                         onClick={() => {
                             setSolutionStep(Math.max(solutionStep - 1, 1));
                         }}
@@ -77,7 +79,9 @@ export const english: ArticleContent = {
                     </button>
                     <button
                         type="button"
-                        className={`solution-button ${solutionStep < 13 ? '' : 'disabled-button'}`}
+                        className={`button primary big ${
+                            solutionStep < 13 ? '' : 'disabled-button'
+                        }`}
                         onClick={() => {
                             setSolutionStep(Math.min(solutionStep + 1, 13));
                         }}
