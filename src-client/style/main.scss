@@ -15,9 +15,16 @@ $mobilePadding: 16px;
 $desktopPadding: 32px;
 $linksHeight: 64px;
 
+html,
+body,
+#app-placeholder,
+.app-container,
+.app-container > * {
+    height: 100%;
+}
+
 body {
     margin: 0;
-    min-height: 100%;
     font-family: 'Gill Sans', sans-serif;
 }
 
