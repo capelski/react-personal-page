@@ -41,6 +41,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
         <div
             className={`article ${props.metadata.id}${props.preview ? '  preview-mode' : ''}`}
             onClick={props.preview ? containerClickHandler : undefined}
+            lang={props.selectedLanguage}
         >
             <div className="article-info">
                 <h3 className="article-title">{content.title}</h3>
