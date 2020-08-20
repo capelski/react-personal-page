@@ -27,7 +27,10 @@ export const Project: React.FC<ProjectProps> = (props) => (
         </div>
         {props.children ? props.children : null}
         <div className="project-image-wrapper">
-            <img src={`/images/portfolio/${props.image}?$modena=react-personal-page`} />
+            <img
+                src={`/images/portfolio/${props.image}?$modena=react-personal-page`}
+                alt={`${props.title} project`}
+            />
             {props.url ? (
                 <a target="_blank" href={props.url} className="project-demo">
                     ▶️
