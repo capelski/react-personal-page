@@ -13,6 +13,7 @@ import { sudokuGeneration } from './sudoku-generation';
 import { persuasionInPictures } from './persuasion-in-pictures';
 import { stadiaPlatform } from './stadia-platform';
 import { webBadDecisions } from './web-bad-decisions';
+import { linearGradient } from './linear-gradient';
 
 export const articles = [
     agilityRocks,
@@ -29,5 +30,6 @@ export const articles = [
     sudokuGeneration,
     persuasionInPictures,
     stadiaPlatform,
-    webBadDecisions
+    webBadDecisions,
+    linearGradient
 ].reverse();

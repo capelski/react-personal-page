@@ -13,5 +13,6 @@ export enum ArticleId {
     sudokuGeneration = 'sudoku-generation',
     persuasionInPictures = 'persuasion-in-pictures',
     stadiaPlatform = 'stadia-platform',
-    webBadDecisions = 'web-bad-decisions'
+    webBadDecisions = 'web-bad-decisions',
+    linearGradient = 'linear-gradient'
 }

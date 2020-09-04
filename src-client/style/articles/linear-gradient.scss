@@ -1,0 +1,104 @@
+@import '../variables.scss';
+
+$wheelSize: 350px; // Keep in sync with wheel.tsx wheelSize
+$wheelSpinDuration: 4000ms; // Keep in sync with wheel.tsx wheelSpinDuration
+
+.linear-gradient {
+    .wheel {
+        position: relative;
+        width: $wheelSize;
+        height: $wheelSize;
+        margin: 32px auto;
+        overflow: hidden;
+        border-radius: $wheelSize / 2;
+        border: 1px solid black;
+
+        &.animated {
+            transition: transform $wheelSpinDuration;
+        }
+
+        .wheel-tile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: $wheelSize / 2;
+            height: $wheelSize / 2;
+            box-sizing: border-box;
+
+            &:nth-child(odd) {
+                color: #f2f2f2;
+            }
+
+            &:nth-child(even) {
+                color: #0082ff;
+            }
+
+            .tile-text {
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+
+        &.tiles-4 {
+            .wheel-tile {
+                padding-top: 72px;
+
+                &:nth-child(odd) {
+                    background-color: #0082ff;
+                }
+
+                &:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+
+                .tile-text {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+
+        &.tiles-8 {
+            .wheel-tile {
+                padding-top: 32px;
+
+                &:nth-child(odd) {
+                    background: linear-gradient(135deg, #0082ff 50%, transparent 50%);
+                }
+
+                &:nth-child(even) {
+                    background: linear-gradient(135deg, #f2f2f2 50%, transparent 50%);
+                }
+
+                .tile-text {
+                    width: 64%;
+                    transform: rotate(25deg);
+                }
+            }
+        }
+
+        &.tiles-12 {
+            .wheel-tile {
+                padding-top: 32px;
+
+                &:nth-child(odd) {
+                    background: linear-gradient(120deg, #0082ff 36.5%, transparent 36.5%);
+                }
+
+                &:nth-child(even) {
+                    background: linear-gradient(120deg, #f2f2f2 36.5%, transparent 36.5%);
+                }
+
+                .tile-text {
+                    width: 40%;
+                    transform: rotate(15deg);
+                }
+            }
+        }
+    }
+
+    .button-wrapper {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
