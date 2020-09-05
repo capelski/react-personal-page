@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const wheelSize = 350; // Keep in sync with linear-gradient.scss $wheelSize
+const wheelSize = 300; // Keep in sync with linear-gradient.scss $wheelSize
 const wheelSpinDuration = 4000; // Keep in sync with linear-gradient.scss $wheelSpinDuration
 
 export interface WheelProps {
