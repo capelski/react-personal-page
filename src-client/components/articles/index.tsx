@@ -14,6 +14,7 @@ import { persuasionInPictures } from './persuasion-in-pictures';
 import { stadiaPlatform } from './stadia-platform';
 import { webBadDecisions } from './web-bad-decisions';
 import { linearGradient } from './linear-gradient';
+import { expressOnGoogleCloud } from './express-on-google-cloud';
 
 export const articles = [
     agilityRocks,
@@ -31,5 +32,6 @@ export const articles = [
     persuasionInPictures,
     stadiaPlatform,
     webBadDecisions,
-    linearGradient
+    linearGradient,
+    expressOnGoogleCloud
 ].reverse();

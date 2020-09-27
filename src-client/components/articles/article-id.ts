@@ -14,5 +14,6 @@ export enum ArticleId {
     persuasionInPictures = 'persuasion-in-pictures',
     stadiaPlatform = 'stadia-platform',
     webBadDecisions = 'web-bad-decisions',
-    linearGradient = 'linear-gradient'
+    linearGradient = 'linear-gradient',
+    expressOnGoogleCloud = 'express-on-google-cloud'
 }
