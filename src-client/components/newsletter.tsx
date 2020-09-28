@@ -35,7 +35,7 @@ export const Newsletter: React.FC<NewsletterProps> = (props) => (
             noValidate
         >
             <div id="mc_embed_signup_scroll">
-                <h4>{formContent.title[props.selectedLanguage]}</h4>
+                <p className="newsletter-title">{formContent.title[props.selectedLanguage]}</p>
                 <p>{formContent.body[props.selectedLanguage]}</p>
                 <div className="inputs-wrapper">
                     <input

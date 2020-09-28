@@ -163,9 +163,14 @@
     }
 
     .article-newsletter {
-        margin: 40px 0;
-        padding: 8px 16px;
-        box-shadow: inset 0px 0px 10px 2px #d9d9d9;
+        margin-top: 56px;
+        margin-bottom: 56px;
+        border-top: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+
+        .newsletter-title {
+            font-size: 20px;
+        }
 
         .inputs-wrapper {
             display: flex;
