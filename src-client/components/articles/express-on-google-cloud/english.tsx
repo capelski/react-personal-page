@@ -1,12 +1,14 @@
 import React from 'react';
+import ReactGist from 'react-gist';
 import { ArticleContent } from '../article-data';
 import { ArticleId } from '../article-id';
 import { ArticleImage } from '../article-image';
 
 export const english: ArticleContent = {
     title: 'Running express on Google Cloud',
-    description: 'TODO',
-    shareSentence: 'TODO',
+    description: 'How to deploy your node.js express app to Google Cloud Platform for first-timers',
+    shareSentence:
+        'Interested in cloud infrastructure? Learn how to deploy your node.js express app to Google Cloud Platform 🚀',
     introduction: (
         <p>
             So you have just finished your splendid new node.js express app, it runs smoothly in
@@ -19,6 +21,12 @@ export const english: ArticleContent = {
     ),
     body: (
         <React.Fragment>
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="Autoscaling environment"
+                className="image-600"
+                filename="autoscaling.gif"
+            />
             <h4>The conventional way</h4>
             <p>
                 Before the appearance of cloud infrastructure providers (e.g. Google Cloud, Amazon
@@ -76,8 +84,9 @@ export const english: ArticleContent = {
             <h4>Simple yet realistic app</h4>
             <p>
                 You can host any kind of application in GCP (Google Cloud Platform) so before
-                jumping into it let's have a look at the nature of web app that will be deployed.
-                For this example I developed a web Api connected to a mySQL database. I used{' '}
+                jumping into it let's have a look at the nature of the web app that will be
+                deployed. For this example I developed a web Api connected to a mySQL database. I
+                used{' '}
                 <a href="https://nestjs.com/" target="_blank">
                     NestJS
                 </a>
@@ -129,6 +138,193 @@ export const english: ArticleContent = {
                 footer="Web api endpoint call example"
             />
             <h4>Google App Engine</h4>
+            <p>
+                Given the nature of the application App Engine is the right choice, but before
+                delving into the deployment steps there are a couple of considerations we must
+                address.
+            </p>
+            <h5>Stateful apps</h5>
+            <p>
+                In first place, there is a type of express libraries that don't play well with
+                autoscaling environments, being the most used express-session. The issue with this
+                library is it stores user information (the request session) in the server memory.
+                While this works out when there is a single server, it falls apart when there are
+                multiple virtual machines running the application because a user request might be
+                served by a different machine that served the previous request.
+            </p>
+            <p>
+                For example, this happens when a user authentication request is served by VM1 and a
+                following request to a restricted URL is served by VM2. VM2 did not authenticate the
+                user, hence it will return an error. An application that keeps data in memory
+                (state) between requests is called stateful, and it will struggle to live in any
+                autoscaling environment. The solution for this problem is to persist the state
+                outside the server, using solutions like{' '}
+                <a href="https://redis.io/" target="_blank">
+                    Redis
+                </a>
+                , making the app stateless.
+            </p>
+            <p>
+                <i>
+                    Another alternative to persist the state outside the server is to delegate the
+                    state management to the client when possible. For example, in the first version
+                    of this web api there was a fourth endpoint called "random", which returned a
+                    random joke and stored the joke id to the session so it would not return a joke
+                    twice to the same user. Instead of going for a Redis-like solution, I decided to
+                    remove the endpoint and generate the random ids in the client, keeping track of
+                    the already consumed jokes.
+                </i>
+            </p>
+            <h5>Database connection</h5>
+            <p>
+                Since we don't know which and how many virtual machines will be running the app, the
+                database can't be placed inside any of them. We will need a separate permanent
+                virtual machine to contain the database. In GCP there is a special type of virtual
+                machines called SQL instances, which allow you to deploy a database with a couple of
+                clicks, choosing from MySQL, PostgreSQL or SQL Server database engines.
+            </p>
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="SQL instance creation in GCP"
+                className="image-600"
+                filename="gcp-sql-instance.png"
+                footer="SQL instance creation in GCP"
+            />
+            <p>
+                This database instances are specially suited to be used from within GCP, making it
+                specially easy to connect to from App Engine (using a mechanism called socket
+                files). mysql npm package supports socket files connections through a configuration
+                parameter called <b>socketPath</b>, so it's just a matter of setting the right
+                environment variables and handling both TCP connections (for development
+                environment) and socket file connections (for production environment). This is how I
+                implemented the database connection works (using Typeorm instead of mysql) and you
+                can learn more about it in the{' '}
+                <a
+                    href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/cloud-sql/mysql/mysql/server.js#L72"
+                    target="_blank"
+                >
+                    official nodejs examples repository
+                </a>
+                .
+            </p>
+            <ReactGist id="71c30556e15a3d2b6dbce78cff62d5c6" />
+            <p>
+                <i>
+                    For noSQL databases such as MongoDB you still will have to create a virtual
+                    machine and install the database engine or use a third-party solution such as{' '}
+                    <a href="https://www.mongodb.com/cloud/atlas" target="_blank">
+                        MongoDB Atlas
+                    </a>
+                    . In fact a MongoDB database makes much more sense for this application (simple
+                    domain with no references), but for the sake of environment simplicity I decided
+                    to use MySQL.
+                </i>
+            </p>
+            <h4>Deployment</h4>
+            <p>
+                Without further ado, let's upload our app to Google Cloud 🚀 All you need to do in
+                your repository is adding a <b>app.yaml</b> file with the cloud configuration for
+                you app. The only mandatory field in this file is the <b>runtime</b>, which you will
+                set to the node version you are using (e.g. nodejs12). You can set the type of
+                virtual machines you want to use through the <i>instance_class</i> parameter and you
+                can also define environment variables through <b>env_variables</b>.
+            </p>
+            <p>
+                When it comes to sensitive environment variables (e.g. api keys, database users and
+                passwords, etc.), still there is{' '}
+                <a href="https://stackoverflow.com/questions/22669528/securely-storing-environment-variables-in-gae-with-app-yaml">
+                    not much agreement
+                </a>{' '}
+                on which is the most convenient way to do it. In my case, I went for the simplest
+                option: defining the environment variables in a file excluded from the repository
+                (env_variables.yaml), and then use the <b>include</b> parameter in app.yaml to load
+                those variables. In this cases, I like to add a template file to the repository
+                indicating which environment variables the application is expecting:
+            </p>
+            <ReactGist id="f755b72c8ad6fe5a1b130c79982dbe68" />
+            <p>
+                And we are good to go 🍾 In order to deploy the app you will need the{' '}
+                <a href="https://cloud.google.com/sdk/docs" target="_blank">
+                    Google Cloud SDK
+                </a>
+                , which allows to execute commands in the cloud environment from your own terminal.
+                The first time you will need to login, create a project and create an app (you can
+                also create the project and the app in the{' '}
+                <a href="https://console.cloud.google.com/" target="_blank">
+                    GCP website
+                </a>
+                ). Once you have done this you just need to run the deploy command to automatically
+                deploy your app while you go getting some coffee.
+            </p>
+            <div className="article-code-snippet">
+                <p>{'>'} gcloud auth login</p>
+                <p>{'>'} gcloud projects create [YOUR_PROJECT_ID] --set-as-default</p>
+                <p>{'>'} gcloud app create --project=[YOUR_PROJECT_ID]</p>
+                <p>{'>'} gcloud app deploy</p>
+            </div>
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="Project creation in GCP"
+                className="image-600"
+                filename="gcp-project-creation.png"
+                footer="Project creation in GCP"
+            />
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="App engine creation in GCP"
+                className="image-600"
+                filename="gcp-app-engine-creation.png"
+                footer="App engine creation in GCP"
+            />
+            <p>
+                When the deploy command finishes your app will be live on GCP 🤩 You can use{' '}
+                <b>gcloud app browse</b> to launch your app in the browser. It's likely that the
+                first time you deploy something will not work as expected. If you get an error add
+                some logs to your application (the good old console.log will do), deploy again and
+                you will find the logs in the GCP Log Viewer.
+            </p>
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="App engine versions in GCP"
+                className="image-600"
+                filename="gcp-app-engine-versions.png"
+                footer="App engine versions in GCP"
+            />
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="App engine logs in GCP"
+                className="image-600"
+                filename="gcp-app-engine-logs.png"
+                footer="App engine logs in GCP"
+            />
+            <p>
+                <i>
+                    For each deployment you make, a new version of the app is created in GCP. Each
+                    version has independent logs, a unique URL and independent environment
+                    variables. You can check a version environment variables by accessing the
+                    version's configuration:
+                </i>
+            </p>
+            <ArticleImage
+                articleId={ArticleId.expressOnGoogleCloud}
+                alt="App engine config in GCP"
+                className="image-600"
+                filename="gcp-app-engine-config.png"
+                footer="App engine config in GCP"
+            />
+            <p>
+                And that's it! Fix the problems that might appear in the way (e.g. wrong sql
+                instance connection name) and you are good to go 🎉 One last tip if you are using
+                windows: you will have an easier time with gcloud sdk if you use it from cmd or
+                powershell instead of git bash. Check the{' '}
+                <a
+                    href="https://cloud.google.com/appengine/docs/standard/nodejs/building-app"
+                    target="_blank"
+                >
+                    official nodejs tutorials
+                </a>{' '}
+                if you want to know more about it and see you in the next post!
+            </p>
         </React.Fragment>
     )
 };

@@ -8,10 +8,10 @@ export const expressOnGoogleCloud: Article = {
     content: () => english,
     metadata: {
         category: ArticleCategory.tech,
-        date: '2020-09-27',
-        duration: 5,
+        date: '2020-09-30',
+        duration: 6,
         id: ArticleId.expressOnGoogleCloud,
         languages: [Language.en],
-        shareImage: 'TODO'
+        shareImage: 'gcp-app-engine-creation.png'
     }
 };
