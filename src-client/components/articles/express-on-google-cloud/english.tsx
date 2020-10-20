@@ -197,8 +197,8 @@ export const english: ArticleContent = {
                 parameter called <b>socketPath</b>, so it's just a matter of setting the right
                 environment variables and handling both TCP connections (for development
                 environment) and socket file connections (for production environment). This is how I
-                implemented the database connection works (using Typeorm instead of mysql) and you
-                can learn more about it in the{' '}
+                implemented the database connection (using Typeorm instead of mysql) and you can
+                learn more about it in the{' '}
                 <a
                     href="https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/cloud-sql/mysql/mysql/server.js#L72"
                     target="_blank"
