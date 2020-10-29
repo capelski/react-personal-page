@@ -15,7 +15,10 @@ export const Error: React.FC<RouteChildrenProps | {}> = () => (
     >
         <Helmet>
             <title>Carles Capellas</title>
-            <meta name="description" content="Something went wrong... You are not supposed to be here" />
+            <meta
+                name="description"
+                content="Something went wrong... You are not supposed to be here"
+            />
         </Helmet>
         <h1 className="error-title">Something went wrong</h1>
         <img

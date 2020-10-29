@@ -32,10 +32,13 @@ export const Blog: React.FC<BlogProps> = (props) => {
             }
             sectionName="blog"
         >
-        <Helmet>
-            <title>Blog | Carles Capellas</title>
-            <meta name="description" content="Blog with software development entries and other random thoughts that cross my mind" />
-        </Helmet>
+            <Helmet>
+                <title>Blog | Carles Capellas</title>
+                <meta
+                    name="description"
+                    content="Blog with software development entries and other random thoughts that cross my mind"
+                />
+            </Helmet>
             <React.Fragment>
                 <div className="blog-header">
                     <h1 className="blog-title">Blog</h1>

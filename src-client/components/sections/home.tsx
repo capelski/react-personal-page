@@ -20,11 +20,17 @@ export const Home: React.FC<RouteChildrenProps> = () => (
     >
         <Helmet>
             <title>Carles Capellas</title>
-            <meta name="description" content="Carles Capellas personal page. Read my blog entries and check out my portfolio" />
+            <meta
+                name="description"
+                content="Carles Capellas personal page. Read my blog entries and check out my portfolio"
+            />
         </Helmet>
         <React.Fragment>
             <div className="home-image">
-                <img src="/images/home-image.jpg?$modena=react-personal-page" alt="World map lines image" />
+                <img
+                    src="/images/home-image.jpg?$modena=react-personal-page"
+                    alt="World map lines image"
+                />
             </div>
             <div className="home-header">
                 <h1>
