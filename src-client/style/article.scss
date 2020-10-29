@@ -113,10 +113,14 @@
             margin: 32px auto;
             display: block;
             max-width: 100%;
-            // Placeholder for image loading error
-            background-color: #f2f2f2;
-            min-height: 200px;
-            width: 100%;
+
+            &.image-placeholder {
+                // Placeholder for image loading error
+                background-color: #f2f2f2;
+                padding: 96px 24px;
+                width: 100%;
+                box-sizing: border-box;
+            }
 
             &.with-footer {
                 margin-bottom: 0;
