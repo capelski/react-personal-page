@@ -32,7 +32,7 @@ export const english: ArticleContent = {
                 investigate the available tools out there, but the concepts are still applicable.
                 That being said, let's rock and roll 🤩
             </p>
-            <h4>Type safety</h4>
+            <h3>Type safety</h3>
             <p>
                 JavaScript was designed in 10 days. There are some things that make it a great
                 language but it also has some flaws: e.g. not being able to detect certain common
@@ -83,7 +83,7 @@ export const english: ArticleContent = {
                     typescript awesomeness
                 </li>
             </ul>
-            <h4>Formatting</h4>
+            <h3>Formatting</h3>
             <p>
                 Don't lose a single minute more writing semicolons, replacing double quotes with
                 single quotes or arguing with your colleagues about how to format ternary
@@ -129,7 +129,7 @@ export const english: ArticleContent = {
                     <ReactGist id="03d288d753e5fc55e547edff9097c85f" />
                 </li>
             </ul>
-            <h4>Linting</h4>
+            <h3>Linting</h3>
             <p>
                 Static code analysis that will catch suspicious code (e.g. floating promises) and
                 will enforce the best practices (e.g. functions maximum number of lines).{' '}
@@ -193,7 +193,7 @@ export const english: ArticleContent = {
                     specially if you are using Typescript and/or React
                 </li>
             </ul>
-            <h4>Spell checking</h4>
+            <h3>Spell checking</h3>
             <p>
                 So far, words are the most useful concept when it comes to communication between
                 humans. If you want your code to be descriptive, you must avoid variable names such
@@ -220,7 +220,7 @@ export const english: ArticleContent = {
                     <ReactGist id="c20cfb8668421c3aedc7722dc5fbdb4e" />
                 </li>
             </ul>
-            <h4>Conclusions</h4>
+            <h3>Conclusions</h3>
             <p>
                 That's it for now! The concepts are not rocket science, but they greatly help me
                 feeling comfortable when working on a project. Bring them in and forget about

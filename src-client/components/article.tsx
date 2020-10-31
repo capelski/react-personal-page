@@ -44,7 +44,11 @@ export const Article: React.FC<ArticleProps> = (props) => {
             lang={props.selectedLanguage}
         >
             <div className="article-info">
-                <h3 className="article-title">{content.title}</h3>
+                {props.preview ? (
+                    <h3 className="article-title">{content.title}</h3>
+                ) : (
+                    <h2 className="article-title">{content.title}</h2>
+                )}
                 <div className="article-details">
                     <span className="article-date">📅 {props.metadata.date}</span>
                     <span className="article-duration">🕐 {props.metadata.duration} mins</span>

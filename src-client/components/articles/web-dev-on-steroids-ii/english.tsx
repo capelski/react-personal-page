@@ -35,7 +35,7 @@ export const english: ArticleContent = {
                 alt="Homer Simpson messing up"
                 filename="quality-work.gif"
             />
-            <h4>Natural language tests</h4>
+            <h3>Natural language tests</h3>
             <p>
                 The goal of natural language tests is both to have easily understandable tests and
                 to provide a friendly description of the software (which might be used as
@@ -137,7 +137,7 @@ export const english: ArticleContent = {
                     <ReactGist id="675c54f581ccd7ecafa7d5951c0963a6" />
                 </li>
             </ul>
-            <h4>Code coverage</h4>
+            <h3>Code coverage</h3>
             <p>
                 Next natural step after adding tests to your code is making sure that you test all
                 the parts that need to be tested. I don't advice to cover 100% of the lines, but you
@@ -181,7 +181,7 @@ export const english: ArticleContent = {
                     Add <b>.nyc_output/</b> and <b>coverage/</b> folders to your <b>.gitignore</b>
                 </li>
             </ul>
-            <h4>Repository integrity</h4>
+            <h3>Repository integrity</h3>
             <p>
                 The last thing you want to happen after having defined a quality assurance pipeline
                 (e.g. linting, formatting, testing, etc.) is to forget about it as the time goes by.
@@ -222,7 +222,7 @@ export const english: ArticleContent = {
                     <ReactGist id="88dcd508e8dedb7231ed5aa64bed0628" />
                 </li>
             </ul>
-            <h4>Conventional commits</h4>
+            <h3>Conventional commits</h3>
             <p>
                 Last but not least! Acknowledgement is key when it comes to software quality, and
                 part of the knowledge transfer is done over the Git history. You might already be
@@ -279,7 +279,7 @@ export const english: ArticleContent = {
                     <ReactGist id="8b69db1674e1e0f2ebd3f7b05ffc02d5" />
                 </li>
             </ul>
-            <h4>Conclusions</h4>
+            <h3>Conclusions</h3>
             <p>
                 And that's the end of it! Four simple concepts that will help you making your tests
                 more readable (and can even qualify them as public documentation), spotting non

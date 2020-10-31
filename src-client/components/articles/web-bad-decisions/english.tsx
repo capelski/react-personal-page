@@ -28,7 +28,7 @@ export const english: ArticleContent = {
     ),
     body: (
         <React.Fragment>
-            <h4>Web format</h4>
+            <h3>Web format</h3>
             <p>
                 I created my web page because I wanted to have a stronger online presence. Given
                 that web was about to become the official public online version of me, I built it as
@@ -65,7 +65,7 @@ export const english: ArticleContent = {
                 />
             </div>
 
-            <h4>Information indigestion</h4>
+            <h3>Information indigestion</h3>
             <p>
                 I am proud of the websites I've developed and I could spend hours talking about why
                 I built them and how I did it. There is a purpose behind each of them and I lived
@@ -95,7 +95,7 @@ export const english: ArticleContent = {
                     footer="New website portfolio"
                 />
             </div>
-            <h4>Perfectionism</h4>
+            <h3>Perfectionism</h3>
             <p>
                 Being a software developer makes me want to write about code on my blog and
                 sometimes I like to provide code snippets to help illustrating concepts. The most
@@ -149,7 +149,7 @@ export const english: ArticleContent = {
                     footer="New website code snippet"
                 />
             </div>
-            <h4>Worsening features</h4>
+            <h3>Worsening features</h3>
             <p>
                 After having written a number of blog posts I thought it would be cool to have a
                 calendar view of the blog entries, so I could check how often I was posting on my
@@ -190,7 +190,7 @@ export const english: ArticleContent = {
                 better filters access and because I felt it wasn't worth spending time on
                 integrating it given the minor improvement it adds to the web.
             </p>
-            <h4>Opinionated categories</h4>
+            <h3>Opinionated categories</h3>
             <p>
                 I enjoying writing my blog because I write about any topic I feel like writing in a
                 given moment. As a result the blog is a mix of entries; from articles on the meaning
@@ -226,7 +226,7 @@ export const english: ArticleContent = {
                     footer="New website blog filters"
                 />
             </div>
-            <h4>Conclusions</h4>
+            <h3>Conclusions</h3>
             <p>
                 Did I really need to make a new version of the page to fix the issues I mentioned?
                 Probably not. But don't forget that I'm a developer! We take every opportunity we

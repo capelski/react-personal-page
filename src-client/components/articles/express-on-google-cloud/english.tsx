@@ -27,7 +27,7 @@ export const english: ArticleContent = {
                 className="image-600"
                 filename="autoscaling.gif"
             />
-            <h4>The conventional way</h4>
+            <h3>The conventional way</h3>
             <p>
                 Before the appearance of cloud infrastructure providers (e.g. Google Cloud, Amazon
                 Web Services, Microsoft Azure, etc.), the usual deployment process consisted in
@@ -57,7 +57,7 @@ export const english: ArticleContent = {
                 filename="gcp-compute-engine.png"
                 footer="GCP virtual machines page"
             />
-            <h4>The cloud way</h4>
+            <h3>The cloud way</h3>
             <p>
                 Instead of managing dedicated virtual machines the current trend is to delegate the
                 low-level layers (e.g. hardware, network, operating system, runtime, etc.) to a
@@ -81,7 +81,7 @@ export const english: ArticleContent = {
                 </a>
                 .
             </p>
-            <h4>Simple yet realistic app</h4>
+            <h3>Simple yet realistic app</h3>
             <p>
                 You can host any kind of application in GCP (Google Cloud Platform) so before
                 jumping into it let's have a look at the nature of the web app that will be
@@ -137,7 +137,7 @@ export const english: ArticleContent = {
                 filename="swagger-call.png"
                 footer="Web api endpoint call example"
             />
-            <h4>Google App Engine</h4>
+            <h3>Google App Engine</h3>
             <p>
                 Given the nature of the application App Engine is the right choice, but before
                 delving into the deployment steps there are a couple of considerations we must
@@ -220,7 +220,7 @@ export const english: ArticleContent = {
                     to use MySQL.
                 </i>
             </p>
-            <h4>Deployment</h4>
+            <h3>Deployment</h3>
             <p>
                 Without further ado, let's upload our app to Google Cloud 🚀 All you need to do in
                 your repository is adding a <b>app.yaml</b> file with the cloud configuration for
