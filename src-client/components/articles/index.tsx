@@ -15,6 +15,7 @@ import { stadiaPlatform } from './stadia-platform';
 import { webBadDecisions } from './web-bad-decisions';
 import { linearGradient } from './linear-gradient';
 import { expressOnGoogleCloud } from './express-on-google-cloud';
+import { npmPackagesDevelopment } from './npm-packages-development';
 
 export const articles = [
     agilityRocks,
@@ -33,5 +34,6 @@ export const articles = [
     stadiaPlatform,
     webBadDecisions,
     linearGradient,
-    expressOnGoogleCloud
+    expressOnGoogleCloud,
+    npmPackagesDevelopment
 ].reverse();

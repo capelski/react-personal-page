@@ -15,5 +15,6 @@ export enum ArticleId {
     stadiaPlatform = 'stadia-platform',
     webBadDecisions = 'web-bad-decisions',
     linearGradient = 'linear-gradient',
-    expressOnGoogleCloud = 'express-on-google-cloud'
+    expressOnGoogleCloud = 'express-on-google-cloud',
+    npmPackagesDevelopment = 'npm-packages-development'
 }
