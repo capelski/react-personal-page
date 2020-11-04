@@ -8,7 +8,7 @@ export const npmPackagesDevelopment: Article = {
     content: () => english,
     metadata: {
         category: ArticleCategory.tech,
-        date: '2020-11-02',
+        date: '2020-11-04',
         duration: 5,
         id: ArticleId.npmPackagesDevelopment,
         languages: [Language.en],
