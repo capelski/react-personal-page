@@ -11,7 +11,6 @@ export const npmPackagesDevelopment: Article = {
         date: '2020-11-04',
         duration: 5,
         id: ArticleId.npmPackagesDevelopment,
-        languages: [Language.en],
-        shareImage: 'yes.gif'
+        languages: [Language.en]
     }
 };
